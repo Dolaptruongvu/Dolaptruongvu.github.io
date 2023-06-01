@@ -1,0 +1,249 @@
+:root {
+    --primary-color: #ec1f55;
+    --text-color: #333;
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+  }
+  html {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body
+{
+    background-color: #333;
+}
+
+.player
+{
+    
+    
+  max-width: 480px;
+  margin: 0 auto;
+  
+}
+.dashboard
+{
+    padding: 0 16px 14px;
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    max-width: 480px;
+    top: 0;
+    z-index: 1;
+    
+}
+.title
+{
+    padding: 0 16px 14px;
+   
+    
+    
+    
+}
+.title-status
+{
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 10px;
+    color: var(--primary-color);
+
+}
+.title-heading
+{
+    text-align: center;
+    font-weight: 600;
+  
+}
+.cd
+{
+    
+     margin: auto;
+     width: 300px;
+     padding-top: 20px;
+}
+.cd-thumb
+{
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    width: 100%;
+    
+    
+
+}
+
+.control
+{
+    display: flex;
+    justify-content: space-around;
+    padding: 39px 15px 39px 15px
+  
+}
+.control .btn
+{
+    padding: 18px 20px 18px 20px;
+    font-size: 20px;
+    
+    
+    
+}
+.playlist-music-item.active
+{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.playlist-music-item.active .playlist-music--name
+{
+    color: #fff;
+}
+.btn.btn-main
+{
+    color: #fff;
+    background-color: var(--primary-color);
+    border-radius: 60%;
+    padding: 13px 22px 11px 23px;
+    font-size: 30px;
+    width: 16%;
+}
+.btn-repeat.active
+{
+    color: var(--primary-color);
+}
+.btn-main i:first-child
+{
+    display: none;
+}
+.btn-play i:first-child
+{
+    display: block;
+    
+    
+}
+.btn-play i:last-child
+{
+    display: none;
+}
+.btn-pause i:first-child
+{
+    display: none;
+
+}
+.btn-pause i:last-child
+{
+   display: block;
+}
+.btn-random.active
+{
+    color: var(--primary-color);
+}
+
+
+.rangebar
+{
+    padding: 0 14px 0 14px;
+}
+.progress
+{
+  
+  width: 100%;
+  -webkit-appearance: none;  /* tắt những kiểu mặc định của thanh */
+  height: 6px;
+  background: #d3d3d3;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  
+
+}
+.progress::-webkit-slider-thumb /* tùy chỉnh con trỏ trên thanh ( con trỏ kéo ) */
+{
+    
+  appearance: none; /* tắt đi mặc định của con trỏ */
+  width: 15px;
+  height: 10px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+
+}
+
+.playlist
+{
+   
+    margin-top: 582px;
+    padding: 12px;
+    
+    
+
+}
+.playlist-music
+{
+    width: 100%;
+    max-height: 300px;
+   
+    
+
+}
+.playlist-music-item
+{
+    height: 70px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.playlist-music-item:active /* bắt hành vi giữ chuột */
+{
+    opacity: 0.8;
+}
+.playlist-music--img
+{
+    
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    padding-top: 13%;
+    width: 15%;
+    margin: 10px;
+
+
+
+}
+.playlist-music--heading
+{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px 5px 10px;
+    
+
+}
+.playlist-music--name
+{
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 4px;
+
+}
+.playlist-music--singer
+{
+    opacity: 0.7;
+
+}
+.playlist-music--detail
+{
+    font-size: 25px;
+    opacity: 0.7;
+    text-decoration: none;
+    color: #333;
+    margin-left: auto;
+    margin-right: 20px;
+
+}
+

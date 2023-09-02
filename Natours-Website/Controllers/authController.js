@@ -177,7 +177,7 @@ exports.confirmEmail = catchAsync(async (req, res, next) => {
 
   res
     .status(301)
-    .redirect("http://127.0.0.1:3000/me/confirmEmail/sentConfirmAlert");
+    .redirect("/me/confirmEmail/sentConfirmAlert");
 });
 exports.sendConfirmEmail = catchAsync(async (req, res, next) => {
   const newToken = signToken(
@@ -212,7 +212,7 @@ exports.login = catchAsync(async (req, res, next) => {
       status: "success",
       data: {
         smsOTPStatus: user.smsOTPStatus,
-        url: `/api/v1/users/2FA/${user.id}`,
+        url: `http://127.0.0.1:3000/api/v1/users/2FA/${user.id}`,
       },
     });
   }

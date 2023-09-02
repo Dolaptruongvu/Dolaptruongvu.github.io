@@ -5,8 +5,8 @@ exports.updateSetting = async (data, type) => {
   try {
     const url =
       type === "password"
-        ? "http://127.0.0.1:3000/api/v1/users/updatePassword"
-        : "http://127.0.0.1:3000/api/v1/users/updateMe";
+        ? "/api/v1/users/updatePassword"
+        : "/api/v1/users/updateMe";
     const res = await axios({
       method: "patch",
       url,
@@ -27,7 +27,7 @@ exports.enableSmsOtp = async (type) => {
   try {
     const res = await axios({
       method: "GET",
-      url: `http://127.0.0.1:3000/api/v1/users/security/${type}`,
+      url: `/api/v1/users/security/${type}`,
     });
   } catch (err) {
     if (err.response.status === 303 && err.response.data.data.url)

@@ -1,0 +1,40 @@
+[{
+    "name": "The Grand Canyon Tour",
+  "slug": "the-grand-canyon-tour",
+  "duration": 7,
+  "maxGroupSize": 10,
+  "difficulty": "easy",
+  "ratingsAverage": 4.5,
+  "ratingQuantity": 100,
+  "price": 1000,
+  "priceDiscount": 500,
+  "summary": "A tour of the Grand Canyon",
+  "description": "This tour takes you to the Grand Canyon, one of the Seven Natural Wonders of the World. You'll see the canyon from all angles, and learn about its history and geology.",
+  "imageCover": "https://www.example.com/images/grand-canyon.jpg",
+  "images": ["https://www.example.com/images/grand-canyon-2.jpg", "https://www.example.com/images/grand-canyon-3.jpg"],
+  "createAt": "2023-07-26T02:26:42.000Z",
+  "startDates": ["2023-08-01", "2023-08-15"],
+  "secretTour": false,
+  "startLocation": {
+    "type": "Point",
+    "coordinates": [-111.75, 36.12],
+    "address": "Grand Canyon National Park, Arizona",
+    "description": "The start of the tour is at the South Rim of the Grand Canyon."
+  },
+  "locations": [
+    {
+      "type": "Point",
+      "coordinates": [-111.79, 36.11],
+      "address": "Desert View Point, Grand Canyon National Park, Arizona",
+      "description": "A scenic overlook with views of the canyon",
+      "day": 1
+    },
+    {
+      "type": "Point",
+      "coordinates": [-111.83, 36.10],
+      "address": "Mather Point, Grand Canyon National Park, Arizona",
+      "description": "A popular viewpoint with views of the canyon",
+      "day": 2
+    }]
+}
+]

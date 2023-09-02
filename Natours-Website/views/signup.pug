@@ -1,0 +1,26 @@
+extend base 
+
+block content 
+    main.main.main--signup
+        .signup-form
+            h2.heading-secondary.ma-bt-lg SIGNUP YOUR ACCOUNT
+            form.form.form--signup
+                .form__group.form__group--name
+                    label.form__label(for='name') Name 
+                    input#userName.form__input(type='name',placeholder='Your Name',required, name='name')
+                .form__group.form__group--email
+                    label.form__label(for='email') Email address 
+                    input#userEmail.form__input(type='email',placeholder='you@example.com',required,name='email')
+                .form__group.form__group--phoneNumber
+                    label.form__label(for='phoneNumber') Phone Number
+                    input#phoneNumber.form__input(type='number',placeholder='Your phone number',required,name='phoneNumber')
+                .form__group.form__group--password
+                    label.form__label(for='password') Password
+                    input#userPassword.form__input(type='password',placeholder='********',required,minlength='8',name='password')
+                .form__group.form__group-newPassword
+                    label.form__label(for='confirmPassword') Password
+                    input#userConfirmPassword.form__input(type='password',placeholder='********',required,minlength='8',name='passwordConfirm')
+                .form__group
+                    button.btn.btn--green Signup
+
+

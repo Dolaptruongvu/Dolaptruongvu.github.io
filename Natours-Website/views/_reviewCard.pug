@@ -1,0 +1,15 @@
+mixin reviewitems(review)
+  .review__item
+    .review__user 
+      .review__img-container 
+        img.review__img(src=`/img/userphoto/${review.user.photo}` alt=`${review.user.name} image`)
+      .review__name= review.user.name
+    p.review__description= review.review
+    .review__ratings 
+      each star in [1,2,3,4,5]
+       if(review.rating >= star)
+        .review__star(class='review__star--active')
+          i.fa-regular.fa-star
+       else 
+        .review__star(class='review__star')
+          i.fa-regular.fa-star

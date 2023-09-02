@@ -1,0 +1,31 @@
+extends ../base 
+
+mixin userNavItem(link,icon,text,active)
+    li(class=`${active ? 'user-nav__options--active':''}`)
+        a.user-nav__options--option(href=`${link}`)
+            i(class=`${icon}`)
+            span= text
+mixin adminNavItem(link,icon,text,active)
+    li(class=`${active ? 'admin-nav__manages--active':''}`)
+        a.admin-nav__manage(href=`${link}`)
+            i(class=`${icon}`)
+            span= text
+mixin securityOption(name,value,selected)
+    -if(selected)
+        option(value=`${value}` selected)= name
+    -else
+        option(value=`${value}`)= name
+
+block content
+    main.main.main--account
+        .account-view 
+            include _navigation
+            .account-view__wrap
+                .account-view__security
+                    form.account-form--security
+                        h2.account-form__title YOUR ACCOUNT SECURITY
+                        span.account-form__securityStatus Your Two-factor authentication is turned off. Please choose an option to turn it on.
+                        select(name='securityMethods' class='account-form__securityOptions') 
+                            +securityOption('Please click to choose your option','default')
+                            +securityOption('SMS OTP','smsotp')
+                        button.btn.btn--savesetting Confirm

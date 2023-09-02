@@ -1,0 +1,49 @@
+extend base
+
+block content
+    main.main
+        .card-container
+            -if(user && !user.emailConfirm)
+                .card-container__alert
+                    h3.card-container__alert-heading= `Your email : ${user.email} is not confirmed, please click `
+                    button#card-container__alert-button here
+                    h3.card-container__alert-supplement to Confirm
+            each tour in tours 
+                .card
+                    .card__header
+                        .card__picture
+                            //- .card__picture-overlay &nbsp;
+                            img.card__picture-img(src=`/img/tours/${tour.imageCover}`,alt=`${tour.name}`)
+                        h3.heading-tertirary
+                            span= tour.name
+
+                    .card__details
+                        h4.card__sub-heading= `${tour.difficulty} ${tour.duration} - days tour`
+                        p.card__text= `${tour.summary}`
+                        .card__data
+                            .card__data-left 
+                                i.fa-solid.fa-location-dot
+                                .card__data-info= tour.startLocation.address
+                            .card__data-right 
+                                i.fa-regular.fa-calendar 
+                                .card__data-info
+                                    each startDate in tour.startDates
+                                        -if(startDate.dates)
+                                            .start-date= startDate.dates.toLocaleString('en-us',{month:'long',year:'numeric'})
+                        .card__data
+                            .card__data-left 
+                                i.fa-regular.fa-flag
+                                .card__data-info= `${tour.locations.length} stops`
+                            .card__data-right 
+                                i.fa-solid.fa-person
+                                .card__data-info= `${tour.maxGroupSize} people`
+                    .card__footer
+                        .card__information
+                            p
+                                span.card__footer-value= `$${tour.price}`
+                                span.card__footer-text per person 
+                            p.card_ratings
+                                span.card__footer-value= `${tour.ratingsAverage}`
+                                span.card__footer-text= `rating (${tour.ratingQuantity})`
+                        a.btn.btn--green.btn--small(href=`/tour/${tour.slug}`) Details
+

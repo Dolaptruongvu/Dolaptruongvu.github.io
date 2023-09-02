@@ -1,0 +1,120 @@
+extends base
+include _reviewCard
+
+
+block append head
+
+  script(src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' )
+  script(src='https://js.stripe.com/v3/')
+
+mixin factsitem(iconname,attribute,values,dateValues)
+  .facts__item
+    i(class=`${iconname}`)
+    span.facts__attribute= attribute
+    .facts__containerValue
+      -if(dateValues)
+        each value,i in values
+          if(value.dates)
+            .facts__selectOptions
+              input( id=`option-${i+1}` type='radio' name=`option` data-value=`option-${i+1}` required)
+              label(for=`option-${i+1}`)= value.dates.toLocaleString('en-us',{month:'long',year:'numeric'})
+      -else 
+        span.facts__value= values
+
+block content
+  body 
+    .section-header 
+      .img-container 
+        img.img-container__picture(src=`/img/tours/${tour.imageCover}`, alt=`${tour.name} image`)
+        .img-container__overlay
+      span.section-header__title= tour.name
+      .section-header__info
+        .section-header__left 
+          i.fa-regular.fa-clock
+          .section-header__time= `${tour.duration} Days `
+        .section-header__right 
+          i.fa-solid.fa-location-dot
+          .section-header__place= tour.startLocation.description
+    .section-description 
+      .section-desciption__wrap
+        .section-description__intro
+          .facts
+            h2.facts__title QUICK FACTS
+            .facts__info
+              -const date = tour.startDates[0].toLocaleString('en-us',{month:'long',year:'numeric'})
+              +factsitem('fa-solid fa-calendar-days','NEXT DATE', tour.startDates,true)
+              +factsitem('fa-solid fa-arrow-trend-up','DIFFICULTY',tour.difficulty)
+              +factsitem('fa-solid fa-person','PARTICIPANTS',`${tour.maxGroupSize} people`)
+              +factsitem('fa-regular fa-star','RATING',` ${tour.ratingsAverage} / 5`)
+          .guides 
+            h2.guides__title YOUR TOUR GUIDES 
+            .guides__list 
+              each guide in tour.guides
+                .guides__member
+                  .guides__img-container
+                    img.guides__img(src=`/img/userphoto/${guide.photo}`,alt=`${guide.name} image`)
+                  - if(guide.role === 'lead-guide')
+                    span.guides__role LEAD GUIDE
+                  - if(guide.role === 'guide')
+                    span.guides__role TOUR GUIDE
+                  span.guides__name= guide.name
+        .section-description__about
+          h2.section-description__title= `ABOUT ${tour.name}`
+          - const paragraphs = tour.description.split('\n')
+          each p in paragraphs 
+            p.section-description__paragraph= p
+      .quickimg 
+        each img,i in tour.images
+          .quickimg__container 
+            img.quickimg__img(src=`/img/tours/${img}` alt=`${tour.name}-${i+1} images` class =`quicking__img--${i+1}`)
+      .mapimg
+        #map(data-locations=`${JSON.stringify(tour.locations)}`)
+      -if(tour.reviews.length !== 0)
+        .review
+          .review__items
+            each review in tour.reviews 
+              +reviewitems(review)
+          .review__overlay
+          -if(userBooked)
+            form.form.form--review
+              input(placeholder='Rating' class='form--review__rating' id='rating' type='number' max='5' name='rating')
+              textarea(maxlength='78' placeholder='Please type with a maximum of 200 words' id='review' class='form--review__text' name='review')
+              button(class="btn btn--review" data-tourID=`${tour.id}`) Review
+      -else
+        -if(userBooked)
+          .review
+            .review__items
+              each review in tour.reviews 
+                +reviewitems(review)
+            .review__overlay
+            form.form.form--review
+              input(placeholder='Rating' class='form--review__rating' id='rating' type='number' max='5' name='rating')
+              textarea(maxlength='78' placeholder='Please type with a maximum of 200 words' id='review' class='form--review__text' name='review')
+              button(class="btn btn--review" data-tourID=`${tour.id}`) Review
+      .invite
+        .invite__box
+          .invite__icon-container 
+            img.invite__icon(src="/img/icon/gautruc.jpg" alt="invite image")
+          .invite__wrap
+            h2.invite__title WHAT ARE YOU WAITING FOR ?
+            p.invite__description= ` ${tour.duration} days. 1 adventure. Infinite memories. Make it yours today!`
+          -if(user && !userBooked)
+            button.invite__booking#book-tour(data-tour-id=`${tour.id}`) Book tour now !
+          -else if(!user)
+            a.invite__login(href='/login') Login now !
+          -else
+            a.invite__login(href=`/chatRoom/${tour.id}`) Join this chat room now !
+
+
+
+
+
+
+
+
+
+
+
+
+

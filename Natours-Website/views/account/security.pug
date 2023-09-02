@@ -1,0 +1,23 @@
+extends setting 
+
+mixin securityOption(name,value,selected)
+  -if(selected)
+      option(value=`${value}` selected)= name
+  -else
+      option(value=`${value}`)= name
+    
+
+block view 
+   .account-view__security
+        form.account-form--security
+           h2.account-form__title YOUR ACCOUNT SECURITY
+           span.account-form__securityStatus= `Your Two-factor authentication is turned ${!user.smsOTPStatus?'off':'on'}.`
+           -if(!user.smsOTPStatus)
+              span.account-form__securityStatus.account-form__securityStatus--addition  Please choose an option to turn it on.
+           select(name='securityMethods' class='account-form__securityOptions') 
+             +securityOption('Please click to choose your option','default')
+             +securityOption('SMS OTP','smsotp')
+           button.btn.btn--savesetting Confirm
+              
+               
+                    

@@ -1,0 +1,16 @@
+extend base
+
+block content 
+    main.main.main--otp
+        .otp-form
+            h2.heading-secondary= title
+            .otp-form__content 
+                p We have sent the otp code to your phone number :
+                span= phoneNumberHide
+                p Please confirm below
+            form.form.form--otp
+                .form__group
+                    label.form__label(for='otp') Your otp code
+                    input#otp.form__input(type='number',placeholder='your otp code',required, inputmode='numeric',maxlength='5')
+                .form__group
+                    button.btn.btn--green.btn--otp(data-userId=`${user.id}`) Login

@@ -1,0 +1,19 @@
+extends base 
+
+block content 
+    main.main
+        .chat-header 
+           h2= `${booking.tour.name} Chat-Room` 
+             i(class='fa-solid fa-message')
+        .chat-frame
+            .chat-name
+                span(class = 'fa-regular fa-user')
+                input(type ='text' id ='name-input' class ='chat-name__input' value=`${user.name}`, maxlength='20')
+            ul(class='message-container' id='message-container')
+            form(class='message-form' id='message-form') 
+                input(type='text', name='message' id='message-input' class='message-form__input')
+                .v-divider
+                button(type='submit' class='message-form__sendbtn') Send
+                    span
+                        i(class='fa-solid fa-paper-plane')
+        h3(class='clients-total' id='clients-total') Total clients: 2

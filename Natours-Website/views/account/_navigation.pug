@@ -1,0 +1,21 @@
+
+nav.account-view__nav
+    .user-nav
+        nav.user-nav__menu 
+            ul.user-nav__options
+                +userNavItem('/me','fa-solid fa-gear','SETTINGS',`${activeSetting?'active':''}`)
+                +userNavItem('/my-tours','fa-solid fa-suitcase','MY BOOKINGS',`${activeBookings?'active':''}`)
+                +userNavItem('#','fa-regular fa-star','MY REVIEWS',`${activeReviews?'active':''}`)
+                +userNavItem('#','fa-solid fa-money-bill','BILLINGS',`${activeBilling?'active':''}`)
+                +userNavItem('/me/security','fa-solid fa-lock','SECURITY',`${activeSecurity?'active':''}`)
+    -if(user.role==='admin')
+        .admin-nav
+            nav.admin-nav__menu
+                .admin-nav__border 
+                    span.admin-nav__role ADMIN 
+                    .admin-nav__line 
+                ul.admin-nav__manages
+                    +adminNavItem('#','fa-solid fa-map','MANAGE TOURS')
+                    +adminNavItem('#','fa-solid fa-users','MANAGE USERS')
+                    +adminNavItem('#','fa-regular fa-star','MANAGE REVIEWS')
+                    +adminNavItem('#','fa-solid fa-suitcase','MANAGE BOOKINGS')   

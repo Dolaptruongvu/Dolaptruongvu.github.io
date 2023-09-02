@@ -1,0 +1,48 @@
+extends ../base 
+
+mixin userNavItem(link,icon,text,active)
+    li(class=`${active ? 'user-nav__options--active':''}`)
+        a.user-nav__options--option(href=`${link}`)
+            i(class=`${icon}`)
+            span= text
+mixin adminNavItem(link,icon,text,active)
+    li(class=`${active ? 'admin-nav__manages--active':''}`)
+        a.admin-nav__manage(href=`${link}`)
+            i(class=`${icon}`)
+            span= text
+
+block content
+    main.main.main--account
+        .account-view 
+            include _navigation
+            .account-view__wrap
+                block view
+                    .account-view__setting
+                        form.account-form
+                            h2.account-form__title YOUR ACCOUNT SETTINGS
+                            label(for='#userName') Name
+                            input#userName.account-form__input(type='text',name='name',required, value=`${user.name}`)
+                            label(for='#userEmail') Email address
+                            input#userEmail.account-form__input(type='text',name='email',required, value=`${user.email}`)
+                            .account-form__avatar 
+                                img.account-form__img(src=`/img/userphoto/${user.photo}`, alt=`${user.name} photo`)
+                                input#fileInput.account-form__input--file(type='file',name='fileInput' accept='image/*')
+                                label(for='fileInput') Choose new photo
+                            button.btn.btn--savesetting SAVE SETTINGS
+                    .account-view__password
+                        form.password-form 
+                            h2.password-form__title PASSWORD CHANGE
+                            label(for='#currentPassword') Current Password
+                            input#currentPassword.password-form__input(type='password',placeholder='********',required,minlength='8' name='passwordCurrrent')
+                            label(for='#newPassword') New Password
+                            input#newPassword.password-form__input(type='password',placeholder='********',required,minlength='8' name='newPassword')
+                            label(for='#confirmPassword') Confirm password
+                            input#confirmPassword.password-form__input(type='password',placeholder='********',required,minlength='8' name='passwordConfirm')
+                            button.btn.btn--savepassword SAVE PASSWORD
+
+
+
+
+
+
+

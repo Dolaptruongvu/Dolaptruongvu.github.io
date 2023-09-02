@@ -27,7 +27,6 @@ const sendSMS = async (otpVal, phoneNumber) => {
     const to = `84${phoneNumber}`;
     const text = `This is your OTP code : ${otpVal}`;
     const resp = await vonage.sms.send({ to, from, text });
-    console.log(resp);
   } catch (err) {
     console.log(err);
   }
@@ -60,11 +59,9 @@ const createSendToken = (user, statusCode, res) => {
   });
 };
 exports.checkSecurityType = catchAsync(async (req, res, next) => {
-  console.log(req.params.type);
-  console.log(req.user.id);
   if (req.params.type === "smsotp" && req.user.smsOTPStatus === false) {
     const url = `http://127.0.0.1:3000/api/v1/users/2FA/${req.user.id}`;
-    console.log("check done");
+
     return res.status(303).json({
       status: "success",
       data: {
@@ -74,9 +71,8 @@ exports.checkSecurityType = catchAsync(async (req, res, next) => {
   }
 });
 exports.sendSms2FA = catchAsync(async (req, res, next) => {
-  console.log("at send2FA");
   const randomNumb = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
-  console.log(randomNumb);
+  if(process.env.NODE_ENV ==='development') console.log(randomNumb)
   const otpValue = crypto
     .createHash("sha256")
     .update(randomNumb.toString())
@@ -97,18 +93,17 @@ exports.sendSms2FA = catchAsync(async (req, res, next) => {
 
   if (user.smsOTPStatus === true) {
     const url = `http://127.0.0.1:3000/login/2FA/${user.id}`;
-    console.log(url);
+
     res.status(301).redirect(url);
   } else if (user.smsOTPStatus === false) {
     const url = `http://127.0.0.1:3000/me/security/confirmOTP`;
-    console.log(url);
+
     res.status(301).redirect(url);
   }
 });
 
 exports.confirmSms2FA = catchAsync(async (req, res, next) => {
   const smsOTPValue = req.body.smsOTPValue.toString();
-  console.log(smsOTPValue);
   const hashOTP = crypto.createHash("sha256").update(smsOTPValue).digest("hex");
   const user = await User.findOne({
     _id: req.params.userId,
@@ -369,7 +364,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     passwordResetToken: hashedToken,
     passwordResetExpires: { $gt: Date.now() },
   });
-  console.log("at reset :", user);
+
   if (!user) {
     return next(new AppError("Token is invalid or has expired"), 400);
   }

@@ -9,7 +9,6 @@ import { sendReview } from "./review";
 import { showAlert } from "./alert";
 import { sendEmailConfirm } from "./emailConfirm";
 
-
 //Dom elements
 const mapBox = document.getElementById("map");
 const loginForm = document.querySelector(".form--login");
@@ -50,7 +49,7 @@ if (signupForm) {
     const passwordConfirmVal = document.getElementById(
       "userConfirmPassword"
     ).value;
-    console.log("signup Form");
+
     const userData = {
       name: nameVal,
       email: emailVal,
@@ -59,9 +58,7 @@ if (signupForm) {
       passwordConfirm: passwordConfirmVal,
     };
 
-    console.log(userData);
     await signup(userData);
-    console.log("senđone");
   });
 }
 
@@ -73,7 +70,6 @@ if (userDataForm) {
     form.append("name", document.getElementById("userName").value);
     form.append("email", document.getElementById("userEmail").value);
     form.append("photo", document.getElementById("fileInput").files[0]);
-    console.log(form);
     updateSetting(form, "data");
   });
 }
@@ -181,7 +177,6 @@ if (securityOptionForm) {
     );
     const securityOption =
       securityOptions.querySelector("option:checked").value;
-    console.log(securityOption);
     await enableSmsOtp(securityOption);
   });
 }

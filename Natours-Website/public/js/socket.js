@@ -11,7 +11,7 @@ const messageInput = document.getElementById("message-input");
 // function for socket
 const sendMessage = () => {
   if (!messageInput.value) return;
-  console.log(messageInput.value);
+
   const data = {
     name: nameInput.value,
     message: messageInput.value,

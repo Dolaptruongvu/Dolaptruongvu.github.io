@@ -41,7 +41,6 @@ bookingSchema.statics.updateParticipants = async function (tourId, date) {
 
 bookingSchema.post("save", function () {
   this.constructor.updateParticipants(this.tour, this.startDate);
-  console.log(this.tour, this.startDate);
 });
 
 bookingSchema.pre(/^find/, function (next) {

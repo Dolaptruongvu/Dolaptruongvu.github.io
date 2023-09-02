@@ -80,7 +80,6 @@ exports.chatPage = catchAsync(async (req, res, next) => {
   res.status(200).render("chatRoom");
 });
 exports.confirmSecurityPage = catchAsync(async (req, res, next) => {
-  console.log("at confirmSecurityPage");
   const phoneNumb = req.user.phoneNumber.toString();
   const lastDigits = phoneNumb.slice(-2);
   const phoneLength = phoneNumb.length - 1;

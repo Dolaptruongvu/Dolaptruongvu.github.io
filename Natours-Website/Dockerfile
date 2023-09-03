@@ -4,4 +4,4 @@ COPY package*.json .
 RUN apk add --no-cache python3 make g++
 RUN npm ci
 COPY . .
-CMD ["npm","start","&&", "npm", "run", "watch:js"]
+CMD ["npm","run","start","&&", "npm", "run", "watch:js"]

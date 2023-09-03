@@ -272,7 +272,7 @@
 
     
 
-  "watch:js": "parcel watch ./Natours-Website/public/js/index.js --out-dir ./Natours-Website/public/js --out-file bundle.js --public-url /js",
+  "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js --public-url /js",
   
 
     

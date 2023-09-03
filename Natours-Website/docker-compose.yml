@@ -4,8 +4,10 @@ services:
  #Mongodb services
  mongo_db:
   container_name: db_container
-  image: mongo:lates
+  image: mongo:latest
   restart: always
+  ports: 
+   - 2717:27017
   volumes:
    - mongo_db:/data/db
  
@@ -15,3 +17,29 @@ services:
   ports:
    - 3000:3000
   environment:
+   NODE_ENV: development
+   PORT: 3000
+   DATABASE_LOCAL: mongodb://mongo_db:27017/natours-test
+
+   JWT_SECRET: my-supreme-secret
+   JWT_EXPIRES_IN: 90d
+   JWT_EMAILSECRET:  my-email-secret
+   JWT_EMAILSECRET_EXPIRES_IN: 1d
+   JWT_COOKIE_EXPIRES_IN: 90
+
+   EMAIL_USERNAME: 251d9942380618
+   EMAIL_PASSWORD: 11471717525ba4
+   EMAIL_HOST: sandbox.smtp.mailtrap.io
+   EMAIL_PORT: 25
+
+   EMAIL_FROM :  dolaptruongvuzzz@gmail.com
+
+   SENDGMAIL_USER :  tournatour226@gmail.com
+   SENDGMAIL_PASSWORD: odybhrtyfkcyqbur
+
+   STRIPE_SECRET_KEY: sk_test_51NefRuDno7xMeKTrzMCnv9bPLG16admqwuzEIxoxIO4i3vzka387oTnaNE8Vndg8E0lojE7zykLE71yFXFi4PqpU00MLlEDkEW
+   STRIPE_PUBLIC_KEY: pk_test_51NefRuDno7xMeKTrHJyJParnyCentn0t6dmiX4hONCG3ZVjFrKtjZPBFNwMan8j6iNB2KEJs5w6U50miLAkyGIaX00WHltJnL3
+  depends_on:
+   - mongo_db
+volumes:
+  mongo_db: {}

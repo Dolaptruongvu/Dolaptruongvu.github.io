@@ -11,8 +11,10 @@ io.engine.use(sessionMiddleware);
 
 dotenv.config({ path: `E:/Nodejs/Natours-Website/config.env` });
 
+const DB = process.env.DATABASE.replace('<password>',process.env.DATABASE_PASSWORD)
+
 mongoose
-  .connect(process.env.DATABASE_LOCAL, {
+  .connect(DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -22,6 +24,8 @@ mongoose
   .catch((err) => {
     console.log("Error");
   });
+
+
 
 console.log(process.env);
 console.log(app.get("env"));

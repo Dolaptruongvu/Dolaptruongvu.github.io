@@ -9,6 +9,8 @@ export const signup = async (userData) => {
       data: userData,
     });
 
+    console.log(res)
+
     if (res.data.status === "success") {
       showAlert("success", "Signup Successfully");
 
@@ -17,6 +19,7 @@ export const signup = async (userData) => {
       }, 1500);
     }
   } catch (err) {
-    showAlert("error", err.respone.data.message);
+    
+    showAlert("error", err.response.data.message);
   }
 };

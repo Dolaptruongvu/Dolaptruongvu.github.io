@@ -5,9 +5,12 @@ const handleCastErrorDB = (err) => {
 };
 const handleDuplicateFieldsDB = (err) => {
   const errors = Object.values(err.keyValue).map((el) => el);
+ 
   const message = `Duplicate field value: ${errors.join(
     ", "
   )} . Please use another value`;
+
+
   return new AppError(message, 400);
 };
 const handleValidatonErrorDB = (err) => {
@@ -45,7 +48,6 @@ const sendErrorProd = (err, req, res) => {
         message: err.message,
       });
     }
-
     console.log("error", JSON.stringify(err));
 
     return res.status(500).json({

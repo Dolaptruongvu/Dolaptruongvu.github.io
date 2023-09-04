@@ -32,7 +32,7 @@ const sendSMS = async (otpVal, phoneNumber) => {
   }
 };
 
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(
     user._id,
     process.env.JWT_SECRET,
@@ -42,10 +42,11 @@ const createSendToken = (user, statusCode, res) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    secure: true,
     httpOnly: true,
+    secure: req.secure || req.headers["x-forwarded-proto"] === "https",
   };
-  if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+
+
   res.cookie("jwt", token, cookieOptions);
 
   user.password = undefined;
@@ -72,7 +73,7 @@ exports.checkSecurityType = catchAsync(async (req, res, next) => {
 });
 exports.sendSms2FA = catchAsync(async (req, res, next) => {
   const randomNumb = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
-  if(process.env.NODE_ENV ==='development') console.log(randomNumb)
+  if (process.env.NODE_ENV === "development") console.log(randomNumb);
   const otpValue = crypto
     .createHash("sha256")
     .update(randomNumb.toString())
@@ -129,7 +130,7 @@ exports.confirmSms2FA = catchAsync(async (req, res, next) => {
   user.smsOTPValue = undefined;
   await user.save({ validateBeforeSave: false });
 
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
@@ -145,7 +146,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   await new Email(newUser, confirmEmailUrl).sendWelcome();
 
-  createSendToken(newUser, 201, res);
+  createSendToken(newUser, 201, req, res);
 });
 
 exports.confirmEmail = catchAsync(async (req, res, next) => {
@@ -175,9 +176,7 @@ exports.confirmEmail = catchAsync(async (req, res, next) => {
   if (!user)
     next(new AppError("Cannot find your account in server, please try again"));
 
-  res
-    .status(301)
-    .redirect("/me/confirmEmail/sentConfirmAlert");
+  res.status(301).redirect("/me/confirmEmail/sentConfirmAlert");
 });
 exports.sendConfirmEmail = catchAsync(async (req, res, next) => {
   const newToken = signToken(
@@ -216,7 +215,8 @@ exports.login = catchAsync(async (req, res, next) => {
       },
     });
   }
-  createSendToken(user, 200, res);
+
+  createSendToken(user, 200, req, res);
 });
 
 exports.isLoggedIn = async (req, res, next) => {
@@ -374,7 +374,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.passwordResetExpires = undefined;
   await user.save();
 
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -389,5 +389,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   user.passwordConfirm = req.body.passwordConfirm;
   await user.save();
 
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });

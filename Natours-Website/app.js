@@ -17,7 +17,7 @@ const viewRouter = require("./routes/viewRoutes");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const compression = require('compression')
+const compression = require("compression");
 const sessionMiddleware = session({
   secret: "changeit",
   resave: false,
@@ -27,11 +27,13 @@ const sessionMiddleware = session({
 // app area
 const app = express();
 
+app.enable("trust proxy");
+
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 // Global MiddleWare
 // Security HTTP headers
-app.use(compression())
+app.use(compression());
 
 app.use(helmet());
 app.use(cors({ origin: "*" }));

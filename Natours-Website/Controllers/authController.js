@@ -72,7 +72,7 @@ exports.checkSecurityType = catchAsync(async (req, res, next) => {
   }
 });
 exports.sendSms2FA = catchAsync(async (req, res, next) => {
-  const randomNumb = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+  const randomNumb = Math.floor(Math.random() * 99999) + 10000
   if (process.env.NODE_ENV === "development") console.log(randomNumb);
   const otpValue = crypto
     .createHash("sha256")

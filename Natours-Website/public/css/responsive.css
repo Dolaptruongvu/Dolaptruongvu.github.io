@@ -241,6 +241,8 @@
         animation: drop-bounce 1.5s ease-in-out;
         border-radius: 5px;
     }
+
+
     .card-container__alert {
         position: absolute;
         top: 0;
@@ -251,6 +253,7 @@
         align-items: center;
         border-radius: 45px;
     }
+    
     .section-description__intro {
         width: 50%;
         padding-left: 119px;

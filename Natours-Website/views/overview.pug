@@ -30,11 +30,11 @@ block content
                                     each startDate in tour.startDates
                                         -if(startDate.dates)
                                             .start-date= startDate.dates.toLocaleString('en-us',{month:'long',year:'numeric'})
-                        .card__data
-                            .card__data-left 
+                        .card__data.card__data--bottom
+                            .card__data-left.card__data-left--bottom
                                 i.fa-regular.fa-flag
                                 .card__data-info= `${tour.locations.length} stops`
-                            .card__data-right 
+                            .card__data-right.card__data-right--bottom
                                 i.fa-solid.fa-person
                                 .card__data-info= `${tour.maxGroupSize} people`
                     .card__footer

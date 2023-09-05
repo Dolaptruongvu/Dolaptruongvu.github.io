@@ -209,6 +209,7 @@ body{
   margin: 92px 94px 0px 0px;
   border-radius: 5px;
   height: 663px;
+  overflow: hidden;
 }
 .card__header{
   width: 100%;
@@ -262,6 +263,15 @@ body{
 }
 .card__data-right i{
 }
+.card__data.card__data--bottom{
+
+}
+.card__data-left.card__data-left--bottom{
+
+}
+.card__data-right.card__data-right--bottom{
+  
+}
 .card__data-info {
   margin-left: 10px;
   color: #3b3737b5;
@@ -278,6 +288,9 @@ body{
   align-items: center;
   height: 19%;
   width: 100%;
+}
+.card__information {
+  margin-bottom: 20px;
 }
 .card__information p{
   margin: 10px 0px;
@@ -307,6 +320,12 @@ body{
 .btn--green {
   background-color: var(--primary-green);
   font-size: 22px;
+}
+.btn.btn--green{
+  background-color: var(--primary-green);
+  margin-top: 7px;
+  margin-left: 88px;
+  height: 59px;
 }
 .btn--small {
   font-size: 20px;

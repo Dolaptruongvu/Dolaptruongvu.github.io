@@ -8,6 +8,7 @@ import { sendForgotPassword, sendResetPassword } from "./forgotPassword";
 import { sendReview } from "./review";
 import { showAlert } from "./alert";
 import { sendEmailConfirm } from "./emailConfirm";
+import { socketWebTrigger } from "./socketWeb"
 
 //Dom elements
 const mapBox = document.getElementById("map");
@@ -23,6 +24,7 @@ const smsOTPForm = document.querySelector(".form--otp");
 const securityOptionForm = document.querySelector(".account-form--security");
 const bookBtn = document.getElementById("book-tour");
 const emailConfirmBtn = document.getElementById("card-container__alert-button");
+
 
 //Delegation
 if (mapBox) {
@@ -180,3 +182,4 @@ if (securityOptionForm) {
     await enableSmsOtp(securityOption);
   });
 }
+socketWebTrigger()

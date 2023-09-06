@@ -246,31 +246,40 @@ body{
 }
 .card__data{
   display: flex;
-  justify-content: space-between;
-  margin-left: 40px;
-  margin-right: 90px;
-  margin-top: 15px;
+  justify-content: space-around;
+  height: 105px;
+  margin-top: 20px;
 }
 .card__data-left{
   display: flex;
-  flex-grow: 1;
+ /* flex-grow: 1;
+  */
+  max-width: 182px;
 }
 .card__data-right{
   display: flex;
-  padding-left: 125px;
+  padding-left: 0px;
   flex-shrink: 0;
   flex-grow: 0;
+  max-width: 128px;
 }
 .card__data-right i{
 }
 .card__data.card__data--bottom{
-
+  display: flex;
+  justify-content: space-between;
+  height: 27px;
+  margin-top: 10px;
 }
 .card__data-left.card__data-left--bottom{
-
+  max-width: 87px;
+  margin-left: 32px;
+  max-height: 20px;
 }
 .card__data-right.card__data-right--bottom{
-  
+  max-width: 87px;
+  margin-right: 71px;
+  max-height: 27px;
 }
 .card__data-info {
   margin-left: 10px;
@@ -467,7 +476,7 @@ body{
   margin: 0 30px 0 15px;
   font-weight: 600;
   color: #797373;
- ;
+  ;
 }
 .facts__value{
   color: #797373cf;

@@ -90,7 +90,7 @@ block content
             .review__overlay
             form.form.form--review
               input(placeholder='Rating' class='form--review__rating' id='rating' type='number' max='5' name='rating')
-              textarea(maxlength='78' placeholder='Please type with a maximum of 200 words' id='review' class='form--review__text' name='review')
+              textarea(maxlength='200' placeholder='Please type with a maximum of 200 words' id='review' class='form--review__text' name='review')
               button(class="btn btn--review" data-tourID=`${tour.id}`) Review
       .invite
         .invite__box

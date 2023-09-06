@@ -33,7 +33,7 @@ export const socketWebTrigger = ()=>{
                    </li>
                       `;
   
-    messageContainer.innerHTML += ele;
+    if(messageContainer) messageContainer.innerHTML += ele;
     scrollToBottom();
   };
   const scrollToBottom = () => {

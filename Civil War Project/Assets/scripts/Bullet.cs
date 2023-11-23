@@ -18,10 +18,20 @@ public class Bullet : MonoBehaviour
         }
         if (collision.CompareTag("Enemy") && goodSizeBullet)
         {
+            Enemycontroller enemyController = collision.GetComponent<Enemycontroller>();
             int damaged = Random.Range(minDamage, maxDamage);
-            collision.GetComponent<Enemycontroller>().TakeDamage(damaged); // damage the player now
+            enemyController.TakeDamage(damaged); // damage the player now
+            Animator EnemyAnim = enemyController.GetComponentInChildren<Animator>();
+            EnemyAnim.SetBool("GotHit", true);
             Destroy(gameObject);
+            StartCoroutine(ResetGotHit(EnemyAnim, 0.1f));
         }
 
     }
+    private IEnumerator ResetGotHit(Animator anim, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        anim.SetBool("GotHit", false);
+    }
+
 }

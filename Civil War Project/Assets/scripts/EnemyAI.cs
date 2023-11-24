@@ -33,6 +33,7 @@ public class EnemyAI : MonoBehaviour
         if (fireCooldown < 0)
         {
             fireCooldown = timeBtwFire;
+            if (isShootable == true)
             EnemyFireBullet();
         }
     }
@@ -96,7 +97,7 @@ public class EnemyAI : MonoBehaviour
         Vector3 playerPos = FindObjectOfType<Player>().transform.position;
         if (roaming == true)
         {
-            return (Vector2)playerPos + (Random.Range(15f, 60f) * new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)).normalized); // create a position for enemy with random distance and random direction ( normilized mean we dont care a bout the magnitude )
+            return (Vector2)playerPos + (Random.Range(1f, 5f) * new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)).normalized); // create a position for enemy with random distance and random direction ( normilized mean we dont care a bout the magnitude )
         }
         else
         {

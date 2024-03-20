@@ -1,14 +1,16 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const { app} = require("./app");
+const { app } = require("./app");
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`App running on port : ${port}`);
 });
-dotenv.config({ path: `E:/Nodejs/CINEMA/config.env` });
+dotenv.config({ path: `E:/Nodejs/Project-Cinema/CINEMA/config.env` });
 
-
-const DB = process.env.DATABASE.replace('<password>',process.env.DATABASE_PASSWORD)
+const DB = process.env.DATABASE.replace(
+  "<password>",
+  process.env.DATABASE_PASSWORD
+);
 
 mongoose
   .connect(DB, {
@@ -22,8 +24,6 @@ mongoose
     console.log("Error");
   });
 
-
-
 console.log(process.env);
 console.log(app.get("env"));
 
@@ -34,9 +34,9 @@ process.on("uncaughtException", (err) => {
   });
 });
 
-process.on("SIGTERM",()=>{
-  console.log('SIGTERM RECEIVED. Shutting down gracefully')
+process.on("SIGTERM", () => {
+  console.log("SIGTERM RECEIVED. Shutting down gracefully");
   server.close(() => {
-    console.log('Process terminated')
+    console.log("Process terminated");
   });
-})
+});

@@ -2,7 +2,9 @@ const express = require("express");
 var morgan = require("morgan");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const AppError = require("./utils/appError")
 const filmRoutes = require("./Routes/filmRoutes")
+const globalErrorHandler = require("./Controller/errorController");
 // app area
 const app = express();
 
@@ -31,6 +33,11 @@ app.use((req, res, next) => {
 // Film routes
 
 app.use("/api/v1/films",filmRoutes);
+
+
+// Global Error Handling MiddleWare
+
+app.use(globalErrorHandler);
 
 
 module.exports = { app };

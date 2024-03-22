@@ -34,9 +34,10 @@ const filmSchema = new mongoose.Schema({
     type: String,
     required: [true, "A film must have a difficulty "],
     enum: {
-        values: ["Vietnamese", "English", "Korean","Japanese","Chinese"],
-        message: "Difficulty is  either: Vietnamese, English, Korean, Japanese, Chinese",
-      },
+      values: ["Vietnamese", "English", "Korean", "Japanese", "Chinese"],
+      message:
+        "Difficulty is  either: Vietnamese, English, Korean, Japanese, Chinese",
+    },
   },
   description: {
     type: String,
@@ -60,9 +61,12 @@ const filmSchema = new mongoose.Schema({
   },
   images: [String],
   trailer: [String],
-  
+  status: {
+    type: String,
+    required: [true, "A film must have a status"],
+    trim: true
+  }
 });
-
 
 const Film = mongoose.model("Film", filmSchema);
 

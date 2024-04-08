@@ -64,7 +64,14 @@ const filmSchema = new mongoose.Schema({
   status: {
     type: String,
     required: [true, "A film must have a status"],
-    trim: true
+    enum: {
+      values: ["Currently showing", "medium", "difficult"],
+      message: "Difficulty is  either: easy, medium, difficult",
+    },
+  },
+  prominent: {
+    type: Boolean,
+    required: [true, "A film must have a prominent or not"],
   }
 });
 

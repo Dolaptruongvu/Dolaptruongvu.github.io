@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const filmController = require("../Controller/filmController")
+const bookController = require("../Controller/bookController")
 
 router 
 .route("/test")
-.get(filmController.testapi)
+.post(bookController.createBook)
 
 
 module.exports = router;

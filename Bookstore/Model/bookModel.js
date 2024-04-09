@@ -1,80 +1,104 @@
 const mongoose = require("mongoose");
 const slugify = require("slugify");
 
-const filmSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "must have a name"],
-    unique: [true, "must be unique"],
-    trim: true,
-    maxlength: [40, "A film name must have less or equal than 40 characters"],
-    minlength: [2, "A film name must have more or equal than 2 characters"],
-  },
+
+const bookSchema = new mongoose.Schema({
   slug: String,
-  director: {
+  // Title of the book
+  title: {
     type: String,
-    required: [true, "must have a name of director"],
+    required: [true, "Book title is required"],
+    trim: true,
+    maxlength: [100, "Book title cannot exceed 100 characters"],
+  },
+  // Array of image URLs
+  images: [String],
+  // Author(s)
+  author: {
+    type: String,
+    required: [true, "Author name is required"],
     trim: true,
   },
-  genere: {
+  // Category (e.g. Fiction, Non-Fiction, etc.)
+  category: {
     type: String,
-    required: [true, "must have a genere"],
-    maxlength: [40, "A film name must have less or equal than 40 characters"],
-    minlength: [4, "A film name must have more or equal than 4 characters"],
+    required: [true, "Category is required"],
+    trim: true,
   },
-  premiere: {
-    type: Date,
-    require: [true, "A film must has a date"],
-  },
-  duration: {
-    type: Number,
-    required: [true, "A film must have a duration"],
-  },
+  // Language (e.g. Vietnamese, English, etc.)
   language: {
     type: String,
-    required: [true, "A film must have a difficulty "],
-    enum: {
-      values: ["Vietnamese", "English", "Korean", "Japanese", "Chinese"],
-      message:
-        "Difficulty is  either: Vietnamese, English, Korean, Japanese, Chinese",
-    },
+    required: [true, "Language is required"],
+    trim: true,
   },
-  description: {
+  // Translator (if applicable)
+  translator: {
     type: String,
     trim: true,
-    required: [true, "A film must have a description"],
   },
-  price: {
+  // Total number of pages
+  totalPages: {
     type: Number,
-    required: [true, "must have price"],
+    required: [true, "Total pages are required"],
   },
-  ratingQuantity: {
-    type: Number,
-    default: 0,
+  // Release date
+  releaseDate: {
+    type: Date,
+    required: [true, "Release date is required"],
   },
-  ratingsAverage: {
+  // Publishing company
+  publisher: {
+    type: String,
+    required: [true, "Publisher is required"],
+    trim: true,
+  },
+  // Publishing house
+  publishingHouse: {
+    type: String,
+    required: [true, "Publishing house is required"],
+    trim: true,
+  },
+  // Book cover type (Hardcover, Paperback, etc.)
+  coverType: {
+    type: String,
+    trim: true,
+  },
+  // Weight (in grams)
+  weight: {
     type: Number,
-    default: 4.5,
+  },
+  // Availability (In Stock, Out of Stock)
+  Availability: {
+    type: Boolean,
+    //required: [true, "Availability is required"],
+    default: true,
+  },
+  // Book summary/description
+  summary: {
+    type: String,
+    trim: true,
+    required: [true, "Summary is required"],
+  },
+  // Ratings (average score)
+  ratings: {
+    type: Number,
     min: [1, "Rating must be above 1.0"],
     max: [5, "Rating must be below 5.0"],
-    set: (val) => Math.round(val * 10) / 10,
   },
-  images: [String],
-  trailer: [String],
-  status: {
-    type: String,
-    required: [true, "A film must have a status"],
-    enum: {
-      values: ["Currently showing", "medium", "difficult"],
-      message: "Difficulty is  either: easy, medium, difficult",
-    },
+  // Price (in Vietnamese Đồng)
+  price: {
+    type: Number,
+    required: [true, "Price is required"],
   },
-  prominent: {
-    type: Boolean,
-    required: [true, "A film must have a prominent or not"],
-  }
 });
 
-const Film = mongoose.model("Film", filmSchema);
+// Generate a slug from the book title before saving
+/*bookSchema.pre("save", function (next) {
+  this.slug = slugify(this.title, { lower: true });
+  next();
+});
+*/
 
-module.exports = Film;
+const Book = mongoose.model("Book", bookSchema);
+
+module.exports = Book;

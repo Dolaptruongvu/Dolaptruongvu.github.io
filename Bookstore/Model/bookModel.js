@@ -68,7 +68,7 @@ const bookSchema = new mongoose.Schema({
     type: Number,
   },
   // Availability (In Stock, Out of Stock)
-  Availability: {
+  availability: {
     type: Boolean,
     //required: [true, "Availability is required"],
     default: true,

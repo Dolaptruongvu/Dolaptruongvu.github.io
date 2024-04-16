@@ -54,8 +54,8 @@ const userSchema = new mongoose.Schema({
   },
   point: {
     type: Number,
-    default : 0
-  }
+    default: 0,
+  },
 });
 
 userSchema.pre("save", async function (next) {
@@ -108,5 +108,5 @@ userSchema.methods.createPasswordResetToken = function () {
   return resetToken;
 };
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const Customer = mongoose.model("Customer", userSchema);
+module.exports = Customer;

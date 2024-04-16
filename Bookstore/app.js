@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const AppError = require("./utils/appError")
 const bookRoutes = require("./Routes/bookRoutes")
+const customerRoutes = require("./Routes/customerRoutes")
 const billRoutes = require("./Routes/billRoutes")
 const globalErrorHandler = require("./Controller/errorController");
 // app area
@@ -37,6 +38,9 @@ app.use("/api/v1/books",bookRoutes);
 
 // Bill routes
 app.use("/api/v1/bill",billRoutes)
+
+// User routes
+app.use("/api/v1/customer",customerRoutes)
 // Global Error Handling MiddleWare
 
 app.use(globalErrorHandler);

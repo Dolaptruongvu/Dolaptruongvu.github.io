@@ -13,13 +13,9 @@ const DB = process.env.DATABASE.replace(
 );
 
 mongoose
-<<<<<<< HEAD
-  .connect(DB)
-=======
   .connect(DB, {
     
   })
->>>>>>> 6a123aaa31c9dc97c538cefaceb48216226e065b
   .then(() => {
     console.log("DB connection successful");
   })

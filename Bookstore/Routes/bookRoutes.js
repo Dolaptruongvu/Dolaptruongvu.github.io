@@ -11,12 +11,10 @@ router
 router.get("/", bookController.allBook);
 
 //Get one book
-router.get("/:id", bookController.oneBook);
-
-//Update book
-router.get("/:id", bookController.updateBook);
-
-//Delete book
-router.get("/:id", bookController.deleteBook);
+router
+.route("/:id")
+.get(bookController.oneBook)
+.patch(bookController.updateBook)
+.delete(bookController.deleteBook)
 
 module.exports = router;

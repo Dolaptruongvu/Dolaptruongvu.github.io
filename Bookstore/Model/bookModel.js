@@ -21,7 +21,7 @@ const bookSchema = new mongoose.Schema({
   },
   // Category (e.g. Fiction, Non-Fiction, etc.)
   category: {
-    type: String,
+    type: [String],
     required: [true, "Category is required"],
     trim: true,
   },
@@ -85,19 +85,13 @@ const bookSchema = new mongoose.Schema({
     min: [1, "Rating must be above 1.0"],
     max: [5, "Rating must be below 5.0"],
   },
-  // Price (in Vietnamese Đồng)
+  // Price 
   price: {
     type: Number,
     required: [true, "Price is required"],
   },
 });
 
-// Generate a slug from the book title before saving
-/*bookSchema.pre("save", function (next) {
-  this.slug = slugify(this.title, { lower: true });
-  next();
-});
-*/
 
 const Book = mongoose.model("Book", bookSchema);
 

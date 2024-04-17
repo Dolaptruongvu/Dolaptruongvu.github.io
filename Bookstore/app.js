@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const AppError = require("./utils/appError")
 const bookRoutes = require("./Routes/bookRoutes")
 const customerRoutes = require("./Routes/customerRoutes")
+const reviewRoutes = require("./Routes/reviewRoutes")
 const billRoutes = require("./Routes/billRoutes")
 const globalErrorHandler = require("./Controller/errorController");
 // app area
@@ -12,7 +13,7 @@ const app = express();
 
 app.enable("trust proxy");
 
-app.set("view engine", "pug");
+app.set("view engine", "ejs");
 app.set("View", path.join(__dirname, "View"));
 
 //Body parser, reading data from body into rq.body
@@ -41,6 +42,9 @@ app.use("/api/v1/bill",billRoutes)
 
 // User routes
 app.use("/api/v1/customer",customerRoutes)
+
+// Review routes
+app.use("/api/v1/reviews",reviewRoutes)
 // Global Error Handling MiddleWare
 
 app.use(globalErrorHandler);

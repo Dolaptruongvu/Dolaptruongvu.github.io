@@ -1,6 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const bookController = require("../Controller/bookController")
+const reviewRouter = require("./reviewRoutes")
+
+// review Route
+router.use("/:bookId/reviews", reviewRouter); 
+
+
 
 //creating book
 router 

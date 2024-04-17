@@ -10,7 +10,10 @@ router
 //Get all books
 router.get("/", bookController.allBook);
 
-//Get one book
+// Filter books by category
+router.get("/", bookController.filterBooksByCategory);
+
+//Get one book,Update book, delete book
 router
 .route("/:id")
 .get(bookController.oneBook)

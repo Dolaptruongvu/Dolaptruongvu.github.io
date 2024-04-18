@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bookController = require("../Controller/bookController")
 const reviewRouter = require("./reviewRoutes")
+const {protect} = require("../Controller/authController")
 
 // review Route
 router.use("/:bookId/reviews", reviewRouter); 
@@ -14,7 +15,7 @@ router
 .post(bookController.createBook)
 
 //Get all books
-router.get("/", bookController.allBook);
+router.get("/",protect, bookController.allBook);
 
 // Filter books by category
 router.get("/", bookController.filterBooksByCategory);

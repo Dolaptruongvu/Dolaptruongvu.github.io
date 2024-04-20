@@ -52,10 +52,9 @@ const bookSchema = new mongoose.Schema({
     required: [true, "Publisher is required"],
     trim: true,
   },
-  // Publishing house
-  publishingHouse: {
+  // Publishing house (not required)
+  publishingHouse: { 
     type: String,
-    required: [true, "Publishing house is required"],
     trim: true,
   },
   // Book cover type (Hardcover, Paperback, etc.)

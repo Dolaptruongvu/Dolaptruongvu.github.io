@@ -1,0 +1,20 @@
+const Book = require("../Model/bookModel"); // Import the Book model
+const { catchAsync } = require("../utils/catchAsync"); // Import catchAsync helper
+
+exports.getOverview = catchAsync(async (req, res, next) => {
+  let filter = {};
+  if (req.params.bookId) {
+    filter = { _id: req.params.bookId }; // Filter by book ID
+  }
+
+  const sort = req.query.sort ? { [req.query.sort]: 1 } : { _id: 1 }; // Simple sorting
+// Ensure the base image path is defined and accessible from the template
+  const basePath = process.env.IMAGE_BASE_PATH || '/public/img/books/'; // Replace with your actual base path
+  const books = await Book.find(filter).sort(sort);
+
+  res.status(200).render("book-filter", {
+    books, // Pass the books data to the template
+    imagePath: basePath, // Pass the base image path for dynamic image URLs
+  });
+
+});

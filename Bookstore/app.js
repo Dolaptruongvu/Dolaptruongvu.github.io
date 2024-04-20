@@ -11,7 +11,6 @@ const globalErrorHandler = require("./Controller/errorController");
 const viewRouter = require("./Routes/viewsRoutes");
 // app area
 const app = express();
-
 app.enable("trust proxy");
 
 app.set("view engine", "ejs");
@@ -26,6 +25,8 @@ app.use(cookieParser());
 // morgan use to read the log from middleware
 app.use(morgan("common"));
 
+//serving static file
+app.use(express.static(path.join(__dirname, "public")));
 // Test middleware
 
 app.use((req, res, next) => {

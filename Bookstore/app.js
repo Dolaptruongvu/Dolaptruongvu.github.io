@@ -16,6 +16,8 @@ app.enable("trust proxy");
 app.set("view engine", "ejs");
 app.set("View", path.join(__dirname, "View"));
 
+
+
 //Body parser, reading data from body into rq.body
 
 app.use(express.json({ limit: "10kb" }));

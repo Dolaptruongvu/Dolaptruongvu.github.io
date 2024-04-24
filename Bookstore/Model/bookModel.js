@@ -52,10 +52,9 @@ const bookSchema = new mongoose.Schema({
     required: [true, "Publisher is required"],
     trim: true,
   },
-  // Publishing house
-  publishingHouse: {
+  // Publishing house (not required)
+  publishingHouse: { 
     type: String,
-    required: [true, "Publishing house is required"],
     trim: true,
   },
   // Book cover type (Hardcover, Paperback, etc.)
@@ -67,11 +66,10 @@ const bookSchema = new mongoose.Schema({
   weight: {
     type: Number,
   },
-  // Availability (In Stock, Out of Stock)
-  availability: {
-    type: Boolean,
-    //required: [true, "Availability is required"],
-    default: true,
+  // Quantity of books in stock
+  quantity: {  // Changed from availability
+    type: Number,
+    default: 0,  // Default to 0 if not specified
   },
   // Book summary/description
   summary: {

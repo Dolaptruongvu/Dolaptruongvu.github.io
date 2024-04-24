@@ -18,7 +18,6 @@ const signToken = (id, secret, expire) => {
   });
 };
 
-
 const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(
     user._id,
@@ -33,7 +32,6 @@ const createSendToken = (user, statusCode, req, res) => {
     secure: req.secure || req.headers["x-forwarded-proto"] === "https",
   };
 
-
   res.cookie("jwt", token, cookieOptions);
 
   user.password = undefined;
@@ -47,25 +45,22 @@ const createSendToken = (user, statusCode, req, res) => {
   });
 };
 
-
-
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await Customer.create(req.body);
-//   const token = signToken(
-//     newUser._id,
-//     process.env.JWT_EMAILSECRET,
-//     process.env.JWT_EMAILSECRET_EXPIRES_IN
-//   );
+  //   const token = signToken(
+  //     newUser._id,
+  //     process.env.JWT_EMAILSECRET,
+  //     process.env.JWT_EMAILSECRET_EXPIRES_IN
+  //   );
 
-//   const confirmEmailUrl = `${req.protocol}://${req.get(
-//     "host"
-//   )}/api/v1/users/confirmEmail/${token}`;
+  //   const confirmEmailUrl = `${req.protocol}://${req.get(
+  //     "host"
+  //   )}/api/v1/users/confirmEmail/${token}`;
 
-//   await new Email(newUser, confirmEmailUrl).sendWelcome();
+  //   await new Email(newUser, confirmEmailUrl).sendWelcome();
 
   createSendToken(newUser, 201, req, res);
 });
-
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -79,16 +74,15 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError("Incorrect email or password", 401));
   }
 
-//   if (user.smsOTPStatus) {
-//     return res.status(303).json({
-//       status: "success",
-//       data: {
-//         smsOTPStatus: user.smsOTPStatus,
-//         url: `http://127.0.0.1:3000/api/v1/users/2FA/${user.id}`,
-//       },
-//     });
-//   }
-
+  //   if (user.smsOTPStatus) {
+  //     return res.status(303).json({
+  //       status: "success",
+  //       data: {
+  //         smsOTPStatus: user.smsOTPStatus,
+  //         url: `http://127.0.0.1:3000/api/v1/users/2FA/${user.id}`,
+  //       },
+  //     });
+  //   }
 
   createSendToken(user, 200, req, res);
 });
@@ -138,7 +132,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
-
+  
   if (!token) {
     return next(
       new AppError("You are not logged in ! please log in to get access", 401)
@@ -163,11 +157,10 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   req.customer = currentUser;
   res.locals.customer = currentUser;
-  console.log(req.customer)
+  console.log(req.customer);
 
   next();
 });
-
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {

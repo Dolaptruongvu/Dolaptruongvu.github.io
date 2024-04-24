@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bookController = require("../Controller/bookController")
 const reviewRouter = require("./reviewRoutes")
-const {protect} = require("../Controller/authController")
+const {protect, isLoggedIn} = require("../Controller/authController")
 
 // review Route
 router.use("/:bookId/reviews", reviewRouter); 

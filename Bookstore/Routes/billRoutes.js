@@ -1,10 +1,12 @@
 const express = require("express");
-const router = express.Router();
 const billController = require("../Controller/billController")
+const bookController = require("../Controller/bookController")
+
+const router = express.Router({ mergeParams: true });
 
 router 
 .route("/test")
-.post(billController.createBill)
+.post(bookController.setBookUserIds,billController.createBill)
 
 
 module.exports = router;

@@ -35,3 +35,10 @@ exports.filterBooksByCategory = async (req, res, next) => {
       next(err); // Pass error to global error handler
     }
   };
+
+  exports.setBookUserIds = (req, res, next) => {
+    if (!req.body.book) req.body.book = req.params.bookId;
+  
+    //   if (!req.body.customer) req.body.customer = req.customer.id;
+    next();
+  };

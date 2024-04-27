@@ -2,11 +2,15 @@ const express = require("express");
 const router = express.Router();
 const bookController = require("../Controller/bookController")
 const reviewRouter = require("./reviewRoutes")
+const billRouter = require("./billRoutes")
 const {protect, isLoggedIn} = require("../Controller/authController")
+
 
 // review Route
 router.use("/:bookId/reviews", reviewRouter); 
 
+// bill Route
+router.use("/:bookId/bill",billRouter);
 
 
 //creating book

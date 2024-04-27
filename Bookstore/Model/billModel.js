@@ -5,6 +5,11 @@ const billSchema = new mongoose.Schema({
     type: Number,
     required: [true, "The bill need to have a price"],
   },
+  book: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Book",
+    required: [true, "bill must belong to a book."],
+  },
   createAt: {
     type: Date,
     default: Date.now(),

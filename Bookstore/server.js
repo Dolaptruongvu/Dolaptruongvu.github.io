@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`App running on port : ${port}`);
 });
-dotenv.config({ path: `C:/workspace/TruongVu/Bookstore/config.env` });
+dotenv.config({ path: `./config.env` });
 
 const DB = process.env.DATABASE.replace(
   "<password>",

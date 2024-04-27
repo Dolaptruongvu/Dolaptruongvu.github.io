@@ -4,13 +4,16 @@ import { signup } from "../../views/component/signup";
 // import { showAlert } from "./alert";
 
 //Dom elements
-const loginForm = document.querySelector(".form--login");
+const loginForm = document.querySelector(".login-form");
 const logOutBtn = document.querySelector(".nav__el--logout");
 const signupForm = document.querySelector(".form--signup");
 
 if (loginForm) {
   console.log("hi");
 }
+
+
+
 
 // if (loginForm) {
 //     document.querySelector(".login-form").addEventListener("submit", (e) => {

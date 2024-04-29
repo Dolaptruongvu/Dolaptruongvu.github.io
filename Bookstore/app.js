@@ -52,6 +52,7 @@ app.use("/api/v1/reviews",reviewRoutes)
 
 // View router
 app.use("/",viewRouter)
+app.use("/login",viewRouter)
 
 // Global Error Handling MiddleWare
 

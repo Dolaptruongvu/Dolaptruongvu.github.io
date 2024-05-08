@@ -1,5 +1,5 @@
-import axios from "axios";
-import { showAlert } from "../../views/component/alert";
+import axios from "https://cdn.jsdelivr.net/npm/axios@1.3.5/+esm";
+import { showAlert } from "./alert.js";
 
 export const login = async (email, password) => {
   try {
@@ -11,15 +11,11 @@ export const login = async (email, password) => {
         password,
       },
     });
-    if (res) {
-      console.log(res);
-    }
-     
 
     if (res.data.status === "success" && res.status === 200) {
       showAlert("success", "Logged in successfully!");
       window.setTimeout(() => {
-        location.assign("/");
+        location.assign("https://www.facebook.com/");
       }, 1500);
     }
   } catch (err) {
@@ -42,3 +38,26 @@ export const login = async (email, password) => {
 //       showAlert("error", "Error logging out! Try again");
 //     }
 //   };
+
+export const signup = async (userData) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: "/api/v1/customer/signup",
+      data: userData,
+    });
+
+    console.log(res)
+
+    if (res.data.status === "success") {
+      showAlert("success", "Signup Successfully");
+
+      window.setTimeout(() => {
+        location.assign("https://www.facebook.com/");
+      }, 1500);
+    }
+  } catch (err) {
+    
+    showAlert("error", err.response.data.message);
+  }
+};

@@ -36,24 +36,40 @@ exports.updateBook = handlerFactory.updateOne(Book);
 exports.deleteBook = handlerFactory.deleteOne(Book);
 
 //Read book by filter
-exports.filterBooksByCategory = async (req, res, next) => {
-    const { category } = req.query; // Get the category from query string
+// exports.filterBooksByCategory = catchAsync(async (req, res, next) => {
+//     const { category } = req.query; // Get the category from query string
   
-    try {
-      const query = category ? { category } : {}; // Build the query object
-      const books = await Book.find(query); // Find books matching the query
+//       const query = category ? { category } : {}; // Build the query object
+//       const books = await Book.find(query); // Find books matching the query
   
-      res.status(200).json({
-        status: "success",
-        results: books.length,
-        data: {
-          books,
-        },
-      });
-    } catch (err) {
-      next(err); // Pass error to global error handler
-    }
-  };
+//       res.status(200).json({
+//         status: "success",
+//         results: books.length,
+//         data: {
+//           books,
+//         },
+//       });
+    
+//   })
+exports.filterBooksByCategory = catchAsync(async (req, res, next) => {
+  const { category } = req.query; // Get the category from query string
+
+  let query = {};
+  if (category) {
+    const categories = category.split(','); // Split the category string into an array of categories
+    query = { category: { $in: categories } }; // Use $in to match any of the categories
+  }
+
+  const books = await Book.find(query); // Find books matching the query
+
+  res.status(200).json({
+    status: "success",
+    results: books.length,
+    data: {
+      books,
+    },
+  });
+});
 
   exports.setBookUserIds = (req, res, next) => {
     if (!req.body.book) req.body.book = req.params.bookId;

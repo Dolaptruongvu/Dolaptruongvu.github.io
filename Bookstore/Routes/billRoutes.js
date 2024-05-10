@@ -1,13 +1,34 @@
 const express = require("express");
-const billController = require("../Controller/billController")
-const bookController = require("../Controller/bookController")
+const billController = require("../Controller/billController");
+const bookController = require("../Controller/bookController");
+const customerController = require("../Controller/customerController");
+const authController = require("../Controller/authController");
 
 const router = express.Router({ mergeParams: true });
 
-router 
-.route("/")
-.post(billController.setShipperId,billController.createBill)
-.get(billController.getBills)
+router
+  .route("/")
+  .post(
+    authController.protect,
+    customerController.setShipperId,
+    billController.createBill
+  ) // create bill
+  .get(billController.getBills);
 
+router
+  .route("/myShippingBills")
+  .get(
+    authController.protect,
+    authController.restrictTo("shipper", "admin"),
+    billController.getShippingBill
+  );
+
+router
+  .route("/setPaymentStatus/:id")
+  .patch(
+    authController.protect,
+    authController.restrictTo("shipper", "admin"),
+    billController.setPaymentStatus
+  );
 
 module.exports = router;

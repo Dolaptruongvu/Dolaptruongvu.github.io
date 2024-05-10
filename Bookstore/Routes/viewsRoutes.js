@@ -18,4 +18,13 @@ router.get(
   viewsController.getOverview
 );
 
+// filtered books
+
+router
+ .route("/filter")
+ .get(authController.isLoggedIn,viewsController.filteredBooks)
+
+ // get shipping bills 
+ 
+
 module.exports = router;

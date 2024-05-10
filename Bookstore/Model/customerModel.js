@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: [validator.isEmail, "Please provide a valid email"],
   },
+  address: {
+    type: String,
+    required: [true, "Please provide your address"],
+  },
   phoneNumber: {
     type: Number,
     required: [true, "Please provide your phone number"],
@@ -25,7 +29,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["user", "admin"],
+    enum: ["user", "admin","shipper"],
     default: "user",
   },
   password: {
@@ -56,6 +60,11 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  numbOfOrder:{
+    type: Number,
+    default: 0
+  }
+
 });
 
 userSchema.pre("save", async function (next) {

@@ -25,6 +25,8 @@ router
  .get(authController.isLoggedIn,viewsController.filteredBooks)
 
  // get shipping bills 
- 
+ router
+ .route("/shippingBills")
+ .get(authController.protect,authController.restrictTo("shipper"),viewsController.getShipBills)
 
 module.exports = router;

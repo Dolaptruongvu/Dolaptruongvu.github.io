@@ -2,18 +2,19 @@ import "@babel/polyfill";
 import { login, logout } from "./login";
 import { signup } from "../../views/component/signup";
 // import { showAlert } from "./alert";
-
+console.log()
 //Dom elements
-const loginForm = document.querySelector(".login-form");
+let loginForm;
+
+document.addEventListener("DOMContentLoaded", function () {
+  loginForm = document.querySelector(".login-form");
+  if (loginForm) {
+    console.log("hi");
+  }
+});
+
 const logOutBtn = document.querySelector(".nav__el--logout");
 const signupForm = document.querySelector(".form--signup");
-
-if (loginForm) {
-  console.log("hi");
-}
-
-
-
 
 // if (loginForm) {
 //     document.querySelector(".login-form").addEventListener("submit", (e) => {

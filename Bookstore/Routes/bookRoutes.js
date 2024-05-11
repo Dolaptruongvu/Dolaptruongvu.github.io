@@ -12,6 +12,13 @@ router.use("/:bookId/reviews", reviewRouter);
 router.use("/:bookId/bill", billRouter);
 
 // Upload book cover (new route)
+<<<<<<< HEAD
+router.post("/upload-cover", bookController.uploadBookCover, (req, res, next) => {
+    res.status(200).json({
+      message: "Book cover uploaded successfully!",
+    });
+  });
+=======
 router.post(
   "/upload-cover",
   bookController.uploadBookCover,
@@ -21,6 +28,7 @@ router.post(
     });
   }
 );
+>>>>>>> 46a71876ae23cd93d905c7b7042a85b76c222fdb
 
 //creating book
 router.route("/create").post(bookController.createBook);

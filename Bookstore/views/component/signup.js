@@ -1,5 +1,5 @@
 import axios from "axios";
-import { showAlert } from "./alert";
+import { showAlert } from "../../Public/jsevent/alert";
 
 export const signup = async (userData) => {
   try {
@@ -9,7 +9,7 @@ export const signup = async (userData) => {
       data: userData,
     });
 
-    console.log(res)
+    console.log(res);
 
     if (res.data.status === "success") {
       showAlert("success", "Signup Successfully");
@@ -19,7 +19,6 @@ export const signup = async (userData) => {
       }, 1500);
     }
   } catch (err) {
-    
     showAlert("error", err.response.data.message);
   }
 };

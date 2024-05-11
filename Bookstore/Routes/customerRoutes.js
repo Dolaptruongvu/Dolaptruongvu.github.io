@@ -11,8 +11,7 @@ const router = express.Router();
 
 router.post("/login", authController.login);
 router.get("/logout", authController.logout);
-router.post("/signup", authController.signup);
-
+router.post("/signup", authController.preventSetRight, authController.signup);
 
 router
   .route("/")
@@ -24,5 +23,15 @@ router
   .get(customerController.getCustomer)
   .delete(customerController.deleteCustomer)
   .patch(customerController.updatedCustomer);
+
+// route for admin
+
+router
+  .route("/setRoles")
+  .put(
+    authController.protect,
+    authController.restrictTo("admin"),
+    customerController.setRoles
+  );
 
 module.exports = router;

@@ -3,18 +3,10 @@ const Bill = require("../Model/billModel")
 const { catchAsync } = require("../utils/catchAsync"); // Import catchAsync helper
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  let filter = {};
-  if (req.params.bookId) {
-    filter = { _id: req.params.bookId }; // Filter by book ID
-  }
+  
+  const books = await Book.find();
 
-  const sort = req.query.sort ? { [req.query.sort]: 1 } : { _id: 1 }; // Simple sorting
-  // Ensure the base image path is defined and accessible from the template
-
-  const books = await Book.find(filter).sort(sort);
-
-  res.status(200).render("signup", {
-    books, // Pass the books data to the template
+  res.status(200).render("", { // render overview file
   });
 });
 
@@ -50,9 +42,9 @@ exports.getShipBills = catchAsync(async (req, res, next) => {
 
   const bills = await Bill.find({shipper: req.customer.id})
 
-  res.status(200).render("",{
+  res.status(200).render("",{ // render shipping bill files
     bills
   })
-
+  
 
 });

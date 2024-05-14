@@ -31,4 +31,12 @@ router
     billController.setPaymentStatus
   );
 
+router
+.post(
+  "/checkout-session/:id",
+  authController.protect,
+  authController.restrictTo("user"),
+  billController.createCheckoutSession
+  );
+
 module.exports = router;

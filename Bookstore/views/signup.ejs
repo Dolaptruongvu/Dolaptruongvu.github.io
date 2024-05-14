@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookoe - Online Book Store website</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/book-filter.css" />
+    <link rel="stylesheet" href="/Book Dream/css/style.css" />
+    <link rel="stylesheet" href="/Book Dream/css/book-filter.css" />
     <!-- Fontawesome Link for Icons -->
     <link
       rel="stylesheet"
@@ -67,22 +67,27 @@
           <button class="cart">
             <a href="cart-item.html"><i class="fa-solid fa-cart-shopping"></i> <span>4</span></a>
           </button>
+          
         </div>
       </nav>
     </header>
     <div class="breadcrumb-container">
       <ul class="breadcrumb">
         <li><a href="#" style="color: #009bd6">Shop</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="#">Registration</a></li>
       </ul>
     </div>
 
-    <section class="login">
-      <h3>Login</h3>
-      <div class="login-form">
-        <h4>Login</h4>
-        <p>If you have an account with us, please log in.</p>
+    <section class="registration">
+      <h3>Registration</h3>
+      <div class="registration-form">
+        <h4>Create New Account</h4>
+        <p>If you don't have an account with us, Please Create new account.</p>
         <div class="input-form">
+          <div class="input-field">
+            <label for="name">Username *</label>
+            <input type="text" name="" id="name" placeholder="Your Name">
+          </div>
           <div class="input-field">
             <label for="email">Email *</label>
             <input type="email" name="" id="email" placeholder="Your Email">
@@ -91,13 +96,17 @@
             <label for="password">Password *</label>
             <input type="password" name="" id="password" placeholder="Password">
           </div>
-          
-          <p>Forgot Password ?<a href=""> Click Here</a></p>
-          <button>Login Account</button>
-          <p>Don't Have an Account ? <a href="./signup.html">Create Account</a></p>
+          <div class="input-field">
+            <label for="cpassword">Confirm Password *</label>
+            <input type="password" name="" id="cpassword" placeholder="Confirm Password">
+          </div>
+          <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="">privacy policy</a></p>
+          <button>Create Account</button>
+          <p>Already Have an Account ? <a href="login.html">Login Now</a></p>
         </div>
       </div>
     </section>
+
     <footer>
       <div class="container">
         <div class="logo-description">
@@ -191,6 +200,7 @@
       </div>
     </footer>
     <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button>
-    <script src="../js/back-to-top.js"></script>
+    <script type="module" src="/Book Dream/js/back-to-top.js"></script>
+    <script type="module" src="/jsevent/test.js"></script>
   </body>
 </html>

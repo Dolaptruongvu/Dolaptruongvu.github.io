@@ -1,5 +1,6 @@
 const express = require("express");
 const reviewController = require("../Controller/reviewController");
+const bookController = require("../Controller/bookController")
 // const { protect, restrictTo } = require("../Controllers/authController");
 
 const router = express.Router({ mergeParams: true });
@@ -10,7 +11,7 @@ router
   .route("/")
   .post(
     // restrictTo("user"),
-    reviewController.setBookUserIds,
+    bookController.setBookUserIds,
     reviewController.createReview
   )
   .get(reviewController.getAllReviews);

@@ -157,27 +157,33 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   req.customer = currentUser;
   res.locals.customer = currentUser;
-  console.log(req.customer);
+
+  
 
   next();
 });
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
+    if (!roles.includes(req.customer.role)) {
       return next(
         new AppError("You do not have permission to perform this action", 403)
       );
     }
-    if (!req.user.emailConfirm) {
-      return next(
-        new AppError("Your email is not confirmed to perfom this action"),
-        403
-      );
-    }
+    
     next();
   };
 };
+
+exports.preventSetRight = catchAsync(async (req,res,next)=>{ // prevent user set admin while signup process
+   if(req.body.role == "user" || req.body.role == "" || req.body.role== null){
+      next()
+   }else{
+     return next(
+      new AppError("You do not have permission to perform this action", 403)
+     );
+   }
+})
 
 // exports.forgotPassword = catchAsync(async (req, res, next) => {
 //   const user = await User.findOne({ email: req.body.email });

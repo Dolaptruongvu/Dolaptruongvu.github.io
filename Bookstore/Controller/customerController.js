@@ -67,10 +67,14 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   const filteredBody = filteredObj(req.body, "name", "email");
   if (req.file) filteredBody.photo = req.file.filename;
 
-  const updatedCustomer = await Customer.findByIdAndUpdate(req.user.id, filteredBody, {
-    new: true,
-    runValidators: true,
-  });
+  const updatedCustomer = await Customer.findByIdAndUpdate(
+    req.user.id,
+    filteredBody,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   res.status(200).json({
     status: "success",
@@ -100,3 +104,42 @@ exports.getMe = (req, res, next) => {
   next();
 };
 exports.createCustomer = factory.createOne(Customer);
+
+// shipper
+
+exports.setShipperId = catchAsync(async (req, res, next) => { // randomly choose shipper for the bill
+  const shippers = await Customer.find({
+    // find shipper have numb of order less than 5
+    role: "shipper",
+    numbOfOrder: { $lt: 5 },
+  });
+  if (!shippers.length) {
+    return next(new AppErrorError("No available shippers found.", 403));
+  }
+  const shipper = await Customer.findByIdAndUpdate(
+    shippers[0].id,
+    { $inc: { numbOfOrder: 1 } },
+    { new: true }
+  ); // update numb of order in shipper
+  req.body.shipper = shipper.id;
+  console.log(shipper);
+  next();
+});
+
+// for admin
+exports.setRoles = catchAsync(async (req, res, next) => {
+  let customerPhoneNumber = parseInt(req.body.phoneNumber);
+  console.log(typeof customerPhoneNumber)
+  
+  const customer = await Customer.findOneAndUpdate({ phoneNumber: customerPhoneNumber },{role : req.body.role},{ new: true });
+  console.log(customer);
+  if (!customer) {
+    next(new AppError("Cannot find customer",403))
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: customer,
+  });
+  
+});

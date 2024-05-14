@@ -42,7 +42,7 @@ exports.getShippingBill = catchAsync(async (req, res, next) => {
 
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
-    const billId = req.body.billId;
+    const billId = req.params.id; //change from body to params
 
     const bill = await Bill.findById(billId);
     if (!bill) {
@@ -65,9 +65,11 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
             },
         ],
         mode: 'payment',
-        success_url: `http://localhost:3000/homepage.html`,
-        cancel_url: `http://localhost:3000/cancel.html`,
-    });
+        success_url: `http://localhost:3000/login.ejs`, // Sửa lại link http 
+        cancel_url: `http://localhost:3000/cancel.ejs`, // sửa lại link http
+    })
+    res.json({url: session.url});
 
     res.status(200).json({ session });
 });
+

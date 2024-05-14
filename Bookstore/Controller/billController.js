@@ -3,6 +3,7 @@ const { catchAsync } = require("../utils/catchAsync");
 const handlerFactory = require("./handlerFactory");
 const Bill = require("../Model/billModel");
 const Customer = require("../Model/customerModel");
+const stripe =require("stripe")('sk_test_51PABiLDfNmKHuQemhXjI6l5u2yws9mThmNOfdbvJKUqSb7ILv7bLUGqdWm3ZxcKiRewofG945fWtiG5U5LxOfx3X00dcCBnNvV');
 
 exports.createBill = handlerFactory.createOne(Bill);
 

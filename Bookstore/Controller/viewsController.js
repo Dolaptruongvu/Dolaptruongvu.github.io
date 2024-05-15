@@ -35,7 +35,7 @@ exports.getSignup = catchAsync(async (req, res, next) => {
   res.status(200).render("signup", {});
 });
 
-// // show filtered products
+// show filtered products
 exports.filteredBooks = catchAsync(async (req, res, next) => {
   const { "sale-type": saleType, date } = req.query; // Get the category from query string
   const listCategories = [
@@ -80,6 +80,21 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     // filteredBooks,
   });
 });
+// exports.filteredBook = catchAsync(async (req, res, next) => {
+//   const { category } = req.query; // Get the category from query string
+
+//   let query = {};
+//   if (category) {
+//     const categories = category.split(','); // Split the category string into an array of categories
+//     query = { category: { $in: categories } }; // Use $in to match any of the categories
+//   }
+
+//   const books = await Book.find(query); // Find books matching the query
+
+//   res.status(200).render("book-filter",{
+//     books
+//   });
+// });
 
 // show shipping bills
 

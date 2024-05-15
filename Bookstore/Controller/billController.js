@@ -41,7 +41,7 @@ exports.getShippingBill = catchAsync(async (req, res, next) => {
 
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
-    const billId = req.body.billId;
+    const billId = req.params.id;
 
     const bill = await Bill.findById(billId);
     if (!bill) {

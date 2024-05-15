@@ -3,10 +3,7 @@ const Bill = require("../Model/billModel");
 const { catchAsync } = require("../utils/catchAsync"); // Import catchAsync helper
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  let filter = {};
-  if (req.params.bookId) {
-    filter = { _id: req.params.bookId }; // Filter by book ID
-  }
+  // const books = await Book.find();
 
   const sort = req.query.sort ? { [req.query.sort]: 1 } : { _id: 1 }; // Simple sorting
   // Ensure the base image path is defined and accessible from the template

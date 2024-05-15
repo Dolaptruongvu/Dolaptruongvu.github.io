@@ -3,6 +3,7 @@ const { catchAsync } = require("../utils/catchAsync");
 const handlerFactory = require("./handlerFactory");
 const Bill = require("../Model/billModel");
 const Customer = require("../Model/customerModel");
+const stripe =require("stripe")('sk_test_51PABiLDfNmKHuQemhXjI6l5u2yws9mThmNOfdbvJKUqSb7ILv7bLUGqdWm3ZxcKiRewofG945fWtiG5U5LxOfx3X00dcCBnNvV');
 
 exports.createBill = handlerFactory.createOne(Bill);
 
@@ -41,7 +42,7 @@ exports.getShippingBill = catchAsync(async (req, res, next) => {
 
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
-    const billId = req.params.id;
+    const billId = req.params.id; //change from body to params
 
     const bill = await Bill.findById(billId);
     if (!bill) {
@@ -64,9 +65,11 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
             },
         ],
         mode: 'payment',
-        success_url: `http://localhost:3000/homepage.html`,
-        cancel_url: `http://localhost:3000/cancel.html`,
-    });
+        success_url: `http://localhost:3000/login.ejs`, // Sửa lại link http 
+        cancel_url: `http://localhost:3000/cancel.ejs`, // sửa lại link http
+    })
+    res.json({url: session.url});
 
     res.status(200).json({ session });
 });
+

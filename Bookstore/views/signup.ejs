@@ -19,23 +19,85 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="../favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-<link rel="manifest" href="../favicon/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="../favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="../favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+      integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <header>
@@ -65,9 +127,10 @@
             <i class="fa-regular fa-heart"></i> <span>35</span>
           </button>
           <button class="cart">
-            <a href="cart-item.html"><i class="fa-solid fa-cart-shopping"></i> <span>4</span></a>
+            <a href="cart-item.html"
+              ><i class="fa-solid fa-cart-shopping"></i> <span>4</span></a
+            >
           </button>
-          
         </div>
       </nav>
     </header>
@@ -86,23 +149,50 @@
         <div class="input-form">
           <div class="input-field">
             <label for="name">Username *</label>
-            <input type="text" name="" id="name" placeholder="Your Name">
+            <input type="text" name="" id="name" placeholder="Your Name" />
           </div>
           <div class="input-field">
             <label for="email">Email *</label>
-            <input type="email" name="" id="email" placeholder="Your Email">
+            <input type="email" name="" id="email" placeholder="Your Email" />
+          </div>
+          <div class="input-field">
+            <label for="phone">Phone *</label>
+            <input type="text" name="" id="phone" placeholder="Your Phone" />
+          </div>
+          <div class="input-field">
+            <label for="address">Address *</label>
+            <input
+              type="text"
+              name=""
+              id="address"
+              placeholder="Your address"
+            />
           </div>
           <div class="input-field">
             <label for="password">Password *</label>
-            <input type="password" name="" id="password" placeholder="Password">
+            <input
+              type="password"
+              name=""
+              id="password"
+              placeholder="Password"
+            />
           </div>
           <div class="input-field">
             <label for="cpassword">Confirm Password *</label>
-            <input type="password" name="" id="cpassword" placeholder="Confirm Password">
+            <input
+              type="password"
+              name=""
+              id="cpassword"
+              placeholder="Confirm Password"
+            />
           </div>
-          <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="">privacy policy</a></p>
-          <button>Create Account</button>
-          <p>Already Have an Account ? <a href="login.html">Login Now</a></p>
+          <p>
+            Your personal data will be used to support your experience
+            throughout this website, to manage access to your account, and for
+            other purposes described in our <a href="">privacy policy</a>
+          </p>
+          <button class="btn-signup">Create Account</button>
+          <p>Already Have an Account ? <a href="/login">Login Now</a></p>
         </div>
       </div>
     </section>
@@ -121,7 +211,8 @@
           </div>
           <div class="logo-body">
             <p>
-              Thank you for choosing our website to buy books. Hope you choose your dream book
+              Thank you for choosing our website to buy books. Hope you choose
+              your dream book
             </p>
           </div>
           <div class="social-links">
@@ -184,7 +275,8 @@
           <ul>
             <li>
               <a href=""
-                ><i class="fa-solid fa-location-dot"></i>69/9 Lê Sát P.Tân Quý, Q. Tân Phú</a
+                ><i class="fa-solid fa-location-dot"></i>69/9 Lê Sát P.Tân Quý,
+                Q. Tân Phú</a
               >
             </li>
             <li>
@@ -201,6 +293,7 @@
     </footer>
     <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button>
     <script type="module" src="/Book Dream/js/back-to-top.js"></script>
+    <script type="module" src="/Book Dream/js/signup.js"></script>
     <script type="module" src="/jsevent/test.js"></script>
   </body>
 </html>

@@ -128,7 +128,9 @@
           </button>
           <div class="profile-img">
             <a href="./proflie.html"
-              ><img src="../images/avatar.jpg" alt=""
+              ><img
+                src="/TruongVu/Bookstore/Public/Book Dream/images/avatar.jpg"
+                alt=""
             /></a>
           </div>
         </div>
@@ -631,17 +633,32 @@
         iconbtn.classList.toggle("active-btn");
       });
 
+      // let editorpick = document.getElementsByClassName("select-box");
+      // let icon = document.querySelectorAll(".select-box .opt-title i");
+      // let answer = document.querySelectorAll(".select-box .option");
+      // for (let i = 0; i < editorpick.length; i++) {
+      //   editorpick[i].addEventListener("click", () => {
+      //     if (icon[i].classList.contains("active")) {
+      //       icon[i].classList.remove("active");
+      //       answer[i].style.maxHeight = null;
+      //       answer[i].style.marginTop = "0rem";
+      //       answer[i].style.padding = "0px";
+      //     } else {
+      //       icon[i].classList.add("active");
+      //       answer[i].style.maxHeight = answer[i].scrollHeight + "px";
+      //       answer[i].style.padding = "0px 20px 20px 20px";
+      //     }
+      //   });
+      // }
+
       let editorpick = document.getElementsByClassName("select-box");
       let icon = document.querySelectorAll(".select-box .opt-title i");
       let answer = document.querySelectorAll(".select-box .option");
+
       for (let i = 0; i < editorpick.length; i++) {
-        editorpick[i].addEventListener("click", () => {
-          if (icon[i].classList.contains("active")) {
-            icon[i].classList.remove("active");
-            answer[i].style.maxHeight = null;
-            answer[i].style.marginTop = "0rem";
-            answer[i].style.padding = "0px";
-          } else {
+        editorpick[i].addEventListener("click", (event) => {
+          event.stopPropagation();
+          if (!icon[i].classList.contains("active")) {
             icon[i].classList.add("active");
             answer[i].style.maxHeight = answer[i].scrollHeight + "px";
             answer[i].style.padding = "0px 20px 20px 20px";
@@ -715,6 +732,16 @@
             range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
             range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
           }
+        });
+      });
+
+      document.querySelectorAll('input[name="sale-type"]').forEach((input) => {
+        input.addEventListener("change", function () {
+          if (this.value === "best-sales") {
+            window.location.href =
+              "/filtered-books?sale-type=best-sales&rating=4";
+          }
+          // Bạn có thể thêm các điều kiện khác cho các loại bán hàng khác nếu cần
         });
       });
     </script>

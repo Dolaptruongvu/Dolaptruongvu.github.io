@@ -13,14 +13,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="/TruongVu/Bookstore/Public/Book Dream/css/style.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/TruongVu/Bookstore/Public/Book Dream/css/book-filter.css"
-    />
+    <link rel="stylesheet" href="/Book Dream/css/style.css" />
+    <link rel="stylesheet" href="/Book Dream/css/book-filter.css" />
     <!-- Fontawesome Link for Icons -->
     <link
       rel="stylesheet"
@@ -147,7 +141,7 @@
       </ul>
     </div>
     <section class="filter">
-      <div class="book-grid-container">
+      <form class="book-grid-container">
         <div class="filter-option">
           <div class="filter-group">
             <h4>Filter Options</h4>
@@ -157,12 +151,37 @@
                 <i class="fa-solid fa-caret-down"></i>
               </div>
               <div class="option">
-                <ul>
-                  <li><a href="">Best Sales</a></li>
-                  <li><a href="">Most Recommended</a></li>
-                  <li><a href="">Newest Books</a></li>
-                  <li><a href="">Featured</a></li>
-                </ul>
+                <div>
+                  <input
+                    type="radio"
+                    id="filter-best-seller"
+                    name="sale-type"
+                    value="best-seller"
+                  />
+                    <label for="filter-best-seller">Best Sales</label><br />
+                  <input
+                    type="radio"
+                    id="filter-most-recommended"
+                    name="sale-type"
+                    value="best-seller"
+                  />
+                    <label for="filter-most-recommended">Most Recommended</label
+                  ><br />
+                  <input
+                    type="radio"
+                    id="filter-newest-books"
+                    name="sale-type"
+                    value="best-seller"
+                  />
+                    <label for="filter-newest-books">Newest Books</label><br />
+                  <input
+                    type="radio"
+                    id="filter-featured"
+                    name="sale-type"
+                    value="best-seller"
+                  />
+                    <label for="filter-featured">Featured</label><br />
+                </div>
               </div>
             </div>
             <div class="select-date dropdown">
@@ -171,7 +190,7 @@
                 <i class="fa-solid fa-caret-down"></i>
               </div>
               <div class="option">
-                <input type="date" name="" id="" />
+                <input type="date" name="date" id="" />
               </div>
             </div>
             <div class="genre-category select-box">
@@ -180,62 +199,69 @@
                 <i class="fa-solid fa-caret-down"></i>
               </div>
               <div class="option">
+                <% for(let i = 0; i < listCategories.length; i++) { %>
                 <div class="category">
-                  <input type="checkbox" />
-                  <small>Action</small>
+                  <input
+                    type="checkbox"
+                    name="categories-<%= i %>"
+                    value="<%= listCategories[i] %>"
+                  />
+                  <small><%= listCategories[i] %></small>
                 </div>
-                <div class="category">
+                <% } %>
+
+                <!-- <div class="category">
                   <input type="checkbox" />
                   <small>Fantasy</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Adventure</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>History</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Animation</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Horror</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Biography</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Mystery</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Comedy</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Romance</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Crime</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Sci-fi</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Documentry</small>
                 </div>
                 <div class="category">
-                  <input type="checkbox" />
+                  <input type="checkbox" name="category" />
                   <small>Sport</small>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="range-slider dropdown">
@@ -278,7 +304,7 @@
               </div>
             </div>
             <div class="footer-btn">
-              <button>Refine Search</button>
+              <button type="submit">Refine Search</button>
               <button>Reset Filter</button>
             </div>
           </div>
@@ -293,7 +319,33 @@
               <button>This Month</button>
             </div>
           </div>
-          <div class="books"></div>
+          <div class="books">
+            <% for (var book of books) { %>
+            <div class="book-card">
+              <div class="img">
+                <a href="book-detail.html"
+                  ><img src="/Img/Books/<%= book.images[0] %>" alt=""
+                /></a>
+                <button class="like" id="likebtn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+              <h5><%= book.title %></h5>
+              <small>
+                <% for (var cate of book.category) { %>
+                <a href="/"><%= cate %></a>
+                <% } %>
+              </small>
+              <div class="star-rating">
+                <% for(var i=0; i<5; i++) { %> <% if(i < book.ratings){ %>
+                <i class="fa-solid fa-star"></i>
+                <% } else{ %>
+                <i class="fa-solid fa-star disabled"></i>
+                <% } %> <% } %>
+              </div>
+            </div>
+            <% } %>
+          </div>
           <div class="footer">
             <div class="data-shown">
               <p>Showing 8 from 50 data</p>
@@ -309,7 +361,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </section>
 
     <section class="book-sale">
@@ -577,11 +629,7 @@
       iconbtn.addEventListener("click", () => {
         filterdiv.classList.toggle("active-div");
         iconbtn.classList.toggle("active-btn");
-      })
-
-
-
-
+      });
 
       let editorpick = document.getElementsByClassName("select-box");
       let icon = document.querySelectorAll(".select-box .opt-title i");
@@ -673,6 +721,5 @@
     <script src="../js/repeat-js.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="../js/back-to-top.js"></script>
-    <script src="./component/bookItemRender.js"></script>
   </body>
 </html>

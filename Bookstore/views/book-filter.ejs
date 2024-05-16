@@ -157,6 +157,7 @@
                     id="filter-best-seller"
                     name="sale-type"
                     value="best-sales"
+                    onclick="filterBooksByRating()"
                   />
                     <label for="filter-best-seller">Best Sales</label><br />
                   <input
@@ -768,6 +769,35 @@
       </div>
     </div>`);
         });
+      }
+
+      function filterBooksByRating() {
+        const selectedRadio = document.querySelector(
+          'input[name="sale-type"]:checked'
+        );
+        const booksContainer = document.getElementById("books-container"); // Đảm bảo ID này phù hợp với container chứa sách của bạn
+
+        if (selectedRadio && selectedRadio.value === "best-sales") {
+          // Chuyển NodeList thành mảng trước khi lọc
+          const books = Array.from(
+            booksContainer.querySelectorAll(".book-card")
+          );
+          const filteredBooks = books.filter((book) => {
+            const ratingElement = book.querySelector(".star-rating");
+            // Tính rating dựa trên số lượng icon sao
+            const rating =
+              ratingElement.querySelectorAll(".fa-solid.fa-star").length;
+            return rating >= 4.0;
+          });
+
+          // Xóa sách hiện tại
+          booksContainer.innerHTML = "";
+
+          // Hiển thị sách đã lọc
+          filteredBooks.forEach((book) => booksContainer.appendChild(book));
+        } else {
+          // Không áp dụng bộ lọc, hiển thị tất cả sách (tùy chọn)
+        }
       }
     </script>
     <script src="../js/repeat-js.js"></script>

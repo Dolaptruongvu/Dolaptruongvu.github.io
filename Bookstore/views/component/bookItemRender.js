@@ -2,38 +2,38 @@ const bookDiv = document.querySelector(".books");
 //fetch
 //assign it into bookList là húp
 
-const bookList = [
-  {
-    title: "Moby Dick",
-    image: "../Public/Img/Books/MobyDick-cover.jpg",
-    genres: ["Adventure", "Drama"],
-  },
-  {
-    title: "Pride And Prejudice",
-    image: "../Public/Img/Books/PrideAndPrejudice-cover.jpg",
-    genres: ["Adventure"],
-  },
-  {
-    title: "The Fellowship Of The Ring",
-    image: "../Public/Img/Books/TheFellowshipOfTheRing-cover.jpg",
-    genres: ["Adventure", "Drama"],
-  },
-  {
-    title: "The Return Of The King",
-    image: "../Public/Img/Books/TheReturnOfTheKing-cover.jpg",
-    genres: ["Thriller", "Drama"],
-  },
-  {
-    title: "The Two Towers",
-    image: "../Public/Img/Books/TheTwoTowers-cover.jpg",
-    genres: ["Adventure", "Thriller"],
-  },
-  {
-    title: "To Kill A Mockingbird",
-    image: "../Public/Img/Books/ToKillAMockingbird-cover.jpg",
-    genres: ["Drama"],
-  },
-];
+// const bookList = [
+//   {
+//     title: "Moby Dick",
+//     image: "../Public/Img/Books/MobyDick-cover.jpg",
+//     genres: ["Adventure", "Drama"],
+//   },
+//   {
+//     title: "Pride And Prejudice",
+//     image: "../Public/Img/Books/PrideAndPrejudice-cover.jpg",
+//     genres: ["Adventure"],
+//   },
+//   {
+//     title: "The Fellowship Of The Ring",
+//     image: "../Public/Img/Books/TheFellowshipOfTheRing-cover.jpg",
+//     genres: ["Adventure", "Drama"],
+//   },
+//   {
+//     title: "The Return Of The King",
+//     image: "../Public/Img/Books/TheReturnOfTheKing-cover.jpg",
+//     genres: ["Thriller", "Drama"],
+//   },
+//   {
+//     title: "The Two Towers",
+//     image: "../Public/Img/Books/TheTwoTowers-cover.jpg",
+//     genres: ["Adventure", "Thriller"],
+//   },
+//   {
+//     title: "To Kill A Mockingbird",
+//     image: "../Public/Img/Books/ToKillAMockingbird-cover.jpg",
+//     genres: ["Drama"],
+//   },
+// ];
 
 // Clear the inner HTML of bookDiv
 bookDiv.innerHTML = "";

@@ -5,7 +5,6 @@ const { catchAsync } = require("../utils/catchAsync"); // Import catchAsync help
 exports.getOverview = catchAsync(async (req, res, next) => {
   const books = await Book.find({ rating: { $gte: 4 } });
 
-
   res.status(200).render("index", {
     books, // Pass the books data to the template
   });
@@ -47,6 +46,7 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     "Romance",
     "Crime",
     "Sci-fi",
+    "rating 4 star",
   ];
 
   const categoriesQuery = Object.entries(req.query)

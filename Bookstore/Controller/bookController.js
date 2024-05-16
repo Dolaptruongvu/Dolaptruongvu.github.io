@@ -77,15 +77,3 @@ exports.setBookUserIds = (req, res, next) => {
   //   if (!req.body.customer) req.body.customer = req.customer.id;
   next();
 };
-
-exports.filterBooksByRating = catchAsync(async (req, res, next) => {
-  const books = await Book.find({ ratings: { $gt: 4 } }); // $gt selects those documents where the value is greater than 4
-
-  res.status(200).json({
-    status: "success",
-    results: books.length,
-    data: {
-      books,
-    },
-  });
-});

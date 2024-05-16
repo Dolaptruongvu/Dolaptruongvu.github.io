@@ -121,7 +121,7 @@
             </div>
             <button class="close"><i class="fa-solid fa-xmark"></i></button>
           </div>
-          <li><a href="/TruongVu/Bookstore/views/index.ejs">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li>
             <a href="/service.html">Service</a>
           </li>
@@ -129,7 +129,8 @@
             <a href="/contact.html">Contact</a>
           </li>
           <li>
-            <a href="/book-filter.html">Books</a>
+            <a id="bookButton" style="cursor: pointer">Books</a>
+            <!-- <a href="/book-filter.html">Books</a> -->
           </li>
           <li class="profile-RP">
             <a href="/TruongVu/Bookstore/views/proflie.ejs">Profile</a>
@@ -929,6 +930,11 @@
             },
           },
         });
+      });
+
+      var bookButton = document.getElementById("bookButton");
+      bookButton.addEventListener("click", function () {
+        window.location.assign("/filter");
       });
     </script>
   </body>

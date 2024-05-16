@@ -136,11 +136,13 @@
             <a href="/TruongVu/Bookstore/views/proflie.ejs">Profile</a>
           </li>
           <button class="login">
-            <a href="/TruongVu/Bookstore/views/login.ejs">Log In</a>
+            <a id="loginButton" href="#" class="login" style="cursor: pointer"
+              >Log in</a
+            >
           </button>
-          <button class="signup">
+          <button id="signupButton" class="signup">
             <i class="fa-solid fa-user"></i
-            ><a href="Pages/signup.html">Sign Up</a>
+            ><a id="signupButton" style="cursor: pointer">Sign up</a>
           </button>
           <button class="log-out"><a href="">Log Out</a></button>
           <div class="profile-icon">
@@ -320,9 +322,9 @@
               <span>horror</span>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing
               elit.Consequatur esse laboriosam nihil sint molestias sit iste
-              laboru
+              laboru -->
             </p>
             <small>Kevin Smiley</small>
             <div class="offer-bottom">
@@ -936,6 +938,19 @@
       bookButton.addEventListener("click", function () {
         window.location.assign("/filter");
       });
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.assign("/login");
+        });
+
+      document
+        .getElementById("signupButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.assign("/signup");
+        });
     </script>
   </body>
 </html>

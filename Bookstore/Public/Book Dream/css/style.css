@@ -1002,8 +1002,7 @@ footer .container .list a:hover {
   background-color: #333; */
   margin-top: 16px;
   /* padding-top: 50%; */
-  background: url("/Book Dream/images/banner-profile.jpg") top center / cover
-    no-repeat;
+  background: url("../images/banner-profile.jpg") top center / cover no-repeat;
   position: relative;
 }
 

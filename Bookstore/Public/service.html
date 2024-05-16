@@ -127,44 +127,127 @@
               ><i class="fa-solid fa-cart-shopping"></i> <span>4</span></a
             >
           </button>
+          <div class="profile-img">
+            <a href="./proflie.html"
+              ><img src="/Book Dream/images/avatar.jpg" alt=""
+            /></a>
+          </div>
         </div>
       </nav>
     </header>
     <div class="breadcrumb-container">
       <ul class="breadcrumb">
-        <li><a href="#" style="color: #009bd6">Shop</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="#" style="color: #6c5dd4">Home</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
     </div>
-
-    <section class="login">
-      <h3>Login</h3>
-      <div class="login-form">
-        <h4>Login</h4>
-        <p>If you have an account with us, please log in.</p>
-        <div class="input-form">
-          <div class="input-field">
-            <label for="email">Email *</label>
-            <input type="email" name="" id="email" placeholder="Your Email" />
+    <div class="service-title">
+      <h3>Service</h3>
+    </div>
+    <section class="service" style="margin-top: 3rem">
+      <div class="service-container">
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa-solid fa-shield"></i>
           </div>
-          <div class="input-field">
-            <label for="password">Password *</label>
-            <input
-              type="password"
-              name=""
-              id="password"
-              placeholder="Password"
-            />
+          <div class="service-content">
+            <h5>Secure Payment</h5>
+            <p>
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
+              exercitationem. -->
+            </p>
           </div>
-
-          <p>Forgot Password ?<a href=""> Click Here</a></p>
-          <button class="btn-login">Login Account</button>
-          <p>
-            Don't Have an Account ? <a href="./signup.html">Create Account</a>
-          </p>
+        </div>
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa-solid fa-bolt-lightning"></i>
+          </div>
+          <div class="service-content">
+            <h5>Quick Delivery</h5>
+            <p>
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
+              exercitationem. -->
+            </p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div class="service-content">
+            <h5>Return Guarantee</h5>
+            <p>
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
+              exercitationem. -->
+            </p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa-solid fa-thumbs-up"></i>
+          </div>
+          <div class="service-content">
+            <h5>Best Quality</h5>
+            <p>
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
+              exercitationem. -->
+            </p>
+          </div>
         </div>
       </div>
     </section>
+
+    <section class="countdown">
+      <div class="container">
+        <div class="customer counter">
+          <div class="icon">
+            <i class="fa-solid fa-user-group"></i>
+          </div>
+          <div class="content">
+            <h4 class="count">125,663</h4>
+            <small>Happy Customers</small>
+          </div>
+        </div>
+        <div class="book counter">
+          <div class="icon">
+            <i class="fa-solid fa-book"></i>
+          </div>
+          <div class="content">
+            <h4 class="count">50,672</h4>
+            <small>Book Collections</small>
+          </div>
+        </div>
+        <div class="store counter">
+          <div class="icon">
+            <i class="fa-solid fa-store"></i>
+          </div>
+          <div class="content">
+            <h4 class="count">1,562</h4>
+            <small>Our Stores</small>
+          </div>
+        </div>
+        <div class="writer counter">
+          <div class="icon">
+            <i class="fa-solid fa-feather"></i>
+          </div>
+          <div class="content">
+            <h4 class="count">457</h4>
+            <small>Famous Writer</small>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="subscription">
+      <div class="container">
+        <h4>
+          Subscribe our newsletter for Latest <br />
+          books updates
+        </h4>
+      </div>
+      <div class="circle-1"></div>
+      <div class="circle-2"></div>
+    </section>
+
     <footer>
       <div class="container">
         <div class="logo-description">
@@ -260,29 +343,7 @@
       </div>
     </footer>
     <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button>
-    <!-- <script type="module">
-      // 👇️ import and use module here...
-      import axios from "https://cdn.jsdelivr.net/npm/axios@1.3.5/+esm";
 
-      async function getUser() {
-        try {
-          const response = await axios.get("https://randomuser.me/api/");
-
-          return response.data;
-        } catch (err) {
-          console.log(err);
-        }
-      }
-
-      console.log(await getUser());
-    </script> -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
-      integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script type="module" src="/Book Dream/js/back-to-top.js"></script>
-    <script type="module" src="/Book Dream/js/login.js"></script>
+    <script src="../js/back-to-top.js"></script>
   </body>
 </html>

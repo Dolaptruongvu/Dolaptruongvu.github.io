@@ -19,9 +19,10 @@ mongoose
   })
   .catch((err) => {
     console.log("Error to connect database");
+    console.log(err);
   });
 
-console.log(process.env);
+// console.log(process.env);
 console.log(app.get("env"));
 
 process.on("uncaughtException", (err) => {

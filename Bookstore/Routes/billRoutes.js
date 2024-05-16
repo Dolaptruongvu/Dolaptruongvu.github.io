@@ -32,7 +32,7 @@ router
   );
 
 router
-.post(
+.get(
   "/checkout-session/:id",
   authController.protect,
   authController.restrictTo("user"),

@@ -158,7 +158,7 @@
                     type="radio"
                     id="filter-best-seller"
                     name="sale-type"
-                    value="best-seller"
+                    value="best-sales"
                   />
                     <label for="filter-best-seller">Best Sales</label><br />
                   <input
@@ -735,15 +735,42 @@
         });
       });
 
-      document.querySelectorAll('input[name="sale-type"]').forEach((input) => {
-        input.addEventListener("change", function () {
+      $(document).ready(function () {
+        $('input[name="sale-type"]').change(function () {
           if (this.value === "best-sales") {
-            window.location.href =
-              "/filtered-books?sale-type=best-sales&rating=4";
+            // Giả sử data đã được tải và lưu trong biến global `allBooks`
+            let filteredBooks = allBooks.filter((book) => book.ratings > 4);
+            displayBooks(filteredBooks);
           }
-          // Bạn có thể thêm các điều kiện khác cho các loại bán hàng khác nếu cần
         });
       });
+
+      function displayBooks(books) {
+        $(".books").empty(); // Clear existing books
+        books.forEach((book) => {
+          $(".books").append(`<div class="book-card">
+      <div class="img">
+        <a href="book-detail.html"><img src="/Img/Books/${
+          book.images[0]
+        }" alt=""/></a>
+        <button class="like" id="likebtn">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+      </div>
+      <h5>${book.title}</h5>
+      <small>
+        ${book.category.map((cate) => `<a href="/">${cate}</a>`).join(", ")}
+      </small>
+      <div class="star-rating">
+        ${Array.from({ length: 5 }, (_, i) =>
+          i < book.ratings
+            ? '<i class="fa-solid fa-star"></i>'
+            : '<i class="fa-solid fa-star disabled"></i>'
+        ).join("")}
+      </div>
+    </div>`);
+        });
+      }
     </script>
     <script src="../js/repeat-js.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

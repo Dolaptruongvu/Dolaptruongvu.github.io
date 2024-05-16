@@ -24,8 +24,6 @@ exports.getLogin = catchAsync(async (req, res, next) => {
     title: "Log into your account",
   });
 });
-<<<<<<< HEAD
-=======
 
 // // show filtered products
 exports.filteredBooks = catchAsync(async (req, res, next) => {
@@ -45,7 +43,6 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
 });
 
 // show shipping bills
->>>>>>> 46a71876ae23cd93d905c7b7042a85b76c222fdb
 
 
 exports.getShipBills = catchAsync(async (req, res, next) => {

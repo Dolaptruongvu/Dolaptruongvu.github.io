@@ -279,93 +279,31 @@
         <p>Choose book which the best pricec</p>
       </div>
       <div class="offer-container">
+        <% for (var book of specialOffer){ %>
         <div class="offer">
           <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-1.jpg" alt=""
-            /></a>
+            <a href="/book-detail"><img src="/Img/Books/<%= book.images[0]%>" alt="" /></a>
           </div>
           <div class="offer-content">
-            <h5>The Giver</h5>
+            <h5><%= book.title %></h5>
             <div class="genre">
-              <span>biography</span>
-              <span>thriller</span>
-              <span>horror</span>
+              <% for (var cate of book.category) { %>
+              <span><%= cate %></span>
+              <% } %>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              elit.Consequatur esse laboriosam nihil sint molestias sit iste
-              laboru
-            </p>
-            <small>Kevin Smiley</small>
+            <p><%= book.summary %></p>
+            <small><%= book.author %></small>
             <div class="offer-bottom">
               <button class="cartbtn">
                 <i class="fa-solid fa-cart-shopping"></i>Add to cart
               </button>
               <div class="price">
-                <strong><span>$</span>18.7</strong>
+                <strong><span>$</span><%= book.price %></strong>
               </div>
             </div>
           </div>
         </div>
-        <div class="offer">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-3.jpg" alt=""
-            /></a>
-          </div>
-          <div class="offer-content">
-            <h5>Radical Gardening</h5>
-            <div class="genre">
-              <span>biography</span>
-              <span>thriller</span>
-              <span>horror</span>
-            </div>
-            <p>
-              <!-- Lorem ipsum dolor sit amet consectetur adipisicing
-              elit.Consequatur esse laboriosam nihil sint molestias sit iste
-              laboru -->
-            </p>
-            <small>Kevin Smiley</small>
-            <div class="offer-bottom">
-              <button class="cartbtn">
-                <i class="fa-solid fa-cart-shopping"></i>Add to cart
-              </button>
-              <div class="price">
-                <strong><span>$</span>18.7</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="offer">
-          <div class="img">
-            <a href="pages/book-detail.html"
-              ><img src="/Book Dream/images/book-2.jpg" alt=""
-            /></a>
-          </div>
-          <div class="offer-content">
-            <h5>The Bright Brothers</h5>
-            <div class="genre">
-              <span>biography</span>
-              <span>thriller</span>
-              <span>horror</span>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              elit.Consequatur esse laboriosam nihil sint molestias sit iste
-              laboru
-            </p>
-            <small>Kevin Smiley</small>
-            <div class="offer-bottom">
-              <button class="cartbtn">
-                <i class="fa-solid fa-cart-shopping"></i>Add to cart
-              </button>
-              <div class="price">
-                <strong><span>$</span>18.7</strong>
-              </div>
-            </div>
-          </div>
-        </div>
+        <% } %>
       </div>
     </section>
 
@@ -376,71 +314,25 @@
       </div>
 
       <div class="book-container">
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-9.jpg" alt="" />
-            </a>
+        <% for (var book of famousBooks){ %>
+          <div class="book">
+            <div class="img">
+              <a href="/book-detail"
+                ><img src="/Img/Books/<%= book.images[0] %>" alt="" />
+              </a>
+            </div>
+            <h5>$<%= book.title%></h5>
+            <% for (var cate of book.category) { %>
+              <small><%= cate %></small>
+              <% } %>
+            <div class="price">
+              <span>$$<%= book.price%></span>
+              <span><strike>$<%= book.price%></strike></span>
+            </div>
           </div>
-          <h5>The Ruins Of Gorlan</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-10.jpg" alt=""
-            /></a>
-          </div>
-          <h5>Percy Jackson</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-11.jpg" alt=""
-            /></a>
-          </div>
-          <h5>Clever Lands</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-12.jpg" alt=""
-            /></a>
-          </div>
-          <h5>Dick Francis</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-1.jpg" alt="" />
-            </a>
-          </div>
-          <h5>The Giver</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
+          <% } %>
+        </ul>
+       
       </div>
     </section>
 

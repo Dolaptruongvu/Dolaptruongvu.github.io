@@ -1119,6 +1119,7 @@ ul.address li ul.address-text li a:hover {
 ul.nav-profile.navbar-profile {
   margin: 0;
   text-align: center;
+  padding-top: 25px;
 }
 ul.nav-profile.navbar-profile li a {
   color: #fff;

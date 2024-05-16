@@ -3,10 +3,12 @@ const Bill = require("../Model/billModel");
 const { catchAsync } = require("../utils/catchAsync"); // Import catchAsync helper
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  const books = await Book.find({ rating: { $gte: 4 } });
-
+  const famousBooks = await Book.find({ ratings: { $gte: 4 } });
+  const specialOffer = await Book.find({ price: { $lte: 10 } });
+  console.log(specialOffer);
   res.status(200).render("index", {
-    books, // Pass the books data to the template
+    famousBooks, // Pass the books data to the template
+    specialOffer,
   });
 });
 
@@ -32,7 +34,7 @@ exports.getSignup = catchAsync(async (req, res, next) => {
 
 // show filtered products
 exports.filteredBooks = catchAsync(async (req, res, next) => {
-  const { "sale-type": saleType, date } = req.query; // Get the category from query string
+  const { "sale-type": saleType, date, s } = req.query; // Get the category from query string
   const listCategories = [
     "Action",
     "Fantasy",
@@ -48,7 +50,7 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     "Sci-fi",
     "rating 4 star",
   ];
-
+  console.log(s);
   const categoriesQuery = Object.entries(req.query)
     .filter((item) => item[0].search("categories-") > -1)
     .map((item) => item[1]); /// [[key, value],...]
@@ -60,12 +62,15 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     query = { category: { $in: categoriesQuery } }; // Use $in to match any of the categories
   }
   // date
-
   if (date) {
     query = {
       ...query,
       releaseDate: new Date(date),
     };
+  }
+
+  if (!!s) {
+    query = { ...query, title: { $regex: s } };
   }
 
   const books = await Book.find(query); // Find books matching the query
@@ -102,8 +107,17 @@ exports.getShipBills = catchAsync(async (req, res, next) => {
   });
 });
 
-// show shipping bills
+// show profile
 
 exports.getProfile = catchAsync(async (req, res, next) => {
-  res.status(200).render("profile", {});
+  const user = res.locals.customer;
+
+  if (!user) {
+    res.redirect("/login?r=/profile");
+    return;
+  }
+  console.log(user);
+  res.status(200).render("profile", {
+    user,
+  });
 });

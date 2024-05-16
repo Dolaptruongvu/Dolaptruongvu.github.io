@@ -20,6 +20,11 @@ router
   .route("/filter")
   .get(authController.isLoggedIn, viewsController.filteredBooks);
 
+// profile
+router
+  .route("/profile")
+  .get(authController.isLoggedIn, viewsController.getProfile);
+
 // get shipping bills
 router
   .route("/shippingBills")

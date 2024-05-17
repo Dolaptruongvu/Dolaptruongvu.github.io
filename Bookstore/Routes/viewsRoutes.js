@@ -4,6 +4,15 @@ const authController = require("../Controller/authController");
 
 const router = express.Router();
 
+//Book detail
+router.get("/details/:bookId", viewsController.getBookDetail);
+
+//Cart Items
+router.get("/cart", viewsController.getCart);
+
+//Contract & services
+router.get("/contracts", viewsController.getContracts);
+
 //login page
 router.get("/login", authController.isLoggedIn, viewsController.getLogin);
 

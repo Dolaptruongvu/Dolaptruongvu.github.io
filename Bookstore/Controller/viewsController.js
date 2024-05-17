@@ -48,7 +48,6 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     "Romance",
     "Crime",
     "Sci-fi",
-    "rating 4 star",
   ];
   console.log(s);
   const categoriesQuery = Object.entries(req.query)

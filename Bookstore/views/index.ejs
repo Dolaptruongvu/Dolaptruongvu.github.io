@@ -114,7 +114,7 @@
               </div>
               <div class="logo-header">
                 <h4>
-                  <a href="/TruongVu/Bookstore/views/index.ejs">Book Dream</a>
+                  <a href="/">Book Dream</a>
                 </h4>
                 <small>Online bookstore</small>
               </div>
@@ -130,7 +130,6 @@
           </li>
           <li>
             <a id="bookButton" style="cursor: pointer">Books</a>
-            <!-- <a href="/book-filter.html">Books</a> -->
           </li>
           <li class="profile-RP">
             <a href="/TruongVu/Bookstore/views/proflie.ejs">Profile</a>
@@ -144,9 +143,9 @@
             <i class="fa-solid fa-user"></i
             ><a id="signupButton" style="cursor: pointer">Sign up</a>
           </button>
-          <button class="log-out"><a href="">Log Out</a></button>
+          <!-- <button class="log-out"><a href="">Log Out</a></button> -->
           <div class="profile-icon">
-            <a href="./proflie.ejs"
+            <a id="profileButton" style="cursor: pointer"
               ><img src="/Book Dream/images/avatar.jpg" alt=""
             /></a>
           </div>
@@ -842,6 +841,12 @@
         .addEventListener("click", function (event) {
           event.preventDefault();
           window.location.assign("/signup");
+        });
+        document
+        .getElementById("profileButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.assign("/profile");
         });
     </script>
   </body>

@@ -120,3 +120,25 @@ exports.getProfile = catchAsync(async (req, res, next) => {
     user,
   });
 });
+
+//Book Detail
+exports.getBookDetail = catchAsync(async (req, res, next) => {
+  const { bookId } = req.params;             //fix to your logic
+  const book = await Book.findById(bookId);  //fix to your logic
+  res.status(200).render("login", {    //rendering
+    book,                                   //fix to your logic
+  });
+});
+
+//Cart
+exports.getCart = catchAsync(async (req, res, next) => {
+  const cartItems = req.session?.cart || []; //fix to your logic
+  res.status(200).render("login", {           //rendering
+    cartItems,                               //fix to your logic
+  });
+});
+
+//getContracts
+exports.getContracts = (req, res, next) => {
+  res.status(200).render("login"); // Rendering
+};

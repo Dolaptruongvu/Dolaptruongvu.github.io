@@ -472,10 +472,60 @@ input[type="range"]::-moz-range-thumb {
     position: relative;
 }
 
-.filter .book-collections .books .img img {
+/* .filter .book-collections .books .img img {
     width: 100%;
     border-radius: 10px;
+    max-width: 400px;
+    max-height: 600px;
+    object-fit: cover;
+    margin: 10px;
+} */
+
+
+
+/* .filter .book-collections .books .img {
+    flex: 0 0 400px; 
+    height: 600px; 
+    margin: 10px;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
 }
+
+.filter .book-collections .books .img img {
+    width: auto; 
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: cover; 
+    border-radius: 10px;
+} */
+
+.filter .book-collections .books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.filter .book-collections .books .img {
+    flex: 1 0 21%; /* Cho mỗi khung một chiều rộng tối thiểu và cho phép nó co giãn */
+    margin: 10px;
+    overflow: hidden; /* Ẩn bất kỳ nội dung nào vượt quá kích thước của khung */
+    position: relative; /* Đặt vị trí tương đối cho phần tử con bên trong */
+    padding-top: 150%; /* Tạo tỷ lệ chiều cao dựa trên chiều rộng, 150% là tỷ lệ tự chọn tùy thuộc vào tỷ lệ mong muốn */
+}
+
+.filter .book-collections .books .img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo hình ảnh phủ đầy khung mà không cần cắt bớt */
+    border-radius: 10px;
+    
+}
+
 
 .filter .book-collections .books .img #likebtn {
     position: absolute;
@@ -490,7 +540,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .filter .book-collections .books h5 {
-    font-size: 14px;
+    font-size: 18px;
     color: #131428;
     margin-bottom: -5px;
     margin-top: 0.3rem;
@@ -498,7 +548,7 @@ input[type="range"]::-moz-range-thumb {
 
 .filter .book-collections .books small a {
     text-decoration: none;
-    font-size: 10px;
+    font-size: 14px;
     text-transform: uppercase;
     color: #009bd6;
 }

@@ -124,7 +124,8 @@
           </button>
           <button class="cart">
             <a href="cart-item.html"
-              ><i class="fa-solid fa-cart-shopping"></i> <span>4</span></a>
+              ><i class="fa-solid fa-cart-shopping"></i> <span>4</span></a
+            >
           </button>
           <div class="profile-img">
             <a href="./proflie.html"
@@ -296,7 +297,7 @@
                   <input
                     type="range"
                     class="range-max"
-                    min="0"
+                    min="0" 
                     max="10000"
                     value="7500"
                     step="100"
@@ -324,7 +325,7 @@
             <% for (var book of books) { %>
             <div class="book-card">
               <div class="img">
-                <a href="book-detail.html"
+                <a href="/details/<%=book._id%>"
                   ><img src="/Img/Books/<%= book.images[0] %>" alt=""
                 /></a>
                 <button class="like" id="likebtn">
@@ -338,11 +339,7 @@
                 <% } %>
               </small>
               <div class="star-rating">
-                <% for(var i=0; i<5; i++) { %> <% if(i < book.ratings){ %>
-                <i class="fa-solid fa-star"></i>
-                <% } else{ %>
-                <i class="fa-solid fa-star disabled"></i>
-                <% } %> <% } %>
+                <i class="fa-solid fa-star"></i> <%= book.ratings %>
               </div>
             </div>
             <% } %>
@@ -352,13 +349,23 @@
               <p>Showing 8 from 50 data</p>
             </div>
             <div class="pagination">
-              <button><i class="fa fa-chevron-left"></i>Previous</button>
+              <% if(pagination.previousPage){ %>
+              <a href="/filter<%= pagination.previousPage %>"
+                ><i class="fa fa-chevron-left"></i>Previous</a
+              >
+              <% } %>
               <div class="number">
-                <a href="">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
+                <% for(var i=1; i<=pagination.totalPage; i++) { %>
+                <a href="/filter<%= currentQueryUrlString %>&p=<%= i %>">
+                  <%= i %>
+                </a>
+                <% } %>
               </div>
-              <button>Next<i class="fa fa-chevron-right"></i></button>
+              <% if(pagination.nextPage){ %>
+              <a href="/filter<%= pagination.nextPage %>"
+                ><i class="fa fa-chevron-left"></i>Next</a
+              >
+              <% } %>
             </div>
           </div>
         </div>

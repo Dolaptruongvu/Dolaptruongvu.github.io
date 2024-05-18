@@ -34,7 +34,7 @@ exports.getSignup = catchAsync(async (req, res, next) => {
 
 // show filtered products
 exports.filteredBooks = catchAsync(async (req, res, next) => {
-  const { "sale-type": saleType, date, s } = req.query; // Get the category from query string
+  const { date, s, p } = req.query; // Get the category from query string
   const listCategories = [
     "Action",
     "Fantasy",
@@ -49,7 +49,8 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     "Crime",
     "Sci-fi",
   ];
-  console.log(s);
+  const queryUrl = new URLSearchParams();
+
   const categoriesQuery = Object.entries(req.query)
     .filter((item) => item[0].search("categories-") > -1)
     .map((item) => item[1]); /// [[key, value],...]
@@ -59,6 +60,9 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
   // category
   if (categoriesQuery.length > 0) {
     query = { category: { $in: categoriesQuery } }; // Use $in to match any of the categories
+    categoriesQuery.forEach((item, index) => {
+      queryUrl.append("categories-" + index, item);
+    });
   }
   // date
   if (date) {
@@ -66,18 +70,43 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
       ...query,
       releaseDate: new Date(date),
     };
+    queryUrl.append("date", date);
   }
 
   if (!!s) {
     query = { ...query, title: { $regex: s } };
+    queryUrl.append("s", s);
   }
 
-  const books = await Book.find(query); // Find books matching the query
+  /// pagination
+  const limit = 12;
+  let page = 1;
+  // page
+  if (p && !isNaN(Number(p))) {
+    page = Number(p);
+  }
 
+  const books = await Book.find(query, undefined, { limit, skip: page - 1 }); // Find books matching the query
+  const totalRecords = await Book.countDocuments(query);
+  const totalPage = Math.floor(totalRecords / limit) + 1;
+  const currentQueryUrlString = !queryUrl.toString().trim()
+    ? "?="
+    : queryUrl.toString();
+  const previousPage =
+    page === 1 ? null : currentQueryUrlString + "&p=" + (page - 1);
+  const nextPage =
+    page === totalPage ? null : currentQueryUrlString + "&p=" + (page + 1);
+  console.log("a", books);
   res.status(200).render("book-filter", {
     listCategories,
     books,
-    // filteredBooks,
+    pagination: {
+      totalRecords,
+      totalPage,
+      previousPage,
+      nextPage,
+    },
+    currentQueryUrlString,
   });
 });
 // exports.filteredBook = catchAsync(async (req, res, next) => {
@@ -107,7 +136,6 @@ exports.getShipBills = catchAsync(async (req, res, next) => {
 });
 
 // show profile
-
 exports.getProfile = catchAsync(async (req, res, next) => {
   const user = res.locals.customer;
 
@@ -123,22 +151,24 @@ exports.getProfile = catchAsync(async (req, res, next) => {
 
 //Book Detail
 exports.getBookDetail = catchAsync(async (req, res, next) => {
-  const { bookId } = req.params;             //fix to your logic
-  const book = await Book.findById(bookId);  //fix to your logic
-  res.status(200).render("login", {    //rendering
-    book,                                   //fix to your logic
+  const { bookId } = req.params; //fix to your logic
+  const book = await Book.findById(bookId); //fix to your logic
+  res.status(200).render("book-detail", {
+    //rendering
+    book, //fix to your logic
   });
 });
 
 //Cart
 exports.getCart = catchAsync(async (req, res, next) => {
   const cartItems = req.session?.cart || []; //fix to your logic
-  res.status(200).render("login", {           //rendering
-    cartItems,                               //fix to your logic
+  res.status(200).render("login", {
+    //rendering
+    cartItems, //fix to your logic
   });
 });
 
 //getContracts
 exports.getContracts = (req, res, next) => {
-  res.status(200).render("login"); // Rendering
+  res.status(200).render("contact"); // Rendering
 };

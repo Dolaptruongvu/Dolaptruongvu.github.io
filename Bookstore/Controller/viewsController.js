@@ -42,11 +42,11 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     "History",
     "Animation",
     "Horror",
-    "Biography",
+    "Thriller",
     "Mystery",
     "Comedy",
     "Romance",
-    "Crime",
+    "Science Fiction",
     "Sci-fi",
   ];
   const queryUrl = new URLSearchParams();

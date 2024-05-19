@@ -128,7 +128,7 @@
             >
           </button>
           <div class="profile-img">
-            <a href="./proflie.html"
+            <a id="profileButton" style="cursor: pointer"
               ><img src="/Book Dream/images/avatar.jpg" alt=""
             /></a>
           </div>
@@ -160,8 +160,8 @@
                     value="best-sales"
                     onclick="filterBooksByRating()"
                   />
-                    <label for="filter-best-seller">Best Sales</label><br />
-                  <input
+                    <label for="filter-best-seller">Coming soon</label><br />
+                  <!-- <input
                     type="radio"
                     id="filter-most-recommended"
                     name="sale-type"
@@ -182,7 +182,7 @@
                     name="sale-type"
                     value="best-seller"
                   />
-                    <label for="filter-featured">Featured</label><br />
+                    <label for="filter-featured">Featured</label><br /> -->
                 </div>
               </div>
             </div>
@@ -211,7 +211,6 @@
                   <small><%= listCategories[i] %></small>
                 </div>
                 <% } %>
-
                 <!-- <div class="category">
                   <input type="checkbox" />
                   <small>Fantasy</small>
@@ -297,7 +296,7 @@
                   <input
                     type="range"
                     class="range-max"
-                    min="0" 
+                    min="0"
                     max="10000"
                     value="7500"
                     step="100"
@@ -314,13 +313,13 @@
         </div>
         <div class="book-collections">
           <h4>Books</h4>
-          <div class="category">
+          <!-- <div class="category">
             <div class="category-list">
               <button>Today</button>
               <button>This Week</button>
               <button>This Month</button>
             </div>
-          </div>
+          </div> -->
           <div class="books">
             <% for (var book of books) { %>
             <div class="book-card">
@@ -346,7 +345,7 @@
           </div>
           <div class="footer">
             <div class="data-shown">
-              <p>Showing 8 from 50 data</p>
+              <p>Showing 12 from 50 data</p>
             </div>
             <div class="pagination">
               <% if(pagination.previousPage){ %>
@@ -363,8 +362,7 @@
               </div>
               <% if(pagination.nextPage){ %>
               <a href="/filter<%= pagination.nextPage %>"
-                ><i class="fa fa-chevron-left"></i>Next</a
-              >
+                >Next<i class="fa fa-chevron-right"></i></a>
               <% } %>
             </div>
           </div>
@@ -372,7 +370,7 @@
       </form>
     </section>
 
-    <section class="book-sale">
+    <!-- <section class="book-sale">
       <div class="heading">
         <h4>Books On Sale</h4>
         <div class="arrowbtn">
@@ -519,7 +517,7 @@
           </ul>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="subscription">
       <div class="container">
@@ -537,8 +535,8 @@
         <div class="logo-description">
           <div class="logo">
             <div class="img">
-              <a href="../index.html"
-                ><img src="../images/logo1.png" alt=""
+              <a href="/"
+                ><img src="/Book Dream/images/logo1.png" alt=""
               /></a>
             </div>
             <div class="title">
@@ -556,7 +554,7 @@
             <h4>Follow Us</h4>
             <ul class="links">
               <li>
-                <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.facebook.com/anderswinchester"><i class="fa-brands fa-facebook-f"></i></a>
               </li>
               <li>
                 <a href=""><i class="fa-brands fa-youtube"></i></a>
@@ -568,33 +566,40 @@
                 <a href=""><i class="fa-brands fa-linkedin"></i></a>
               </li>
               <li>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.instagram.com/anderswinchester/?fbclid=IwZXh0bgNhZW0CMTAAAR3xNqEFF5FfrYrH3NUpvlJu9ZqvwlAlMvkStJZUMjeCirr6ux1XhdW-ZgA_aem_AYHNPqOckHFiMadbWdSjh8PMwGp_X3ZWn3O-I4Ey_OzqugrG9TeNcxd-SjbCoR1kxsx7OsssbS50iDyZekkgHgxu"><i class="fa-brands fa-instagram"></i></a>
               </li>
             </ul>
           </div>
         </div>
         <div class="categories list">
-          <h4>Book Categories</h4>
+          <h4>Developers</h4>
           <ul>
-            <li><a href="">Action</a></li>
-            <li><a href="">Adventure</a></li>
-            <li><a href="">Comedy</a></li>
-            <li><a href="">Crime</a></li>
-            <li><a href="">Drama</a></li>
-            <li><a href="">Fantasy</a></li>
-            <li><a href="">Horror</a></li>
+            <li>
+              <a href="https://www.facebook.com/anderswinchester"
+                >Đỗ Lập Trường Vũ</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/profile.php?id=100013200197695"
+                >Tăng Quốc Tuấn</a
+              >
+            </li>
+            <li>
+              <a href="https://www.facebook.com/Urlgrim">Lương Anh Tuấn</a>
+            </li>
           </ul>
         </div>
         <div class="quick-links list">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="../index.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="book-filter.html">Products</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="registration.html">Sign Up</a></li>
-            <li><a href="cart-item.html">Cart</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Sign Up</a></li>
+            <li><a href="">Cart</a></li>
+            <li><a href="">Checkout</a></li>
           </ul>
         </div>
         <div class="our-store list">
@@ -657,18 +662,51 @@
       //   });
       // }
 
+      // let editorpick = document.getElementsByClassName("select-box");
+      // let icon = document.querySelectorAll(".select-box .opt-title i");
+      // let answer = document.querySelectorAll(".select-box .option");
+
+      // for (let i = 0; i < editorpick.length; i++) {
+      //   editorpick[i].addEventListener("click", (event) => {
+      //     event.stopPropagation();
+      //     if (!icon[i].classList.contains("active")) {
+      //       icon[i].classList.add("active");
+      //       answer[i].style.maxHeight = answer[i].scrollHeight + "px";
+      //       answer[i].style.padding = "0px 20px 20px 20px";
+      //     }
+      //   });
+      // }
+
       let editorpick = document.getElementsByClassName("select-box");
       let icon = document.querySelectorAll(".select-box .opt-title i");
       let answer = document.querySelectorAll(".select-box .option");
 
       for (let i = 0; i < editorpick.length; i++) {
         editorpick[i].addEventListener("click", (event) => {
-          event.stopPropagation();
+          event.stopPropagation(); // Ngăn không cho sự kiện click lan truyền
+
+          // Nếu icon chưa active, mở rộng phần tử
           if (!icon[i].classList.contains("active")) {
             icon[i].classList.add("active");
             answer[i].style.maxHeight = answer[i].scrollHeight + "px";
             answer[i].style.padding = "0px 20px 20px 20px";
+          } else if (
+            event.target === icon[i] ||
+            event.target === editorpick[i]
+          ) {
+            // Nếu icon đã active và người dùng click trực tiếp vào icon hoặc select-box, thu gọn phần tử
+            icon[i].classList.remove("active");
+            answer[i].style.maxHeight = null;
+            answer[i].style.padding = "0px";
           }
+        });
+      }
+
+      // Đảm bảo các sự kiện click trong các option không làm ảnh hưởng đến trạng thái của select-box
+      let options = document.querySelectorAll(".select-box .option a"); // Giả sử các option là thẻ <a>
+      for (let opt of options) {
+        opt.addEventListener("click", (event) => {
+          event.stopPropagation(); // Ngăn sự kiện click lan truyền lên thẻ cha
         });
       }
 
@@ -810,5 +848,13 @@
     <script src="../js/repeat-js.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="../js/back-to-top.js"></script>
+    <script>
+      document
+        .getElementById("profileButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.assign("/profile");
+        });
+    </script>
   </body>
 </html>

@@ -3,7 +3,7 @@ const Bill = require("../Model/billModel");
 const { catchAsync } = require("../utils/catchAsync"); // Import catchAsync helper
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  const famousBooks = await Book.find({ ratings: { $gte: 4 } });
+  const famousBooks = await Book.find({ ratings: { $gte: 1 } });
   const specialOffer = await Book.find({ price: { $lte: 10 } });
   console.log(specialOffer);
   res.status(200).render("index", {
@@ -86,7 +86,10 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     page = Number(p);
   }
 
-  const books = await Book.find(query, undefined, { limit, skip: page - 1 }); // Find books matching the query
+  const books = await Book.find(query, undefined, {
+    limit,
+    skip: (page - 1) * limit,
+  }); // Find books matching the query
   const totalRecords = await Book.countDocuments(query);
   const totalPage = Math.floor(totalRecords / limit) + 1;
   const currentQueryUrlString = !queryUrl.toString().trim()
@@ -96,7 +99,7 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     page === 1 ? null : currentQueryUrlString + "&p=" + (page - 1);
   const nextPage =
     page === totalPage ? null : currentQueryUrlString + "&p=" + (page + 1);
-  console.log("a", books);
+  console.log("a", books.length);
   res.status(200).render("book-filter", {
     listCategories,
     books,
@@ -161,10 +164,31 @@ exports.getBookDetail = catchAsync(async (req, res, next) => {
 
 //Cart
 exports.getCart = catchAsync(async (req, res, next) => {
-  const cartItems = req.session?.cart || []; //fix to your logic
-  res.status(200).render("login", {
+  const cartItems = req.cookies;
+  const prods = Object.entries(req.cookies)
+    .filter((item) => item[0].search("cart-") > -1)
+    .reduce((pre, curr) => {
+      return {
+        ...pre,
+        [curr[0].split("-")[1]]: Number(curr[1]),
+      };
+    }, {});
+
+  const listBooks = await Book.find({ _id: { $in: Object.keys(prods) } });
+  const totalPrice = listBooks.reduce(
+    (pre, curr) => pre + Number(curr.price) * prods[curr.id],
+    0
+  );
+  res.status(200).render("cart-item", {
     //rendering
-    cartItems, //fix to your logic
+    books: listBooks.map((item) => {
+      return {
+        ...item.toJSON(),
+        userQuantity: prods[item.id],
+        totalPrice: prods[item.id] * item.price,
+      };
+    }), //fix to your logic
+    totalPrice,
   });
 });
 

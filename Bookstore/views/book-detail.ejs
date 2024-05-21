@@ -98,18 +98,14 @@
       <nav class="navbar-2">
         <div class="logo">
           <div class="img">
-            <a href="../index.html"
-              ><img
-                src="/TruongVu/Bookstore/Public/Book Dream/images/logo1.png"
-                alt=""
-            /></a>
+            <a href="/"><img src="/Book Dream/images/logo1.png" alt="" /></a>
           </div>
           <div class="title">
             <h4>Book Dream<i class="fa-solid fa-grid"></i></h4>
             <small>Online bookstore</small>
           </div>
         </div>
-        <div class="search-box">
+        <!-- <div class="search-box">
           <div class="search-field">
             <input
               type="text"
@@ -119,21 +115,20 @@
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-        </div>
+        </div> -->
         <div class="nav-end">
           <button class="likebtn">
             <i class="fa-regular fa-heart"></i> <span>35</span>
           </button>
           <button class="cart">
             <a href="cart-item.html"
-              ><i class="fa-solid fa-cart-shopping"></i> <span>4</span></a
+              ><i class="fa-solid fa-cart-shopping"></i>
+              <span id="number-of-product">0</span></a
             >
           </button>
           <div class="profile-img">
-            <a href="./proflie.html"
-              ><img
-                src="/TruongVu/Bookstore/Public/Book Dream/images/avatar.jpg"
-                alt=""
+            <a id="profileButton" style="cursor: pointer"
+              ><img src="/Book Dream/images/avatar.jpg" alt=""
             /></a>
           </div>
         </div>
@@ -141,8 +136,8 @@
     </header>
     <div class="breadcrumb-container">
       <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#" style="color: #6c5dd4">Books</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a id="booksButton" style="color: #009bd6">Books</a></li>
         <li><a href="#"><%=book.title %></a></li>
       </ul>
     </div>
@@ -152,7 +147,7 @@
         <img src="/Img/Books/<%=book.images[0] %>" alt="" />
       </div>
       <div class="book-content">
-        <h4><%=book.title %></h4>
+        <h4 id="book-title" data-id="<%=book.id %>"><%=book.title %></h4>
         <div class="meta">
           <div class="review">
             <div class="rating">
@@ -213,10 +208,11 @@
                 data-field="quantity"
               />
               <input
-                type="text"
+                type="number"
                 step="1"
                 min="1"
                 value="1"
+                id="input-quantity"
                 name="quantity"
                 class="quantity-field"
                 style="width: 4.5rem"
@@ -228,7 +224,7 @@
                 data-field="quantity"
               />
             </div>
-            <button class="cartbtn">
+            <button class="cartbtn" id="add-to-card">
               <i class="fa-solid fa-cart-shopping"></i>Add to Cart
             </button>
             <button class="like"><i class="fa-regular fa-heart"></i></button>
@@ -420,11 +416,11 @@
         <div class="logo-description">
           <div class="logo">
             <div class="img">
-              <img src="../images/logo1.png" alt="" />
+              <img src="/Book Dream/images/logo1.png" alt="" />
             </div>
             <div class="title">
-              <h4>Bookie</h4>
-              <small>Book Store Website</small>
+              <h4>Book Dream</h4>
+              <small>Online bookstore</small>
             </div>
           </div>
           <div class="logo-body">
@@ -437,7 +433,9 @@
             <h4>Follow Us</h4>
             <ul class="links">
               <li>
-                <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.facebook.com/anderswinchester"
+                  ><i class="fa-brands fa-facebook-f"></i
+                ></a>
               </li>
               <li>
                 <a href=""><i class="fa-brands fa-youtube"></i></a>
@@ -455,27 +453,33 @@
           </div>
         </div>
         <div class="categories list">
-          <h4>Book Categories</h4>
+          <h4>Developers</h4>
           <ul>
-            <li><a href="">Action</a></li>
-            <li><a href="">Adventure</a></li>
-            <li><a href="">Comedy</a></li>
-            <li><a href="">Crime</a></li>
-            <li><a href="">Drama</a></li>
-            <li><a href="">Fantasy</a></li>
-            <li><a href="">Horror</a></li>
+            <li>
+              <a href="https://www.facebook.com/anderswinchester"
+                >Đỗ Lập Trường Vũ</a
+              >
+            </li>
+            <li>
+              <a href="https://www.facebook.com/profile.php?id=100013200197695"
+                >Tăng Quốc Tuấn</a
+              >
+            </li>
+            <li>
+              <a href="https://www.facebook.com/Urlgrim">Lương Anh Tuấn</a>
+            </li>
           </ul>
         </div>
         <div class="quick-links list">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="../index.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="book-filter.html">Products</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="registration.html">Sign Up</a></li>
-            <li><a href="cart-item.html">Cart</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Sign Up</a></li>
+            <li><a href="">Cart</a></li>
+            <li><a href="">Checkout</a></li>
           </ul>
         </div>
         <div class="our-store list">
@@ -533,8 +537,29 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="../js/repeat-js.js"></script>
-    <script src="../js/increment-decrement.js"></script>
-    <script src="../js/back-to-top.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- <script src="/Book Dream/js/repeat-js.js"></script> -->
+    <script src="/Book Dream/js/increment-decrement.js"></script>
+    <script src="/Book Dream/js/back-to-top.js"></script>
+    <script>
+      document
+        .getElementById("profileButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.assign("/profile");
+        });
+
+      document
+        .getElementById("booksButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.assign("/filter");
+        });
+    </script>
   </body>
 </html>

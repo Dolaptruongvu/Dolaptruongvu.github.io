@@ -65,11 +65,16 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
             },
         ],
         mode: 'payment',
-        success_url: `http://localhost:3000/login.ejs`, // Sửa lại link http 
-        cancel_url: `http://localhost:3000/cancel.ejs`, // sửa lại link http
-    })
+        success_url: `http://127.0.0.1:3000/`, // Sửa lại link http 
+        cancel_url: `http://127.0.0.1:3000/`, // sửa lại link http
+    });
+    try {
+      const updatedBill = await Bill.findByIdAndUpdate(billId, { haspaid: true }, { new: true });
+      if (!updatedBill) {
+        console.error(`Error updating bill ${billId} payment status`);
+      }
+    } catch (error) {
+      console.error(`Error updating bill ${billId} payment status:`, error);
+    }
     res.json({url: session.url});
-
-    res.status(200).json({ session });
 });
-

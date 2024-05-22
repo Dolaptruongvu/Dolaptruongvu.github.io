@@ -3,7 +3,7 @@ const Bill = require("../Model/billModel");
 const { catchAsync } = require("../utils/catchAsync"); // Import catchAsync helper
 
 exports.getOverview = catchAsync(async (req, res, next) => {
-  const famousBooks = await Book.find({ ratings: { $gte: 1 } });
+  const famousBooks = await Book.find({ ratings: { $gte: 4.7 } });
   const specialOffer = await Book.find({ price: { $lte: 10 } });
   console.log(specialOffer);
   res.status(200).render("index", {

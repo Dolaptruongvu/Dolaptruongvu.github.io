@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harry Potter - Book Detail Page</title>
+    <title>Book Dream</title>
     <link rel="stylesheet" href="/Book Dream/css/book-filter.css" />
     <link rel="stylesheet" href="/Book Dream/css/style.css" />
     <!--- google font link-->
@@ -117,15 +117,20 @@
           </div>
         </div> -->
         <div class="nav-end">
-          <button class="likebtn">
+          <!-- <button class="likebtn">
             <i class="fa-regular fa-heart"></i> <span>35</span>
-          </button>
-          <button class="cart">
+          </button> -->
+          <button class="cart" id="cartButton">
             <a href="cart-item.html"
               ><i class="fa-solid fa-cart-shopping"></i>
               <span id="number-of-product">0</span></a
             >
           </button>
+
+          <!-- <button class="cart" id="cartButton">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="number-of-product">0</span>
+          </button> -->
           <div class="profile-img">
             <a id="profileButton" style="cursor: pointer"
               ><img src="/Book Dream/images/avatar.jpg" alt=""
@@ -560,6 +565,20 @@
           event.preventDefault();
           window.location.assign("/filter");
         });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const cartButton = document.getElementById("cartButton");
+      if (cartButton) {
+        cartButton.addEventListener("click", function(event) {
+          event.preventDefault();
+          let currentUrl = window.location.href;
+          if (currentUrl.includes('/details/')) {
+            let newUrl = currentUrl.replace(/\/details\/[^\/]+$/, '/cart');
+            window.location.assign(newUrl);
+          }
+        });
+      }
+    });
     </script>
   </body>
 </html>

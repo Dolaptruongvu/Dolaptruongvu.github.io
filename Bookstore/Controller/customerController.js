@@ -107,14 +107,15 @@ exports.createCustomer = factory.createOne(Customer);
 
 // shipper
 
-exports.setShipperId = catchAsync(async (req, res, next) => { // randomly choose shipper for the bill
+exports.setShipperId = catchAsync(async (req, res, next) => {
+  // randomly choose shipper for the bill
   const shippers = await Customer.find({
     // find shipper have numb of order less than 5
     role: "shipper",
-    numbOfOrder: { $lt: 5 },
+    numbOfOrder: { $lt: 100 },
   });
   if (!shippers.length) {
-    return next(new AppErrorError("No available shippers found.", 403));
+    return next(new AppError("No available shippers found.", 403));
   }
   const shipper = await Customer.findByIdAndUpdate(
     shippers[0].id,
@@ -129,17 +130,20 @@ exports.setShipperId = catchAsync(async (req, res, next) => { // randomly choose
 // for admin
 exports.setRoles = catchAsync(async (req, res, next) => {
   let customerPhoneNumber = parseInt(req.body.phoneNumber);
-  console.log(typeof customerPhoneNumber)
-  
-  const customer = await Customer.findOneAndUpdate({ phoneNumber: customerPhoneNumber },{role : req.body.role},{ new: true });
+  console.log(typeof customerPhoneNumber);
+
+  const customer = await Customer.findOneAndUpdate(
+    { phoneNumber: customerPhoneNumber },
+    { role: req.body.role },
+    { new: true }
+  );
   console.log(customer);
   if (!customer) {
-    next(new AppError("Cannot find customer",403))
+    next(new AppError("Cannot find customer", 403));
   }
 
   res.status(200).json({
     status: "success",
     data: customer,
   });
-  
 });

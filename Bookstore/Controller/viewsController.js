@@ -168,6 +168,9 @@ exports.getCart = catchAsync(async (req, res, next) => {
   const prods = Object.entries(req.cookies)
     .filter((item) => item[0].search("cart-") > -1)
     .reduce((pre, curr) => {
+      if (Number(curr[1]) <= 0) {
+        return pre;
+      }
       return {
         ...pre,
         [curr[0].split("-")[1]]: Number(curr[1]),
@@ -179,6 +182,7 @@ exports.getCart = catchAsync(async (req, res, next) => {
     (pre, curr) => pre + Number(curr.price) * prods[curr.id],
     0
   );
+
   res.status(200).render("cart-item", {
     //rendering
     books: listBooks.map((item) => {

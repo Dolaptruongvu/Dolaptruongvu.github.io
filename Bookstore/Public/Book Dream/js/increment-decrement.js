@@ -71,10 +71,12 @@ nop.text(productCheckoutLength);
 $("#add-to-card").click(function (e) {
   const inputField = $("#input-quantity");
   const inputValue = inputField.val();
-  const currentVal = Number(getCookie(idBook) ?? 0);
+  const currentVal = Number(getCookie("cart-" + idBook) ?? 0);
   const currentProdVal = Number(getCookie("product-length") ?? 0);
   const cnop = $("#number-of-product");
   setCookie("product-length", currentProdVal + Number(inputValue), 100);
-  setCookie("cart-"+idBook, Number(inputValue) + currentVal, 100);
+  setCookie("cart-" + idBook, Number(inputValue) + currentVal, 100);
   cnop.text(currentProdVal + Number(inputValue));
 });
+
+

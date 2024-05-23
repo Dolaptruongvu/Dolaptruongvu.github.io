@@ -319,12 +319,12 @@
                 ><img src="/Img/Books/<%= book.images[0] %>" alt="" />
               </a>
             </div>
-            <h5>$<%= book.title%></h5>
+            <h5><%= book.title%></h5>
             <% for (var cate of book.category) { %>
               <small><%= cate %></small>
               <% } %>
             <div class="price">
-              <span>$$<%= book.price%></span>
+              <span>$<%= book.price%></span>
               <span><strike>$<%= book.price%></strike></span>
             </div>
           </div>

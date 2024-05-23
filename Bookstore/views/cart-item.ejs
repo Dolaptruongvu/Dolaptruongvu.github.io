@@ -162,8 +162,12 @@
             <td>
               <div><%= book.userQuantity %></div>
             </td>
-            <td>$<%= book.totalPrice %></td>
-            <td><i class="fa-solid fa-trash"></i></td>
+            <td id="total-price" data-totalprice="<%= book.totalPrice %>">
+              $<%= book.totalPrice %>
+            </td>
+            <td class="delete-book" data-bookid="<%= book._id %>">
+              <i class="fa-solid fa-trash"></i>
+            </td>
           </tr>
           <% }%>
         </table>
@@ -175,7 +179,7 @@
     </section>
 
     <section class="discount-summary">
-      <div class="discount-section">
+      <!-- <div class="discount-section">
         <h4>Discount Coupon</h4>
         <div class="discount-form">
           <input
@@ -185,7 +189,7 @@
           />
           <button>Apply Coupon</button>
         </div>
-      </div>
+      </div> -->
       <div class="summary-section">
         <h4>Cart Subtotal</h4>
         <div class="order-detail-table">
@@ -204,7 +208,8 @@
               <td>$<%= totalPrice %></td>
             </tr>
           </table>
-          <button><a href="checkout.html">Proceed To Checkout</a></button>
+          <button id="online-pay">Online payment</button>
+          <!-- <button><a href="checkout.html">cash</a></button> -->
         </div>
       </div>
     </section>
@@ -452,9 +457,15 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="../js/repeat-js.js"></script>
-    <script src="../js/increment-decrement.js"></script>
-    <script src="../js/back-to-top.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+      integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/Book Dream/js/repeat-js.js"></script>
+    <script src="/Book Dream/js/cart.js"></script>
+    <script src="/Book Dream/js/back-to-top.js"></script>
     <script>
       document
         .getElementById("profileButton")

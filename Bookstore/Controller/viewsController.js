@@ -1,11 +1,12 @@
 const Book = require("../Model/bookModel"); // Import the Book model
 const Bill = require("../Model/billModel");
 const { catchAsync } = require("../utils/catchAsync"); // Import catchAsync helper
+const Customer = require("../Model/customerModel");
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   const famousBooks = await Book.find({ ratings: { $gte: 4.7 } });
   const specialOffer = await Book.find({ price: { $lte: 10 } });
-  console.log(specialOffer);
+
   res.status(200).render("index", {
     famousBooks, // Pass the books data to the template
     specialOffer,
@@ -25,6 +26,7 @@ exports.getLogin = catchAsync(async (req, res, next) => {
 
 //signup  page
 exports.getSignup = catchAsync(async (req, res, next) => {
+  const user = res.locals?.customer;
   if (res.locals?.customer) {
     res.redirect("/");
     return;
@@ -35,20 +37,6 @@ exports.getSignup = catchAsync(async (req, res, next) => {
 // show filtered products
 exports.filteredBooks = catchAsync(async (req, res, next) => {
   const { date, s, p } = req.query; // Get the category from query string
-  const listCategories = [
-    "Action",
-    "Fantasy",
-    "Adventure",
-    "History",
-    "Animation",
-    "Horror",
-    "Thriller",
-    "Mystery",
-    "Comedy",
-    "Romance",
-    "Science Fiction",
-    "Sci-fi",
-  ];
   const queryUrl = new URLSearchParams();
 
   const categoriesQuery = Object.entries(req.query)
@@ -99,9 +87,7 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
     page === 1 ? null : currentQueryUrlString + "&p=" + (page - 1);
   const nextPage =
     page === totalPage ? null : currentQueryUrlString + "&p=" + (page + 1);
-  console.log("a", books.length);
   res.status(200).render("book-filter", {
-    listCategories,
     books,
     pagination: {
       totalRecords,
@@ -146,7 +132,6 @@ exports.getProfile = catchAsync(async (req, res, next) => {
     res.redirect("/login?r=/profile");
     return;
   }
-  console.log(user);
   res.status(200).render("profile", {
     user,
   });
@@ -200,3 +185,16 @@ exports.getCart = catchAsync(async (req, res, next) => {
 exports.getContracts = (req, res, next) => {
   res.status(200).render("contact"); // Rendering
 };
+
+//getContracts
+exports.getSuccess = catchAsync(async (req, res, next) => {
+  const billId = req.params.billId;
+  // const bill = await Bill.findById(id);
+
+  const customer = res.locals.customer;
+  // const user = await Customer.findById()
+  res.status(200).render("success", {
+    // bill,
+    // user
+  }); // Rendering
+});

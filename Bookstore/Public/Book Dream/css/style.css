@@ -76,7 +76,7 @@
   cursor: pointer;
   font-size: 15px;
 }
-.navbar .nav-list .login {
+.login {
   color: #009bd6;
   background-color: #f1eeff;
   border: none;
@@ -90,11 +90,11 @@
   text-decoration: none;
   color: #f1eeff;
 }
-.nav-list .login a {
+.login a {
   color: #009bd6;
   text-decoration: none;
 }
-.navbar .nav-list .signup {
+.signup {
   background-color: #009bd6;
   border: none;
   color: #fff;
@@ -106,11 +106,11 @@
 .nav-list .profile-RP {
   display: none;
 }
-.nav-list .signup a {
+.signup a {
   color: #fff;
   text-decoration: none;
 }
-.nav-list .signup i {
+.signup i {
   margin-right: 0.5rem;
 }
 .hamburger {
@@ -1139,7 +1139,7 @@ ul.nav-profile.navbar-profile li a:focus {
   -ms-transform: scale(0.8);
 }
 
-.logoutBtn{
+.logoutBtn {
   text-decoration: none;
   color: #f1eeff;
   margin-left: 20px;
@@ -1152,7 +1152,6 @@ ul.nav-profile.navbar-profile li a:focus {
   font-weight: 600;
   cursor: pointer;
   font-size: 15px;
-
 }
 
 /*note*/
@@ -1214,8 +1213,8 @@ ul.nav-profile.navbar-profile li a:focus {
   .nav-list .profile-icon {
     display: none;
   }
-  .nav-list .log-out .nav-list .login,
-  .nav-list .signup {
+  .login,
+  .signup {
     margin-left: 20px;
     width: 80%;
   }

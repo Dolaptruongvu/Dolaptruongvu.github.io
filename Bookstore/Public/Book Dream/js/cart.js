@@ -64,3 +64,36 @@ $("#online-pay").click(async function (e) {
     }
   }
 });
+
+$("#cash-pay").click(async function (e) {
+  const price = $("#total-price").data("totalprice");
+  try {
+    const cookieObject = document.cookie.split("; ").reduce((prev, current) => {
+      const [name, ...value] = current.split("=");
+      prev[name] = value.join("=");
+      return prev;
+    }, {});
+    const prods = Object.entries(cookieObject)
+      .filter((item) => item[0].search("cart-") > -1)
+      .reduce((pre, curr) => {
+        if (Number(curr[1]) <= 0) {
+          return pre;
+        }
+        return {
+          ...pre,
+          [curr[0].split("-")[1]]: Number(curr[1]),
+        };
+      }, {});
+    const billRes = await axios.post("/api/v1/bill", {
+      price,
+      book: Object.keys(prods),
+    });
+
+    window.location.href = `/success/${billRes.data.data._id}`;
+  } catch (e) {
+    console.log(e.response);
+    if (e.response.status == 401) {
+      window.location.href = "/login?r=/cart";
+    }
+  }
+});

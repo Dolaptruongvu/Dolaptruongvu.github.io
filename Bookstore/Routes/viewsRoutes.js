@@ -4,11 +4,40 @@ const authController = require("../Controller/authController");
 
 const router = express.Router();
 
+const listCategories = [
+  "Action",
+  "Fantasy",
+  "Adventure",
+  "History",
+  "Animation",
+  "Horror",
+  "Thriller",
+  "Mystery",
+  "Comedy",
+  "Romance",
+  "Science Fiction",
+  "Sci-fi",
+];
+const globalsVar = {
+  listCategories,
+};
+
+router.use((req, res, next) => {
+  res.locals = {
+    ...res.locals,
+    ...globalsVar,
+  };
+  next();
+});
 //Book detail
-router.get("/details/:bookId", viewsController.getBookDetail);
+router.get(
+  "/details/:bookId",
+  authController.isLoggedIn,
+  viewsController.getBookDetail
+);
 
 //Cart Items
-router.get("/cart", viewsController.getCart);
+router.get("/cart", authController.isLoggedIn, viewsController.getCart);
 
 //Contract & services
 router.get("/contracts", viewsController.getContracts);
@@ -41,6 +70,13 @@ router
     authController.protect,
     authController.restrictTo("shipper"),
     viewsController.getShipBills
+  );
+
+  router
+  .route("/success/:billId")
+  .get(
+    authController.protect,
+    viewsController.getSuccess
   );
 
 module.exports = router;

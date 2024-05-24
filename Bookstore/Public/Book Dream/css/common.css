@@ -1,0 +1,13 @@
+.filter-option {
+  width: 300px;
+}
+
+.filter-option {
+  position: fixed;
+  left: -340px;
+  z-index: 2;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}

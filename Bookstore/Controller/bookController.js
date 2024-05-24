@@ -4,26 +4,33 @@ const handlerFactory = require("./handlerFactory");
 const Book = require("../Model/bookModel");
 const multer = require("multer");
 
-//upload picture
+//Cover storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "D:/TruongVu-dev-project/Bookstore/Public/Img/Books"); //Storage place
+    cb(null, path.join(__dirname, '..', 'Public', 'Img', 'Books'));  // Adjust path based on your directory structure
   },
   filename: (req, file, cb) => {
-    const { title } = req.body; // Extract book title from request body
-    if (!title) {
-      return cb(new Error("Book title is required"));
-    }
-    const safeTitle = title.replace(/\s+/g, ""); //Remove spaces
-    cb(null, `${safeTitle}-cover.jpg`); //"-cover.jpg"
-  },
+    cb(null, `${Date.now()}-${file.originalname}`);
+  }
 });
-const upload = multer({ storage });
-
-exports.uploadBookCover = upload.single("bookCover"); // Change bookCover to front-end html
+const upload = multer({ storage: storage });
 
 //Create books
-exports.createBook = handlerFactory.createOne(Book);
+exports.createBook = upload.single("images"), // Upload single image
+  catchAsync(async (req, res, next) => {
+    // Validate book data (including title, author, etc.)
+    const newBook = await Book.create({
+      ...req.body,
+      images: req.file.filename, // Add cover image filename
+    });
+
+    res.status(201).json({
+      status: "success",
+      data: {
+        book: newBook,
+      },
+    });
+  });
 
 //Read books
 exports.allBook = handlerFactory.getAll(Book);

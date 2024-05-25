@@ -16,10 +16,9 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-exports.uploadBookCover = upload.single('images');
 
 //Create books
-exports.createBook = catchAsync(async (req, res, next) => {
+exports.createBook = upload.array('images',1), catchAsync(async (req, res, next) => {
 let newBookData = {
     title: req.body.title,
     author: req.body.author,

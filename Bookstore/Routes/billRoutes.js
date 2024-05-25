@@ -31,12 +31,17 @@ router
     billController.setPaymentStatus
   );
 
-router
-.get(
+router.get(
   "/checkout-session/:id",
   authController.protect,
   authController.restrictTo("user"),
   billController.createCheckoutSession
-  );
+);
 
+router.post(
+  "/update-pay/:billId",
+  authController.protect,
+  authController.restrictTo("shipper"),
+  billController.updatePay
+);
 module.exports = router;

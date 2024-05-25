@@ -87,3 +87,19 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
   }
   res.json({ url: session.url });
 });
+
+exports.updatePay = catchAsync(async (req, res, next) => {
+  const id = req.params.billId;
+  await Bill.updateOne(
+    {
+      _id: id,
+    },
+    {
+      haspaid: true,
+    }
+  );
+
+  res.status(200).json({
+    status: "success",
+  });
+});

@@ -13,8 +13,8 @@ router.use("/:bookId/bill", billRouter);
 
 //Create book routes
 router.post("/create", 
-bookController.createBook,
-bookController.uploadBookCover);
+bookController.createBook
+);
 
 //Get all books
 router.get("/", protect, bookController.allBook);

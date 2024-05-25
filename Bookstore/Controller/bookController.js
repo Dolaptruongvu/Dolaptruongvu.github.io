@@ -7,7 +7,7 @@ const multer = require("multer");
 //Cover storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'E:/Bookstore/Public/Img/Books'); // Change 'uploads' to your desired folder path
+    cb(null, './Public/Img/Books'); // Change 'uploads' to your desired folder path
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}${file.originalname}`;

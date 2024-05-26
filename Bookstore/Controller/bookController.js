@@ -7,30 +7,51 @@ const multer = require("multer");
 //Cover storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '..', 'Public', 'Img', 'Books'));  // Adjust path based on your directory structure
+    cb(null, './Public/Img/Books'); // Change 'uploads' to your desired folder path
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}${file.originalname}`;
+    cb(null, uniqueSuffix);
   }
 });
-const upload = multer({ storage: storage });
+
+const upload = multer({ storage });
 
 //Create books
-exports.createBook = upload.single("images"), // Upload single image
-  catchAsync(async (req, res, next) => {
-    // Validate book data (including title, author, etc.)
-    const newBook = await Book.create({
-      ...req.body,
-      images: req.file.filename, // Add cover image filename
-    });
+exports.createBook = upload.array('images',1), catchAsync(async (req, res, next) => {
+let newBookData = {
+    title: req.body.title,
+    author: req.body.author,
+    category: req.body.category,
+    language: req.body.language,
+    translator: req.body.translator,
+    totalPages: req.body.totalPages,
+    releaseDate: req.body.releaseDate,
+    publisher: req.body.publisher,
+    coverType: req.body.coverType,
+    weight: req.body.weight,
+    quantity: req.body.quantity,
+    summary: req.body.summary,
+    ratings: req.body.ratings,
+    price: req.body.price,
+  };
+  
+  // Check if image file was uploaded before adding filename
+  if (req.file) {
+    newBookData.images = [req.file.filename]; // Add filename to images array
+  } else {
+    newBookData.images = []; // Set images to an empty array if no file uploaded
+  }
 
-    res.status(201).json({
-      status: "success",
-      data: {
-        book: newBook,
-      },
-    });
+  const newBook = await Book.create(newBookData);
+
+  res.status(201).json({
+    status: 'success',
+    data: {
+      book: newBook,
+    },
   });
+});
 
 //Read books
 exports.allBook = handlerFactory.getAll(Book);

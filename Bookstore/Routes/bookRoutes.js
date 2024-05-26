@@ -11,8 +11,10 @@ router.use("/:bookId/reviews", reviewRouter);
 // bill Route
 router.use("/:bookId/bill", billRouter);
 
-// Combine upload and create book in a single route
-router.post("/create", isLoggedIn, bookController.createBook);
+//Create book routes
+router.post("/create", 
+bookController.createBook
+);
 
 //Get all books
 router.get("/", protect, bookController.allBook);

@@ -18,7 +18,7 @@
             <li>
               <div class="slider-info banner-view bg bg2">
                 <div class="banner-info">
-                  <h3>Harry Poter</h3>
+                  <h3>Harry Potter</h3>
                   <p>
                     Explore the huge library of Harry Potter books to satisfy
                     your wizarding passion!<span class="over-para"> </span>
@@ -105,7 +105,7 @@
                     in Twilight!<span class="over-para"> </span>
                   </p>
                   <a
-                    href="./Pages/book-detail.html"
+                    href="http://localhost:3000/details/664c8916d23933d6da9b9316"
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
@@ -134,7 +134,7 @@
         <% for (var book of specialOffer){ %>
         <div class="offer">
           <div class="img">
-            <a href="/book-detail"><img src="/Img/Books/<%= book.images[0]%>" alt="" /></a>
+            <a href="/details/<%=book._id%>"><img src="/Img/Books/<%= book.images[0]%>" alt="" /></a>
           </div>
           <div class="offer-content">
             <h5><%= book.title %></h5>
@@ -169,7 +169,7 @@
         <% for (var book of famousBooks){ %>
           <div class="book">
             <div class="img">
-              <a href="/book-detail"
+              <a href="/details/<%=book._id%>"
                 ><img src="/Img/Books/<%= book.images[0] %>" alt="" />
               </a>
             </div>

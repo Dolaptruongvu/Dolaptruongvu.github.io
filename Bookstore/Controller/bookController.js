@@ -7,19 +7,22 @@ const multer = require("multer");
 //Cover storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './Public/Img/Books'); // Change 'uploads' to your desired folder path
+    cb(null, "./Public/Img/Books"); // Change 'uploads' to your desired folder path
   },
   filename: (req, file, cb) => {
-    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}${file.originalname}`;
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}${
+      file.originalname
+    }`;
     cb(null, uniqueSuffix);
-  }
+  },
 });
 
 const upload = multer({ storage });
 
+exports.uploadImage = upload.array("images", 1);
 //Create books
-exports.createBook = upload.array('images',1), catchAsync(async (req, res, next) => {
-let newBookData = {
+exports.createBook = catchAsync(async (req, res, next) => {
+  let newBookData = {
     title: req.body.title,
     author: req.body.author,
     category: req.body.category,
@@ -35,10 +38,10 @@ let newBookData = {
     ratings: req.body.ratings,
     price: req.body.price,
   };
-  
+
   // Check if image file was uploaded before adding filename
-  if (req.file) {
-    newBookData.images = [req.file.filename]; // Add filename to images array
+  if (req.files.length > 0) {
+    newBookData.images = [req.files[0].filename]; // Add filename to images array
   } else {
     newBookData.images = []; // Set images to an empty array if no file uploaded
   }
@@ -46,7 +49,7 @@ let newBookData = {
   const newBook = await Book.create(newBookData);
 
   res.status(201).json({
-    status: 'success',
+    status: "success",
     data: {
       book: newBook,
     },

@@ -3,7 +3,11 @@ const router = express.Router();
 const bookController = require("../Controller/bookController");
 const reviewRouter = require("./reviewRoutes");
 const billRouter = require("./billRoutes");
-const { protect, isLoggedIn } = require("../Controller/authController");
+const {
+  protect,
+  isLoggedIn,
+  restrictTo,
+} = require("../Controller/authController");
 
 // review Route
 router.use("/:bookId/reviews", reviewRouter);
@@ -12,9 +16,6 @@ router.use("/:bookId/reviews", reviewRouter);
 router.use("/:bookId/bill", billRouter);
 
 //Create book routes
-router.post("/create", 
-bookController.createBook
-);
 
 //Get all books
 router.get("/", protect, bookController.allBook);
@@ -23,6 +24,9 @@ router.get("/", protect, bookController.allBook);
 router.get("/filter", bookController.filterBooksByCategory);
 
 //Get one book,Update book, delete book
+router.use(protect);
+router.use(restrictTo("admin"));
+router.post("/create", bookController.uploadImage, bookController.createBook);
 router
   .route("/:id")
   .get(bookController.oneBook)

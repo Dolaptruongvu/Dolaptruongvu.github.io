@@ -291,12 +291,7 @@
       <% if (!page || page === "add") { %>
       <div class="summary-section">
         <h4>Cart Subtotal</h4>
-        <form
-          class="order-detail-table"
-          method="post"
-          action="/api/v1/books/create"
-          enctype="multipart/form-data"
-        >
+        <div class="order-detail-table">
           <table>
             <tr>
               <td>title</td>
@@ -309,6 +304,17 @@
               <td><input type="file" id="name" name="images" /></td>
             </tr>
             <tr>
+              <td>author</td>
+              <td>
+                <input
+                  type="text"
+                  id="name"
+                  name="author"
+                  placeholder="author"
+                />
+              </td>
+            </tr>
+            <tr>
               <td>category</td>
               <td>
                 <input
@@ -316,6 +322,17 @@
                   id="name"
                   name="category"
                   placeholder="category"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>language</td>
+              <td>
+                <input
+                  type="text"
+                  id="name"
+                  name="language"
+                  placeholder="language"
                 />
               </td>
             </tr>
@@ -392,11 +409,11 @@
             </tr>
             <tr>
               <td>price</td>
-              <td><input type="number" id="name" price="name" /></td>
+              <td><input type="number" id="name" name="price" /></td>
             </tr>
           </table>
-          <button type="submit">Add</button>
-        </form>
+          <button id="add-book">Add</button>
+        </div>
       </div>
       <% } %> <% if (page && page === "edit") { %>
       <div class="summary-section">
@@ -407,36 +424,36 @@
               <td>Name</td>
               <td>
                 <div class="search-box">
-                  <div class="search-field">
+                  <form class="search-field">
+                    <input
+                      type="hidden"
+                      placeholder="Search over 30 million Book titles"
+                      name="page"
+                      value="edit"
+                    />
                     <input
                       type="text"
                       placeholder="Search over 30 million Book titles"
+                      name="name"
                     />
-                    <button class="search-icon">
+                    <button type="submit" class="search-icon">
                       <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                  </div>
+                  </form>
                 </div>
               </td>
             </tr>
+
+            <% books.forEach(book => { %>
             <tr>
               <td>
-                <button><a href="">delete</a></button>
+                <button class="delete-book" data-id="<%= book._id %>">
+                  delete
+                </button>
               </td>
-              <td>Book</td>
+              <td><%= book.title %></td>
             </tr>
-            <tr>
-              <td>
-                <button><a href="">delete</a></button>
-              </td>
-              <td>Book</td>
-            </tr>
-            <tr>
-              <td>
-                <button><a href="">delete</a></button>
-              </td>
-              <td>Book</td>
-            </tr>
+            <% }) %>
           </table>
         </div>
       </div>
@@ -603,6 +620,7 @@
     <!-- <script src="/Book Dream/js/script.js"></script> -->
     <script src="/Book Dream/js/repeat-js.js"></script>
     <script src="/Book Dream/js/add-to-cart.js"></script>
+    <script src="/Book Dream/js/profile.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script>
       const logoutBtn = document.getElementById("logout");

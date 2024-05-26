@@ -70,8 +70,8 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
       },
     ],
     mode: "payment",
-    success_url: `http://127.0.0.1:3000/success/${bill.id}`, // Sửa lại link http
-    cancel_url: `http://127.0.0.1:3000/fail/${bill.id}`, // sửa lại link http
+    success_url: `http://localhost:3000/success/${bill.id}`, // Sửa lại link http
+    cancel_url: `http://localhost:3000/fail/${bill.id}`, // sửa lại link http
   });
   try {
     const updatedBill = await Bill.findByIdAndUpdate(

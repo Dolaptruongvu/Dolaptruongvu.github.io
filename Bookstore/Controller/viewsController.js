@@ -127,7 +127,7 @@ exports.getShipBills = catchAsync(async (req, res, next) => {
 // show profile
 exports.getProfile = catchAsync(async (req, res, next) => {
   const user = res.locals.customer;
-  const { page } = req.query;
+  const { page, name } = req.query;
 
   if (!user) {
     res.redirect("/login?r=/profile");
@@ -148,9 +148,17 @@ exports.getProfile = catchAsync(async (req, res, next) => {
 
   const listBills = await Bill.find(filter);
 
+  const books = [];
+  if (name && page === "edit") {
+    const booksDb = await Book.find({ title: { $regex: name } });
+    booksDb.forEach((book) => {
+      books.push(book);
+    });
+  }
   res.status(200).render("profile", {
     listBills,
     page,
+    books,
   });
 });
 
@@ -206,8 +214,8 @@ exports.getContracts = (req, res, next) => {
 //getContracts
 exports.getSuccess = catchAsync(async (req, res, next) => {
   const billId = req.params.billId;
+
   const bill = await Bill.findById(billId);
-  console.log(bill);
 
   const customer = res.locals.customer;
   // const user = await Customer.findById()

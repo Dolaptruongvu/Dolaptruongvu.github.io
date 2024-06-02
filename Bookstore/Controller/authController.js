@@ -89,6 +89,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.isLoggedIn = async (req, res, next) => {
   try {
+    res.locals.customer = null;
     if (req.cookies.jwt) {
       const decoded = await promisify(jwt.verify)(
         req.cookies.jwt,
@@ -132,7 +133,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
-  
+
   if (!token) {
     return next(
       new AppError("You are not logged in ! please log in to get access", 401)
@@ -158,8 +159,6 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.customer = currentUser;
   res.locals.customer = currentUser;
 
-  
-
   next();
 });
 
@@ -170,20 +169,21 @@ exports.restrictTo = (...roles) => {
         new AppError("You do not have permission to perform this action", 403)
       );
     }
-    
+
     next();
   };
 };
 
-exports.preventSetRight = catchAsync(async (req,res,next)=>{ // prevent user set admin while signup process
-   if(req.body.role == "user" || req.body.role == "" || req.body.role== null){
-      next()
-   }else{
-     return next(
+exports.preventSetRight = catchAsync(async (req, res, next) => {
+  // prevent user set admin while signup process
+  if (req.body.role == "user" || req.body.role == "" || req.body.role == null) {
+    next();
+  } else {
+    return next(
       new AppError("You do not have permission to perform this action", 403)
-     );
-   }
-})
+    );
+  }
+});
 
 // exports.forgotPassword = catchAsync(async (req, res, next) => {
 //   const user = await User.findOne({ email: req.body.email });

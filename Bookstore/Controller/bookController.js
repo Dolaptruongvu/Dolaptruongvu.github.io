@@ -4,26 +4,57 @@ const handlerFactory = require("./handlerFactory");
 const Book = require("../Model/bookModel");
 const multer = require("multer");
 
-//upload picture
+//Cover storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "D:/TruongVu-dev-project/Bookstore/Public/Img/Books"); //Storage place
+    cb(null, "./Public/Img/Books"); // Change 'uploads' to your desired folder path
   },
   filename: (req, file, cb) => {
-    const { title } = req.body; // Extract book title from request body
-    if (!title) {
-      return cb(new Error("Book title is required"));
-    }
-    const safeTitle = title.replace(/\s+/g, ""); //Remove spaces
-    cb(null, `${safeTitle}-cover.jpg`); //"-cover.jpg"
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}${
+      file.originalname
+    }`;
+    cb(null, uniqueSuffix);
   },
 });
+
 const upload = multer({ storage });
 
-exports.uploadBookCover = upload.single("bookCover"); // Change bookCover to front-end html
-
+exports.uploadImage = upload.array("images", 1);
 //Create books
-exports.createBook = handlerFactory.createOne(Book);
+exports.createBook = catchAsync(async (req, res, next) => {
+  let newBookData = {
+    title: req.body.title,
+    author: req.body.author,
+    category: req.body.category,
+    language: req.body.language,
+    translator: req.body.translator,
+    totalPages: req.body.totalPages,
+    releaseDate: req.body.releaseDate,
+    publisher: req.body.publisher,
+    coverType: req.body.coverType,
+    weight: req.body.weight,
+    quantity: req.body.quantity,
+    summary: req.body.summary,
+    ratings: req.body.ratings,
+    price: req.body.price,
+  };
+
+  // Check if image file was uploaded before adding filename
+  if (req.files.length > 0) {
+    newBookData.images = [req.files[0].filename]; // Add filename to images array
+  } else {
+    newBookData.images = []; // Set images to an empty array if no file uploaded
+  }
+
+  const newBook = await Book.create(newBookData);
+
+  res.status(201).json({
+    status: "success",
+    data: {
+      book: newBook,
+    },
+  });
+});
 
 //Read books
 exports.allBook = handlerFactory.getAll(Book);

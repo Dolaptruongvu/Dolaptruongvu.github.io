@@ -15,7 +15,14 @@ btnSignUpElm.addEventListener("click", async () => {
     });
 
     alert("Đăng nhập thành công");
-    window.location.href = "/";
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectTo = urlParams.get("r");
+    console.log(redirectTo);
+    if (!!redirectTo) {
+      window.location.href = redirectTo;
+    } else {
+      window.location.href = "/";
+    }
   } catch (error) {
     alert(error.response.data.message);
     console.log(error);

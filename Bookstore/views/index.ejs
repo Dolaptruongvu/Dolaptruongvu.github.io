@@ -4,159 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Dream - Online bookstore</title>
-    <link rel="stylesheet" href="/Book Dream/css/style.css" />
-
-    <!--- google font link-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Fontawesome Link for Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="favicon/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="favicon/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="favicon/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="favicon/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="favicon/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="favicon/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="favicon/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="favicon/apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="favicon/apple-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="favicon/android-icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="favicon/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="favicon/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-    <meta name="theme-color" content="#ffffff" />
+    <title>Book Dream</title>
+    <%- include("layout/favicon") %>
   </head>
   <body>
-    <header>
-      <nav class="navbar">
-        <div class="logo">
-          <div class="img">
-            <a href="#"><img src="/Book Dream/images/logo1.png" alt="" /></a>
-          </div>
-          <div class="logo-header">
-            <h4><a href="index.ejs">Book Dream</a></h4>
-            <small>Online bookstore</small>
-          </div>
-        </div>
-        <ul class="nav-list">
-          <div class="logo">
-            <div class="title">
-              <div class="img">
-                <img src="/Book Dream/images/logo1.png" alt="" />
-              </div>
-              <div class="logo-header">
-                <h4>
-                  <a href="/TruongVu/Bookstore/views/index.ejs">Book Dream</a>
-                </h4>
-                <small>Online bookstore</small>
-              </div>
-            </div>
-            <button class="close"><i class="fa-solid fa-xmark"></i></button>
-          </div>
-          <li><a href="/">Home</a></li>
-          <li>
-            <a href="/service.html">Service</a>
-          </li>
-          <li>
-            <a href="/contact.html">Contact</a>
-          </li>
-          <li>
-            <a id="bookButton" style="cursor: pointer">Books</a>
-            <!-- <a href="/book-filter.html">Books</a> -->
-          </li>
-          <li class="profile-RP">
-            <a href="/TruongVu/Bookstore/views/proflie.ejs">Profile</a>
-          </li>
-          <button class="login">
-            <a id="loginButton" href="#" class="login" style="cursor: pointer"
-              >Log in</a
-            >
-          </button>
-          <button id="signupButton" class="signup">
-            <i class="fa-solid fa-user"></i
-            ><a id="signupButton" style="cursor: pointer">Sign up</a>
-          </button>
-          <button class="log-out"><a href="">Log Out</a></button>
-          <div class="profile-icon">
-            <a href="./proflie.ejs"
-              ><img src="/Book Dream/images/avatar.jpg" alt=""
-            /></a>
-          </div>
-        </ul>
-        <div class="hamburger">
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-      </nav>
-    </header>
+    <%- include("layout/header") %>
 
     <!-- main-slider -->
     <section class="w3l-main-slider position-relative" id="home">
@@ -166,17 +18,17 @@
             <li>
               <div class="slider-info banner-view bg bg2">
                 <div class="banner-info">
-                  <h3>Harry Poter</h3>
+                  <h3>Harry Potter</h3>
                   <p>
                     Explore the huge library of Harry Potter books to satisfy
                     your wizarding passion!<span class="over-para"> </span>
                   </p>
                   <a
-                    href="./Pages/book-detail.html"
+                    href="http://localhost:3000/details/66461794689eb091333252a4"
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
-                      <span class="fa fa-play"></span>
+                      <span class="fa-solid fa-cart-shopping"></span>
                     </span>
                     <h6>Buy Now</h6>
                   </a>
@@ -198,11 +50,11 @@
                     a semi-god hero today!<span class="over-para"> </span>
                   </p>
                   <a
-                    href="Pages/book-detail.html"
+                    href="http://localhost:3000/details/6646179a689eb091333252a6"
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
-                      <span class="fa fa-play"></span>
+                      <span class="fa-solid fa-cart-shopping"></span>
                     </span>
                     <h6>Buy Now</h6>
                   </a>
@@ -227,11 +79,11 @@
                     </span>
                   </p>
                   <a
-                    href="./Pages/book-detail.html"
+                    href="http://localhost:3000/details/664c8dc8d23933d6da9b9319"
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
-                      <span class="fa fa-play"></span>
+                      <span class="fa-solid fa-cart-shopping"></span>
                     </span>
                     <h6>Buy Now</h6>
                   </a>
@@ -253,11 +105,11 @@
                     in Twilight!<span class="over-para"> </span>
                   </p>
                   <a
-                    href="./Pages/book-detail.html"
+                    href="http://localhost:3000/details/664c8916d23933d6da9b9316"
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
-                      <span class="fa fa-play"></span>
+                      <span class="fa-solid fa-cart-shopping" ></span>
                     </span>
                     <h6>Buy Now</h6>
                   </a>
@@ -276,96 +128,34 @@
     <section class="offer">
       <div class="header">
         <h4>Special Offers</h4>
-        <p>Choose book which the best pricec</p>
+        <p>Choose book which the best price</p>
       </div>
       <div class="offer-container">
+        <% for (var book of specialOffer){ %>
         <div class="offer">
           <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-1.jpg" alt=""
-            /></a>
+            <a href="/details/<%=book._id%>"><img src="/Img/Books/<%= book.images[0]%>" alt="" /></a>
           </div>
           <div class="offer-content">
-            <h5>The Giver</h5>
+            <h5><%= book.title %></h5>
             <div class="genre">
-              <span>biography</span>
-              <span>thriller</span>
-              <span>horror</span>
+              <% for (var cate of book.category) { %>
+              <span><%= cate %></span>
+              <% } %>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              elit.Consequatur esse laboriosam nihil sint molestias sit iste
-              laboru
-            </p>
-            <small>Kevin Smiley</small>
+            <p><%= book.summary %></p>
+            <small><%= book.author %></small>
             <div class="offer-bottom">
-              <button class="cartbtn">
+              <!-- <button class="cartbtn">
                 <i class="fa-solid fa-cart-shopping"></i>Add to cart
-              </button>
-              <div class="price">
-                <strong><span>$</span>18.7</strong>
-              </div>
+              </button> -->
+              <!-- <div class="price">
+                <strong><span>$</span><%= book.price %></strong>
+              </div> -->
             </div>
           </div>
         </div>
-        <div class="offer">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-3.jpg" alt=""
-            /></a>
-          </div>
-          <div class="offer-content">
-            <h5>Radical Gardening</h5>
-            <div class="genre">
-              <span>biography</span>
-              <span>thriller</span>
-              <span>horror</span>
-            </div>
-            <p>
-              <!-- Lorem ipsum dolor sit amet consectetur adipisicing
-              elit.Consequatur esse laboriosam nihil sint molestias sit iste
-              laboru -->
-            </p>
-            <small>Kevin Smiley</small>
-            <div class="offer-bottom">
-              <button class="cartbtn">
-                <i class="fa-solid fa-cart-shopping"></i>Add to cart
-              </button>
-              <div class="price">
-                <strong><span>$</span>18.7</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="offer">
-          <div class="img">
-            <a href="pages/book-detail.html"
-              ><img src="/Book Dream/images/book-2.jpg" alt=""
-            /></a>
-          </div>
-          <div class="offer-content">
-            <h5>The Bright Brothers</h5>
-            <div class="genre">
-              <span>biography</span>
-              <span>thriller</span>
-              <span>horror</span>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              elit.Consequatur esse laboriosam nihil sint molestias sit iste
-              laboru
-            </p>
-            <small>Kevin Smiley</small>
-            <div class="offer-bottom">
-              <button class="cartbtn">
-                <i class="fa-solid fa-cart-shopping"></i>Add to cart
-              </button>
-              <div class="price">
-                <strong><span>$</span>18.7</strong>
-              </div>
-            </div>
-          </div>
-        </div>
+        <% } %>
       </div>
     </section>
 
@@ -376,75 +166,29 @@
       </div>
 
       <div class="book-container">
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-9.jpg" alt="" />
-            </a>
+        <% for (var book of famousBooks){ %>
+          <div class="book">
+            <div class="img">
+              <a href="/details/<%=book._id%>"
+                ><img src="/Img/Books/<%= book.images[0] %>" alt="" />
+              </a>
+            </div>
+            <h5><%= book.title%></h5>
+            <% for (var cate of book.category) { %>
+              <small><%= cate %></small>
+              <% } %>
+            <div class="price">
+              <span>$<%= book.price%></span>
+              <span><strike>$<%= book.price%></strike></span>
+            </div>
           </div>
-          <h5>The Ruins Of Gorlan</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-10.jpg" alt=""
-            /></a>
-          </div>
-          <h5>Percy Jackson</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-11.jpg" alt=""
-            /></a>
-          </div>
-          <h5>Clever Lands</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-12.jpg" alt=""
-            /></a>
-          </div>
-          <h5>Dick Francis</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
-        <div class="book">
-          <div class="img">
-            <a href="Pages/book-detail.html"
-              ><img src="/Book Dream/images/book-1.jpg" alt="" />
-            </a>
-          </div>
-          <h5>The Giver</h5>
-          <small>Thriller</small>
-          <div class="price">
-            <span>$54.6</span>
-            <span><strike>$70.00</strike></span>
-          </div>
-        </div>
+          <% } %>
+        </ul>
+       
       </div>
     </section>
 
-    <section class="book-sale">
+    <!-- <section class="book-sale">
       <div class="heading">
         <h4>Books On Sale</h4>
         <div class="arrowbtn">
@@ -591,19 +335,19 @@
           </ul>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="feature">
       <div class="main">
         <div class="content">
           <h4>Featured Books</h4>
-          <p>
+          <!-- <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
             Molestias, illum? Doloremque eius quis officiis rerum pariatur.
-          </p>
+          </p> -->
           <div class="featured-book-card">
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a id="bookButton"
                 ><img src="/Book Dream/images/book-2.jpg" alt=""
               /></a>
             </div>
@@ -638,13 +382,13 @@
                 </div>
               </div>
               <div class="card-footer">
-                <div class="price">
+                <!-- <div class="price">
                   <span>$84.78</span>
                   <strike>$90.00</strike>
-                </div>
-                <div class="cartbtn">
+                </div> -->
+                <!-- <div class="cartbtn">
                   <button><i class="fa-solid fa-cart-shopping"></i>Add</button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -652,32 +396,32 @@
         <div class="book-section">
           <div class="container">
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-2.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-1.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-3.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-4.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-5.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-6.jpg" alt=""
               /></a>
             </div>
@@ -699,107 +443,8 @@
       <div class="circle-2"></div>
     </section>
 
-    <footer>
-      <div class="container">
-        <div class="logo-description">
-          <div class="logo">
-            <div class="img">
-              <img src="/Book Dream//images/logo1.png" alt="" />
-            </div>
-            <div class="title">
-              <h4>Book Dream</h4>
-              <small>Online bookstore</small>
-            </div>
-          </div>
-          <div class="logo-body">
-            <p>
-              Thank you for choosing our website to buy books. Hope you choose
-              your dream book
-            </p>
-          </div>
-          <div class="social-links">
-            <h4>Follow Us</h4>
-            <ul class="links">
-              <li>
-                <a href=""><i class="fa-brands fa-facebook-f"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-youtube"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-              </li>
-              <li>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="categories list">
-          <h4>Book Categories</h4>
-          <ul>
-            <li><a href="Pages/book-filter.html">Action</a></li>
-            <li><a href="Pages/book-filter.html">Adventure</a></li>
-            <li><a href="Pages/book-filter.html">Comedy</a></li>
-            <li><a href="Pages/book-filter.html">Crime</a></li>
-            <li><a href="Pages/book-filter.html">Drama</a></li>
-            <li><a href="Pages/book-filter.html">Fantasy</a></li>
-            <li><a href="Pages/book-filter.html">Horror</a></li>
-          </ul>
-        </div>
-        <div class="quick-links list">
-          <h4>Quick Links</h4>
-          <ul>
-            <li>
-              <a href="C:\workspace\TruongVu\Bookstore\views\index.ejs"
-                >About Us</a
-              >
-            </li>
-            <li>
-              <a href="./contact.html">Contact Us</a>
-            </li>
-            <li><a href="./book-filter.ejs">Products</a></li>
-            <li><a href="pages/login.html">Login</a></li>
-            <li><a href="Pages/signup.html">Sign Up</a></li>
-            <li><a href="pages/cart-item.html">Cart</a></li>
-            <li><a href="pages/checkout.html">Checkout</a></li>
-          </ul>
-        </div>
-        <div class="our-store list">
-          <h4>Our Store</h4>
-          <div class="map" style="margin-top: 1rem">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.9527212788825!2d106.61873322077284!3d10.7926501317974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752d30443d946b%3A0x51e2e88da8981c4a!2zQ8OUTkcgVFkgVE5ISCBUSMavxqBORyBN4bqgSSBE4buKQ0ggVuG7pCBUUlVZ4buATiBUSMOUTkcgU01BUlQgVEnhur5OIFBIw4FU!5e0!3m2!1sen!2s!4v1713245877633!5m2!1sen!2s"
-              height="70"
-              style="width: 100%; border: none; border-radius: 5px"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-          <ul>
-            <li>
-              <a href=""
-                ><i class="fa-solid fa-location-dot"></i>69/9 Lê Sát P.Tân Quý,
-                Q. Tân Phú</a
-              >
-            </li>
-            <li>
-              <a href=""><i class="fa-solid fa-phone"></i>+84 123456789</a>
-            </li>
-            <li>
-              <a href=""
-                ><i class="fa-solid fa-envelope"></i>support@bookdream.id</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-    <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button>
+    <%- include("layout/footer") %>
+    <!-- <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button> -->
     <script src="/Book Dream/js/back-to-top.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
@@ -807,7 +452,6 @@
     <script src="/Book Dream/js/script.js"></script>
     <script src="/Book Dream/js/repeat-js.js"></script>
     <script src="/Book Dream/js/add-to-cart.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <!--/theme-change-->
     <script src="/Book Dream/js/owl.carousel.js"></script>
 
@@ -831,9 +475,9 @@
       });
     </script>
     <!--/theme-change-->
-    <!-- <script src="./assets/css/JS/theme-change.js"></script>
-  <script src="./assets/css/JS/owl.carousel.js"></script> -->
-    <!-- script for banner slider-->
+    <script src="./assets/css/JS/theme-change.js"></script>
+  <script src="./assets/css/JS/owl.carousel.js"></script>
+    <!-- script for banner slider -->
     <script>
       $(document).ready(function () {
         $(".owl-one").owlCarousel({
@@ -944,12 +588,17 @@
           event.preventDefault();
           window.location.assign("/login");
         });
-
       document
         .getElementById("signupButton")
         .addEventListener("click", function (event) {
           event.preventDefault();
           window.location.assign("/signup");
+        });
+        document
+        .getElementById("profileButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.assign("/profile");
         });
     </script>
   </body>

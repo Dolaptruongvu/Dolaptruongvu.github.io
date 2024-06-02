@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bookoe - Online Book Store website</title>
+    <title>Book Dream</title>
     <link rel="stylesheet" href="/Book Dream/css/style.css" />
     <link rel="stylesheet" href="/Book Dream/css/book-filter.css" />
     <!-- Fontawesome Link for Icons -->
@@ -104,14 +104,14 @@
       <nav class="navbar-2">
         <div class="logo">
           <div class="img">
-            <a href="../index.html"><img src="../images/logo1.png" alt="" /></a>
+            <a href="/"><img src="/Book Dream/images/logo1.png" alt="" /></a>
           </div>
           <div class="title">
             <h4>Book Dream<i class="fa-solid fa-grid"></i></h4>
             <small>Online bookstore</small>
           </div>
         </div>
-        <div class="search-box">
+        <!-- <div class="search-box">
           <div class="search-field">
             <input
               type="text"
@@ -121,8 +121,8 @@
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-        </div>
-        <div class="nav-end">
+        </div> -->
+        <!-- <div class="nav-end">
           <button class="likebtn">
             <i class="fa-regular fa-heart"></i> <span>35</span>
           </button>
@@ -131,17 +131,17 @@
               ><i class="fa-solid fa-cart-shopping"></i> <span>4</span></a
             >
           </button>
-        </div>
+        </div> -->
       </nav>
     </header>
     <div class="breadcrumb-container">
       <ul class="breadcrumb">
-        <li><a href="#" style="color: #009bd6">Shop</a></li>
+        <li><a id="shopButton" style="color: #009bd6">Shop</a></li>
         <li><a href="#">Registration</a></li>
       </ul>
     </div>
 
-    <section class="registration">
+    <section id="loginsection" class="registration">
       <h3>Registration</h3>
       <div class="registration-form">
         <h4>Create New Account</h4>
@@ -196,13 +196,13 @@
         </div>
       </div>
     </section>
-
-    <footer>
+    <%- include("layout/footer") %>
+    <!-- <footer>
       <div class="container">
         <div class="logo-description">
           <div class="logo">
             <div class="img">
-              <img src="../images/logo1.png" alt="" />
+              <img src="/Book Dream/images/logo1.png" alt="" />
             </div>
             <div class="title">
               <h4>Book Dream</h4>
@@ -237,27 +237,34 @@
           </div>
         </div>
         <div class="categories list">
-          <h4>Book Categories</h4>
-          <ul>
-            <li><a href="">Action</a></li>
-            <li><a href="">Adventure</a></li>
-            <li><a href="">Comedy</a></li>
-            <li><a href="">Crime</a></li>
-            <li><a href="">Drama</a></li>
-            <li><a href="">Fantasy</a></li>
-            <li><a href="">Horror</a></li>
-          </ul>
+          <h4>Developers</h4>
+            <ul>
+              <li>
+                <a href="https://www.facebook.com/anderswinchester"
+                  >Đỗ Lập Trường Vũ</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=100013200197695"
+                  >Tăng Quốc Tuấn</a
+                >
+              </li>
+              <li>
+                <a href="https://www.facebook.com/Urlgrim">Lương Anh Tuấn</a>
+              </li>
+            </ul>
         </div>
         <div class="quick-links list">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="../index.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="book-filter.html">Products</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="registration.html">Sign Up</a></li>
-            <li><a href="cart-item.html">Cart</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Sign Up</a></li>
+            <li><a href="">Cart</a></li>
+            <li><a href="">Checkout</a></li>
           </ul>
         </div>
         <div class="our-store list">
@@ -290,10 +297,18 @@
           </ul>
         </div>
       </div>
-    </footer>
+    </footer> -->
     <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button>
     <script type="module" src="/Book Dream/js/back-to-top.js"></script>
     <script type="module" src="/Book Dream/js/signup.js"></script>
     <script type="module" src="/jsevent/test.js"></script>
+    <script>
+      document
+        .getElementById("shopButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          window.location.assign("/");
+        });
+    </script>
   </body>
 </html>

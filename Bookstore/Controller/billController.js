@@ -48,7 +48,7 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
     if (!bill) {
         return next(new AppError("Cannot find bill", 403));
     }
-
+    
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'], 
         line_items: [
@@ -65,7 +65,7 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
             },
         ],
         mode: 'payment',
-        success_url: `http://localhost:3000/login.ejs`, // Sửa lại link http 
+        success_url: `http://localhost:3000/setStatus`, // Sửa lại link http 
         cancel_url: `http://localhost:3000/cancel.ejs`, // sửa lại link http
     })
     res.json({url: session.url});

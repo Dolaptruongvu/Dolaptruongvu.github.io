@@ -18,7 +18,6 @@ const signToken = (id, secret, expire) => {
   });
 };
 
-
 const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(
     user._id,
@@ -33,7 +32,6 @@ const createSendToken = (user, statusCode, req, res) => {
     secure: req.secure || req.headers["x-forwarded-proto"] === "https",
   };
 
-
   res.cookie("jwt", token, cookieOptions);
 
   user.password = undefined;
@@ -47,25 +45,22 @@ const createSendToken = (user, statusCode, req, res) => {
   });
 };
 
-
-
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await Customer.create(req.body);
-//   const token = signToken(
-//     newUser._id,
-//     process.env.JWT_EMAILSECRET,
-//     process.env.JWT_EMAILSECRET_EXPIRES_IN
-//   );
+  //   const token = signToken(
+  //     newUser._id,
+  //     process.env.JWT_EMAILSECRET,
+  //     process.env.JWT_EMAILSECRET_EXPIRES_IN
+  //   );
 
-//   const confirmEmailUrl = `${req.protocol}://${req.get(
-//     "host"
-//   )}/api/v1/users/confirmEmail/${token}`;
+  //   const confirmEmailUrl = `${req.protocol}://${req.get(
+  //     "host"
+  //   )}/api/v1/users/confirmEmail/${token}`;
 
-//   await new Email(newUser, confirmEmailUrl).sendWelcome();
+  //   await new Email(newUser, confirmEmailUrl).sendWelcome();
 
   createSendToken(newUser, 201, req, res);
 });
-
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -79,22 +74,22 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError("Incorrect email or password", 401));
   }
 
-//   if (user.smsOTPStatus) {
-//     return res.status(303).json({
-//       status: "success",
-//       data: {
-//         smsOTPStatus: user.smsOTPStatus,
-//         url: `http://127.0.0.1:3000/api/v1/users/2FA/${user.id}`,
-//       },
-//     });
-//   }
-
+  //   if (user.smsOTPStatus) {
+  //     return res.status(303).json({
+  //       status: "success",
+  //       data: {
+  //         smsOTPStatus: user.smsOTPStatus,
+  //         url: `http://127.0.0.1:3000/api/v1/users/2FA/${user.id}`,
+  //       },
+  //     });
+  //   }
 
   createSendToken(user, 200, req, res);
 });
 
 exports.isLoggedIn = async (req, res, next) => {
   try {
+    res.locals.customer = null;
     if (req.cookies.jwt) {
       const decoded = await promisify(jwt.verify)(
         req.cookies.jwt,
@@ -163,28 +158,32 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   req.customer = currentUser;
   res.locals.customer = currentUser;
-  console.log(req.customer)
 
   next();
 });
 
-
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
+    if (!roles.includes(req.customer.role)) {
       return next(
         new AppError("You do not have permission to perform this action", 403)
       );
     }
-    if (!req.user.emailConfirm) {
-      return next(
-        new AppError("Your email is not confirmed to perfom this action"),
-        403
-      );
-    }
+
     next();
   };
 };
+
+exports.preventSetRight = catchAsync(async (req, res, next) => {
+  // prevent user set admin while signup process
+  if (req.body.role == "user" || req.body.role == "" || req.body.role == null) {
+    next();
+  } else {
+    return next(
+      new AppError("You do not have permission to perform this action", 403)
+    );
+  }
+});
 
 // exports.forgotPassword = catchAsync(async (req, res, next) => {
 //   const user = await User.findOne({ email: req.body.email });

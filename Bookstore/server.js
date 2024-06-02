@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`App running on port : ${port}`);
 });
-dotenv.config({ path: `E:/Nodejs/Project-Bookstore/Bookstore/config.env` });
+dotenv.config({ path: `./config.env` });
 
 const DB = process.env.DATABASE.replace(
   "<password>",
@@ -13,17 +13,16 @@ const DB = process.env.DATABASE.replace(
 );
 
 mongoose
-  .connect(DB, {
-    
-  })
+  .connect(DB, {})
   .then(() => {
     console.log("DB connection successful");
   })
   .catch((err) => {
-    console.log("Error");
+    console.log("Error to connect database");
+    console.log(err);
   });
 
-console.log(process.env);
+// console.log(process.env);
 console.log(app.get("env"));
 
 process.on("uncaughtException", (err) => {

@@ -11,7 +11,7 @@ const bookSchema = new mongoose.Schema({
     trim: true,
     maxlength: [100, "Book title cannot exceed 100 characters"],
   },
-  // Array of image URLs
+  // Array of image name
   images: [String],
   // Author(s)
   author: {
@@ -52,12 +52,6 @@ const bookSchema = new mongoose.Schema({
     required: [true, "Publisher is required"],
     trim: true,
   },
-  // Publishing house
-  publishingHouse: {
-    type: String,
-    required: [true, "Publishing house is required"],
-    trim: true,
-  },
   // Book cover type (Hardcover, Paperback, etc.)
   coverType: {
     type: String,
@@ -67,11 +61,10 @@ const bookSchema = new mongoose.Schema({
   weight: {
     type: Number,
   },
-  // Availability (In Stock, Out of Stock)
-  availability: {
-    type: Boolean,
-    //required: [true, "Availability is required"],
-    default: true,
+  // Quantity of books in stock
+  quantity: {
+    type: Number,
+    default: 0,  // Default to 0 if not specified
   },
   // Book summary/description
   summary: {

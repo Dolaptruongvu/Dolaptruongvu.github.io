@@ -1521,11 +1521,25 @@ table .heading {
 
 .registration,
 .login {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
+}
+
+#loginsection{
+  display: flex;
+}
+  
+
+.login {
+ 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+
 }
 .registration h3,
 .login h3 {

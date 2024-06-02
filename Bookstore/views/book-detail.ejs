@@ -14,7 +14,7 @@
     <div class="breadcrumb-container">
       <ul class="breadcrumb">
         <li><a href="/">Home</a></li>
-        <li><a id="booksButton" style="color: #009bd6">Books</a></li>
+        <li><a id="booksButton" onclick="window.location.href= '/filter'" style="color: #009bd6">Books</a></li>
         <li><a href="#"><%=book.title %></a></li>
       </ul>
     </div>
@@ -113,7 +113,7 @@
       <div class="detail-customer">
         <div class="tabbtns">
           <button class="tablink" data-btn="detail">Details Product</button>
-          <button class="tablink" data-btn="customer">Customer Reviews</button>
+          <!-- <button class="tablink" data-btn="customer">Customer Reviews</button> -->
         </div>
         <div class="book-detail tabcontent" id="detail">
           <div class="detail-line">
@@ -122,9 +122,9 @@
           <div class="detail-line">
             <strong>Author</strong><span><%=book.author %></span>
           </div>
-          <div class="detail-line">
+          <!-- <div class="detail-line">
             <strong>ISBN</strong><span>121341381648(ISBN13: 121341381648)</span>
-          </div>
+          </div> -->
           <div class="detail-line">
             <strong>Edition Language</strong><span><%=book.language %></span>
           </div>
@@ -297,26 +297,12 @@
           window.location.assign("/profile");
         });
 
-      document
-        .getElementById("booksButton")
-        .addEventListener("click", function (event) {
-          event.preventDefault();
-          window.location.assign("/filter");
-        });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const cartButton = document.getElementById("cartButton");
-        if (cartButton) {
-          cartButton.addEventListener("click", function (event) {
-            event.preventDefault();
-            let currentUrl = window.location.href;
-            if (currentUrl.includes("/details/")) {
-              let newUrl = currentUrl.replace(/\/details\/[^\/]+$/, "/cart");
-              window.location.assign(newUrl);
-            }
-          });
-        }
-      });
+      // document
+      //   .getElementById("booksButton")
+      //   .addEventListener("click", function (event) {
+      //     event.preventDefault();
+      //     window.location.assign("/filter");
+      //   });
     </script>
   </body>
 </html>

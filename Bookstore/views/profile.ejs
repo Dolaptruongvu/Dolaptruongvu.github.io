@@ -120,7 +120,7 @@
             </div>
             <button class="close"><i class="fa-solid fa-xmark"></i></button>
           </div>
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="./service.html">Service</a></li>
           <li><a href="./contact.html">Contact</a></li>
           <li>
@@ -233,7 +233,7 @@
 
     <!-- show history -->
     <% if (customer.role === "user") { %>
-    <section id="History" class="detail-payment">
+    <section id="History" class="detail-payment"  style="display: flex; flex-wrap: wrap; gap: 20px;">
       <% for( let bill of listBills ) { %>
       <div class="summary-section">
         <h4>Billing</h4>

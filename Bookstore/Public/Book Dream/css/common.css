@@ -395,6 +395,10 @@
   transition: all 0.3s ease-in-out;
 }
 
+.fa-solid, .fa-cart-shopping{
+  color: #009bd6;
+}
+
 @media only screen and (max-width: 394px) {
   .book-info .related-book .book-container {
       flex-direction: column !important;

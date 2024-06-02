@@ -24,11 +24,11 @@
                     your wizarding passion!<span class="over-para"> </span>
                   </p>
                   <a
-                    href="./Pages/book-detail.html"
+                    href="http://localhost:3000/details/66461794689eb091333252a4"
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
-                      <span class="fa fa-play"></span>
+                      <span class="fa-solid fa-cart-shopping"></span>
                     </span>
                     <h6>Buy Now</h6>
                   </a>
@@ -50,11 +50,11 @@
                     a semi-god hero today!<span class="over-para"> </span>
                   </p>
                   <a
-                    href="Pages/book-detail.html"
+                    href="http://localhost:3000/details/6646179a689eb091333252a6"
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
-                      <span class="fa fa-play"></span>
+                      <span class="fa-solid fa-cart-shopping"></span>
                     </span>
                     <h6>Buy Now</h6>
                   </a>
@@ -79,11 +79,11 @@
                     </span>
                   </p>
                   <a
-                    href="./Pages/book-detail.html"
+                    href="http://localhost:3000/details/664c8dc8d23933d6da9b9319"
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
-                      <span class="fa fa-play"></span>
+                      <span class="fa-solid fa-cart-shopping"></span>
                     </span>
                     <h6>Buy Now</h6>
                   </a>
@@ -109,7 +109,7 @@
                     class="popup-with-zoom-anim play-view1"
                   >
                     <span class="video-play-icon">
-                      <span class="fa fa-play"></span>
+                      <span class="fa-solid fa-cart-shopping" ></span>
                     </span>
                     <h6>Buy Now</h6>
                   </a>
@@ -146,12 +146,12 @@
             <p><%= book.summary %></p>
             <small><%= book.author %></small>
             <div class="offer-bottom">
-              <button class="cartbtn">
+              <!-- <button class="cartbtn">
                 <i class="fa-solid fa-cart-shopping"></i>Add to cart
-              </button>
-              <div class="price">
+              </button> -->
+              <!-- <div class="price">
                 <strong><span>$</span><%= book.price %></strong>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -188,7 +188,7 @@
       </div>
     </section>
 
-    <section class="book-sale">
+    <!-- <section class="book-sale">
       <div class="heading">
         <h4>Books On Sale</h4>
         <div class="arrowbtn">
@@ -335,19 +335,19 @@
           </ul>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="feature">
       <div class="main">
         <div class="content">
           <h4>Featured Books</h4>
-          <p>
+          <!-- <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
             Molestias, illum? Doloremque eius quis officiis rerum pariatur.
-          </p>
+          </p> -->
           <div class="featured-book-card">
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a id="bookButton"
                 ><img src="/Book Dream/images/book-2.jpg" alt=""
               /></a>
             </div>
@@ -382,13 +382,13 @@
                 </div>
               </div>
               <div class="card-footer">
-                <div class="price">
+                <!-- <div class="price">
                   <span>$84.78</span>
                   <strike>$90.00</strike>
-                </div>
-                <div class="cartbtn">
+                </div> -->
+                <!-- <div class="cartbtn">
                   <button><i class="fa-solid fa-cart-shopping"></i>Add</button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -396,32 +396,32 @@
         <div class="book-section">
           <div class="container">
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-2.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-1.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-3.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-4.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-5.jpg" alt=""
               /></a>
             </div>
             <div class="img">
-              <a href="pages/book-detail.html"
+              <a onclick="window.location.href= '/filter'"
                 ><img src="/Book Dream/images/book-6.jpg" alt=""
               /></a>
             </div>
@@ -444,7 +444,7 @@
     </section>
 
     <%- include("layout/footer") %>
-    <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button>
+    <!-- <button class="back-to-top"><i class="fa-solid fa-chevron-up"></i></button> -->
     <script src="/Book Dream/js/back-to-top.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
@@ -475,9 +475,9 @@
       });
     </script>
     <!--/theme-change-->
-    <!-- <script src="./assets/css/JS/theme-change.js"></script>
-  <script src="./assets/css/JS/owl.carousel.js"></script> -->
-    <!-- script for banner slider-->
+    <script src="./assets/css/JS/theme-change.js"></script>
+  <script src="./assets/css/JS/owl.carousel.js"></script>
+    <!-- script for banner slider -->
     <script>
       $(document).ready(function () {
         $(".owl-one").owlCarousel({

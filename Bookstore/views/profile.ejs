@@ -141,7 +141,7 @@
       </nav>
     </header>
 
-    <div id="slider-profile">
+    <!-- <div id="slider-profile">
       <div class="banner-info">
         <div class="container">
           <div class="col-md-4 header-left">
@@ -156,7 +156,7 @@
                 <ul class="address">
                   <li>
                     <ul class="address-text">
-                      <li><b>PHONE </b></li>
+                      <li ><p class="pad">PHONE </p></li>
                       <li>
                         <b style="color: lightblue"
                           ><%= customer.phoneNumber %></b
@@ -174,11 +174,10 @@
                   </li>
                   <li>
                     <ul class="address-text">
-                      <li><b>E-MAIL </b></li>
+                      <li>E-MAIL </li>
                       <li>
                         <b
                           ><a
-                            href="ktsravindu@gmail.com"
                             style="color: lightblue"
                           >
                             <%= customer.email %></a
@@ -190,7 +189,42 @@
                 </ul>
               </b>
             </div>
-          </div>
+          </div> -->
+
+
+          <div id="slider-profile">
+            <div class="banner-info">
+                <div class="container">
+                    <!-- <div class="col-md-4 header-left">
+                        <img src="/TruongVu/Bookstore/Public/Book Dream/images/avatar.jpg" alt="" />
+                    </div> -->
+                    <div class="col-md-8 header-right">
+                        <h1><%= customer.name %></h1>
+                        <!-- <h6><b style="font-size: 120%; color: lightblue">ID</b></h6> -->
+                        <ul class="address">
+                            <li>
+                                <ul class="address-text">
+                                    <li><p class="pad">PHONE</p></li>
+                                    <li><b style="color: lightblue"><%= customer.phoneNumber %></b></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="address-text INF" >
+                                    <li><b>ADDRESS</b></li>
+                                    <li><b id="edit" style="color: lightblue "><%= customer.address %></b></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="address-text">
+                                    <li>E-MAIL</li>
+                                    <li><b><a style="color: lightblue"><%= customer.email %></a></b></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
           <div class="clearfix"></div>
         </div>

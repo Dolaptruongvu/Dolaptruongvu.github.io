@@ -943,6 +943,13 @@ footer .container .list a:hover {
   margin-top: 16px;
 }
 
+
+/* test */
+#edit{
+  color: red;
+}
+/* end test */
+
 .col-xs-1,
 .col-sm-1,
 .col-md-1,
@@ -1045,6 +1052,12 @@ footer .container .list a:hover {
   width: 20%;
   border: 5px solid rgba(255, 255, 255, 0.68);
 }
+
+.pad{
+  
+ display: inline-block;
+}
+
 .header-right {
   padding-left: 3em;
 }
@@ -1080,7 +1093,7 @@ footer .container .list a:hover {
 }
 
 .INF {
-  display: inline-flex;
+  display: flex;
 }
 
 ul.address {

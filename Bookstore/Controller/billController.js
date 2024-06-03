@@ -38,9 +38,7 @@ exports.setPaymentStatus = catchAsync(async (req, res, next) => {
 });
 
 exports.getShippingBill = catchAsync(async (req, res, next) => {
-  const bills = await Bill.find({ shipper: req.customer.id });
 
-<<<<<<< HEAD
     const bills = await Bill.find({shipper: req.customer.id})
   
     res.status(200).json({
@@ -82,12 +80,6 @@ exports.createCheckoutSession = catchAsync(async (req, res, next) => {
     res.json({url: session.url});
 
     res.status(200).json({ session });
-=======
-  res.status(200).json({
-    status: "success",
-    data: bills,
-  });
->>>>>>> c401d97a0665deba5fddba6bdcdb1459f02c4ee4
 });
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {

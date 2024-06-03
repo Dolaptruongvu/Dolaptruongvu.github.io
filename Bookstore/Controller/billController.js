@@ -50,37 +50,7 @@ exports.getShippingBill = catchAsync(async (req, res, next) => {
  });
 
 
-exports.createCheckoutSession = catchAsync(async (req, res, next) => {
-    const billId = req.params.id; //change from body to params
 
-    const bill = await Bill.findById(billId);
-    if (!bill) {
-        return next(new AppError("Cannot find bill", 403));
-    }
-    
-    const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'], 
-        line_items: [
-            {
-                price_data: {
-                    currency: 'usd', 
-                    product_data: {
-                        name: `Bill Payment of ${bill.customer.name}`,
-                        description: `Bill ID: ${billId}`,
-                    },
-                    unit_amount: bill.price * 100, 
-                },
-                quantity: 1,
-            },
-        ],
-        mode: 'payment',
-        success_url: `http://localhost:3000/setStatus`, // Sửa lại link http 
-        cancel_url: `http://localhost:3000/cancel.ejs`, // sửa lại link http
-    })
-    res.json({url: session.url});
-
-    res.status(200).json({ session });
-});
 
 exports.createCheckoutSession = catchAsync(async (req, res, next) => {
   const billId = req.params.id; //change from body to params

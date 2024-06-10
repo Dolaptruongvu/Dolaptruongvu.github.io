@@ -67,7 +67,7 @@ exports.filteredBooks = catchAsync(async (req, res, next) => {
   }
 
   /// pagination
-  const limit = 12;
+  const limit = 24;
   let page = 1;
   // page
   if (p && !isNaN(Number(p))) {
